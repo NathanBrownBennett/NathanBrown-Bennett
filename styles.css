@@ -67,3 +67,14 @@ footer {
   padding: 10px;
   margin-top: 40px;
 }
+
+.projects-section {
+  margin-bottom: 40px;
+}
+
+.projects-section h2 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid #007acc;
+  padding-bottom: 5px;
+}
+
