@@ -1,9 +1,21 @@
+:root {
+  --accent: #007acc;
+  --accent-dark: #005080;
+  --bg: #fff;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: #000; /* solid black */
-  color: #007acc; /* blue font for default */
+  color: var(--accent);
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
@@ -20,13 +32,15 @@ body {
   background: transparent;
 }
 
-/* Fade-in effect for main content */
+/* Fade-in on scroll */
 .fade-in {
   opacity: 0;
-  animation: fadeInText 1.5s ease-in forwards;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-@keyframes fadeInText {
-  to { opacity: 1; }
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* Profile picture: keep aspect ratio, add blue border, lower position */
@@ -35,8 +49,8 @@ body {
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid #007acc;
-  box-shadow: 0 0 20px #007acc, 0 0 40px #007acc22;
+  border: 4px solid var(--accent);
+  box-shadow: 0 0 20px var(--accent), 0 0 40px #007acc22;
   margin-top: 40px; /* Lower the image */
   background: #fff;
   z-index: 2;
@@ -45,29 +59,40 @@ body {
 
 /* Header solid color, no gradient */
 header {
-  background: #fff;
-  color: #007acc;
+  background: var(--bg);
+  color: var(--accent);
   padding: 32px 0 20px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 16px #007acc22;
-  border-bottom: 2px solid #007acc;
+  border-bottom: 2px solid var(--accent);
 }
 header h1 {
   animation: slideIn 1s forwards;
   text-shadow: none;
   letter-spacing: 2px;
-  color: #007acc;
+  color: var(--accent);
   cursor: pointer;
   display: inline-block;
   margin-bottom: 0;
   margin-top: 12px;
   position: relative;
 }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 header h1.copied::after {
   content: "Copied!";
-  color: #007acc;
+  color: var(--accent);
   font-size: 0.7em;
   background: #e6f3ff;
   border-radius: 6px;
@@ -97,59 +122,58 @@ header h1.copied::after {
   height: 32px;
   vertical-align: middle;
 }
-.header-icon-link svg {
-  width: 100%;
-  height: 100%;
-  fill: #007acc;
-  transition: fill 0.2s;
-}
+  .header-icon-link svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--accent);
+    transition: fill 0.2s;
+  }
 .header-icon-link:hover svg {
   fill: #005080;
 }
 
 /* About and projects containers: white background, blue font */
-.about, .projects-section {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 0 24px #007acc22;
-  padding: 24px 24px 16px 24px;
-  margin-bottom: 32px;
-  animation: fadeInText 1.5s ease-in forwards;
-  color: #007acc;
-}
-.projects-section h2, .about h2 {
-  color: #007acc;
+  .about, .projects-section {
+    background: var(--bg);
+    border-radius: 12px;
+    box-shadow: 0 0 24px #007acc22;
+    padding: 24px 24px 16px 24px;
+    margin-bottom: 32px;
+    color: var(--accent);
+  }
+  .projects-section h2, .about h2 {
+    color: var(--accent);
   text-shadow: none;
-  border-bottom: 2px solid #007acc;
+    border-bottom: 2px solid var(--accent);
   padding-bottom: 5px;
   margin-bottom: 10px;
   letter-spacing: 1px;
 }
 
 /* Project cards: white background, blue border and font */
-.project-card {
-  background: #fff;
+  .project-card {
+    background: var(--bg);
   border-radius: 8px;
-  box-shadow: 0 2px 12px #007acc22, 0 0 0 2px #007acc inset;
+    box-shadow: 0 2px 12px #007acc22, 0 0 0 2px var(--accent) inset;
   padding: 18px;
   transition: transform 0.3s, box-shadow 0.3s;
-  border: 1.5px solid #007acc;
-  color: #007acc;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
   position: relative;
   z-index: 1;
 }
-.project-card:hover {
-  transform: translateY(-7px) scale(1.03);
-  box-shadow: 0 6px 32px #007acc, 0 0 0 2px #007acc inset;
+  .project-card:hover {
+    transform: translateY(-7px) scale(1.03);
+    box-shadow: 0 6px 32px var(--accent), 0 0 0 2px var(--accent) inset;
   background: #e6f3ff;
 }
-.project-card h3 {
-  margin-top: 0;
-  color: #007acc;
+  .project-card h3 {
+    margin-top: 0;
+    color: var(--accent);
   text-shadow: none;
 }
-.project-card a {
-  color: #007acc;
+  .project-card a {
+    color: var(--accent);
   text-decoration: underline;
   font-weight: bold;
 }
@@ -173,18 +197,18 @@ header h1.copied::after {
   top: 50%;
   transform: translateY(-50%);
   background: #e6f3ff;
-  color: #007acc;
+  color: var(--accent);
   border: none;
   padding: 10px 16px;
   cursor: pointer;
   font-size: 2em;
   border-radius: 50%;
-  box-shadow: 0 0 8px #007acc;
+  box-shadow: 0 0 8px var(--accent);
   z-index: 2;
   transition: background 0.2s, color 0.2s;
 }
 .carousel-btn:hover {
-  background: #007acc;
+  background: var(--accent);
   color: #fff;
 }
 .carousel-btn.prev { left: 0; }
@@ -211,45 +235,50 @@ header h1.copied::after {
   visibility: visible;
   opacity: 1;
 }
+.overlay.active .overlay-content {
+  transform: scale(1);
+}
 
 .overlay-content {
-  background: #fff;
+  background: var(--bg);
   padding: 24px;
   border-radius: 12px;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 0 32px #007acc;
-  border: 2px solid #007acc;
-  color: #007acc;
+  box-shadow: 0 0 32px var(--accent);
+  border: 2px solid var(--accent);
+  color: var(--accent);
   position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s ease-out;
 }
 
-#overlay-close {
-  cursor: pointer;
+  #overlay-close {
+    cursor: pointer;
   font-size: 28px;
   position: absolute;
   top: 10px;
   right: 15px;
-  color: #007acc;
+    color: var(--accent);
   text-shadow: none;
 }
-#overlay-link {
-  color: #007acc;
+  #overlay-link {
+    color: var(--accent);
   text-decoration: underline;
   font-weight: bold;
 }
 
 /* Footer blue accent */
-footer {
-  background: #fff;
-  color: #007acc;
+  footer {
+    background: var(--bg);
+    color: var(--accent);
   text-align: center;
   padding: 10px;
   margin-top: 40px;
   box-shadow: 0 -2px 16px #007acc22;
 }
-footer img {
-  filter: drop-shadow(0 0 8px #007acc);
+  footer img {
+    filter: drop-shadow(0 0 8px var(--accent));
 }
 
 /* Responsive adjustments */
