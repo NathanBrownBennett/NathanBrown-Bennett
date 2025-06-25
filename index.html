@@ -31,10 +31,14 @@
       <p>I’ve delivered workshops, taught scripting, led student clubs, and collaborated with mentors and researchers. I’m passionate about ethical hacking, AI security, and building tech for social impact.</p>
     </section>
 
-    <section class="projects-section">
-      <h2>Main Projects</h2>
-      <div id="main-projects" class="projects"></div>
-    </section>
+  <section class="projects-section">
+    <h2>Main Projects</h2>
+    <div class="carousel">
+      <button id="prev-btn" class="carousel-btn prev">&#8249;</button>
+      <div id="main-projects" class="projects carousel-track"></div>
+      <button id="next-btn" class="carousel-btn next">&#8250;</button>
+    </div>
+  </section>
 
     <section class="projects-section">
       <h2>Side Projects</h2>
@@ -46,6 +50,15 @@
     <img src="assets/logo.svg" alt="Logo" width="50" />
     <p>&copy; 2025 Nathan Brown-Bennett</p>
   </footer>
+
+  <div id="overlay" class="overlay">
+    <div class="overlay-content">
+      <span id="overlay-close">&times;</span>
+      <h3 id="overlay-title"></h3>
+      <p id="overlay-description"></p>
+      <a id="overlay-link" href="#" target="_blank">View on GitHub</a>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
