@@ -52,6 +52,26 @@ function closeOverlay() {
 
 document.getElementById('overlay-close').addEventListener('click', closeOverlay);
 
+// Allow clicking outside the popup content to close overlay
+document.getElementById('overlay').addEventListener('click', function (e) {
+  if (e.target === this) {
+    closeOverlay();
+  }
+});
+
+// Copy email to clipboard when clicking the name, show feedback
+const profileName = document.getElementById('profile-name');
+if (profileName) {
+  profileName.addEventListener('click', function() {
+    navigator.clipboard.writeText('nathanbrown-bennett@hotmail.com').then(() => {
+      profileName.classList.add('copied');
+      setTimeout(() => {
+        profileName.classList.remove('copied');
+      }, 1200);
+    });
+  });
+}
+
 function createCard(project) {
   const card = document.createElement('div');
   card.className = 'project-card carousel-item';
@@ -73,27 +93,43 @@ function createCard(project) {
 async function displayRepos() {
   const mainContainer = document.getElementById('main-projects');
   const sideContainer = document.getElementById('side-projects');
+  // Get the carousel track inside main projects
+  const carouselTrack = mainContainer.querySelector('.carousel-track');
+  // Clear previous cards if any
+  if (carouselTrack) carouselTrack.innerHTML = '';
   try {
     const users = ['NathanBrownBennett', 'JakkuAzzo'];
     const reposArrays = await Promise.all(users.map(loadRepos));
     const repos = reposArrays.flat();
     repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
-    const mainNames = Object.keys(MAIN_PROJECTS);
+    const mainNames = Object.keys(MAIN_PROJECTS).filter(
+      name => MAIN_PROJECTS[name].visible
+    );
 
-    repos.forEach(repo => {
-      if (mainNames.includes(repo.name)) {
-        const info = MAIN_PROJECTS[repo.name];
-        if (info.visible) {
-          const project = {
-            title: info.title,
-            description: info.description,
-            link: repo.html_url
-          };
-          const card = createCard(project);
-          mainContainer.appendChild(card);
+    // Only show cards for visible main projects in the carousel track
+    mainNames.forEach(name => {
+      const repo = repos.find(r => r.name === name);
+      if (repo) {
+        const info = MAIN_PROJECTS[name];
+        const project = {
+          title: info.title,
+          description: info.description,
+          link: repo.html_url
+        };
+        const card = createCard(project);
+        if (carouselTrack) {
+          carouselTrack.appendChild(card);
+        } else {
+          mainContainer.appendChild(card); // fallback
         }
-      } else {
+      }
+    });
+
+    // Show side projects (not in MAIN_PROJECTS or not visible)
+    sideContainer.innerHTML = '';
+    repos.forEach(repo => {
+      if (!mainNames.includes(repo.name)) {
         const project = {
           title: repo.name,
           description: repo.description,
