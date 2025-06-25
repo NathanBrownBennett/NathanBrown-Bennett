@@ -1,5 +1,5 @@
 const MAIN_PROJECTS = {
-  'Dynamic-Flowchart-For-Device-Provisioning-': {
+  'Dynamic-Flowchart-For-Device-Provisioning': {
     title: 'Dynamic Flowchart for Device Provisioning',
     description: 'Interactive device provisioning flowchart.',
     visible: true
@@ -72,9 +72,10 @@ if (profileName) {
   });
 }
 
-function createCard(project) {
+function createCard(project, isCarousel = false) {
   const card = document.createElement('div');
-  card.className = 'project-card carousel-item';
+  card.className = 'project-card';
+  if (isCarousel) card.classList.add('carousel-item');
 
   const name = document.createElement('h3');
   name.textContent = project.title;
@@ -117,7 +118,7 @@ async function displayRepos() {
           description: info.description,
           link: repo.html_url
         };
-        const card = createCard(project);
+        const card = createCard(project, true);
         if (carouselTrack) {
           carouselTrack.appendChild(card);
         } else {
@@ -128,8 +129,12 @@ async function displayRepos() {
 
     // Show side projects (not in MAIN_PROJECTS or not visible)
     sideContainer.innerHTML = '';
-    repos.forEach(repo => {
-      if (!mainNames.includes(repo.name)) {
+    const sideRepos = repos.filter(repo => !mainNames.includes(repo.name));
+    let sideIndex = 0;
+
+    function loadMoreSide() {
+      for (let i = 0; i < 9 && sideIndex < sideRepos.length; i++, sideIndex++) {
+        const repo = sideRepos[sideIndex];
         const project = {
           title: repo.name,
           description: repo.description,
@@ -137,6 +142,17 @@ async function displayRepos() {
         };
         const card = createCard(project);
         sideContainer.appendChild(card);
+      }
+    }
+
+    loadMoreSide();
+    window.addEventListener('scroll', function onScroll() {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+        const prevIndex = sideIndex;
+        loadMoreSide();
+        if (sideIndex >= sideRepos.length) {
+          window.removeEventListener('scroll', onScroll);
+        }
       }
     });
 
