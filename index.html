@@ -4,14 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nathan Brown-Bennett Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="matrix-bg"></canvas>
-  <header class="fade-in">
-    <img id="profile" src="assets/profile.jpg" alt="Profile picture" />
-    <h1 id="profile-name">Nathan Brown-Bennett</h1>
+  <header>
     <div class="header-icons">
       <a class="header-icon-link" href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" title="LinkedIn">
         <!-- LinkedIn SVG -->
@@ -24,23 +21,35 @@
     </div>
   </header>
 
-  <main class="container" style="margin-top: 20px;">
-    <section class="about fade-in">
+  <div class="hero">
+    <div class="hero-text">
+      Nathan Brown-Bennett
+      <span class="visionary">a creator</span><br>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="about fade-in about-container">
       <h2>About Me</h2>
-      <p>I’m Nathan Brown-Bennett, a cybersecurity researcher, software developer, and MSc student in Network and Information Security at Kingston University London. I hold a BSc in Cyber Security & Digital Forensics and have experience building technical tools, educational platforms, and research-driven applications that explore the intersection of security, education, and accessibility.</p>
-
-      <p>My work focuses on designing solutions that are both technically robust and user-friendly. I’ve led and co-developed several software projects including:</p>
-
-      <ul>
-        <li><strong><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">Dynamic Flowchart for Device Provisioning</a></strong></li>
-        <li><strong><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank">Cyclomatic Complexity Calculator</a></strong></li>
-        <li><strong><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></strong> – Media fingerprinting & blockchain watermarking tool</li>
-        <li><strong><a href="https://github.com/NathanBrownBennett/BlockBash" target="_blank">BlockBash</a></strong> – Visual cybersecurity education platform</li>
-        <li><strong><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></strong> – Secure & Anonymouse Social Media that encrypts conversations and hides them steganographically</li>
-        <li><strong><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></strong> – Gamified cybersecurity adventure app</li>
-      </ul>
-
-      <p>I’ve delivered workshops, taught scripting, led student clubs, and collaborated with mentors and researchers. I’m passionate about ethical hacking, AI security, and building tech for social impact.</p>
+      <div class="about-summary">
+        <p>I’m Nathan Brown-Bennett, a cybersecurity researcher, software developer, and MSc student in Network and Information Security at Kingston University London.</p>
+        <p class="about-short-mobile">I build secure, user-friendly tech for social impact. MSc student, BSc in Cyber Security & Digital Forensics.</p>
+      </div>
+      <div class="about-projects">
+        <ul>
+          <li><strong><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">Dynamic Flowchart for Device Provisioning</a></strong></li>
+          <li><strong><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank">Cyclomatic Complexity Calculator</a></strong></li>
+          <li><strong><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></strong> – Media fingerprinting & blockchain watermarking tool</li>
+          <li><strong><a href="https://github.com/NathanBrownBennett/BlockBash" target="_blank">BlockBash</a></strong> – Visual cybersecurity education platform</li>
+          <li><strong><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></strong> – Secure & Anonymouse Social Media that encrypts conversations and hides them steganographically</li>
+          <li><strong><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></strong> – Gamified cybersecurity adventure app</li>
+        </ul>
+      </div>
+      <div class="about-extra">
+        <p>My work focuses on designing solutions that are both technically robust and user-friendly. I’ve led and co-developed several software projects including those above.</p>
+        <p>I’ve delivered workshops, taught scripting, led student clubs, and collaborated with mentors and researchers. I’m passionate about ethical hacking, AI security, and building tech for social impact.</p>
+      </div>
+      <button id="about-read-more" class="about-read-more">Read More</button>
     </section>
 
     <section class="projects-section fade-in">
@@ -57,6 +66,7 @@
     <section class="projects-section fade-in">
       <h2>Side Projects</h2>
       <div id="side-projects" class="projects"></div>
+      <button id="side-projects-next" style="margin: 2rem auto 0 auto; display: block; padding: 0.8em 2em; font-size: 1.1em; border-radius: 8px; border: none; background: #222; color: #fff; cursor: pointer;">Load Next</button>
     </section>
   </main>
 

@@ -74,8 +74,7 @@ if (profileName) {
 
 function createCard(project, isCarousel = false) {
   const card = document.createElement('div');
-  card.className = 'project-card';
-  if (isCarousel) card.classList.add('carousel-item');
+  card.className = isCarousel ? 'project-card carousel-item' : 'project-card';
 
   const name = document.createElement('h3');
   name.textContent = project.title;
@@ -91,12 +90,67 @@ function createCard(project, isCarousel = false) {
   return card;
 }
 
+let sideProjects = [];
+let sideProjectsPage = 0;
+let sideProjectsPerPage = 9;
+
+function getSideProjectsPerPage() {
+  if (window.innerWidth <= 600) return 1;
+  if (window.innerWidth <= 900) return 6;
+  return 9;
+}
+
+function renderSideProjects() {
+  const sideContainer = document.getElementById('side-projects');
+  sideContainer.innerHTML = '';
+  sideProjectsPerPage = getSideProjectsPerPage();
+  const start = sideProjectsPage * sideProjectsPerPage;
+  const end = start + sideProjectsPerPage;
+  const projectsToShow = sideProjects.slice(start, end);
+  projectsToShow.forEach(project => {
+    const card = createCard(project);
+    sideContainer.appendChild(card);
+  });
+}
+
+function handleSideProjectsNext() {
+  sideProjectsPerPage = getSideProjectsPerPage();
+  const totalPages = Math.ceil(sideProjects.length / sideProjectsPerPage);
+  sideProjectsPage = (sideProjectsPage + 1) % totalPages;
+  renderSideProjects();
+}
+
+window.addEventListener('resize', () => {
+  // Reset to first page and re-render on resize for correct layout
+  sideProjectsPage = 0;
+  renderSideProjects();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  displayRepos();
+  initScrollAnimations();
+
+  // About Me Read More button logic
+  const aboutSection = document.querySelector('.about-container');
+  const readMoreBtn = document.getElementById('about-read-more');
+  if (aboutSection && readMoreBtn) {
+    readMoreBtn.addEventListener('click', function() {
+      aboutSection.classList.toggle('expanded');
+      if (aboutSection.classList.contains('expanded')) {
+        readMoreBtn.textContent = 'Show Less';
+      } else {
+        readMoreBtn.textContent = 'Read More';
+        // Scroll back to top of about section if collapsed
+        aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+});
+
 async function displayRepos() {
   const mainContainer = document.getElementById('main-projects');
   const sideContainer = document.getElementById('side-projects');
-  // Get the carousel track inside main projects
   const carouselTrack = mainContainer.querySelector('.carousel-track');
-  // Clear previous cards if any
   if (carouselTrack) carouselTrack.innerHTML = '';
   try {
     const users = ['NathanBrownBennett', 'JakkuAzzo'];
@@ -108,7 +162,6 @@ async function displayRepos() {
       name => MAIN_PROJECTS[name].visible
     );
 
-    // Only show cards for visible main projects in the carousel track
     mainNames.forEach(name => {
       const repo = repos.find(r => r.name === name);
       if (repo) {
@@ -118,43 +171,28 @@ async function displayRepos() {
           description: info.description,
           link: repo.html_url
         };
-        const card = createCard(project, true);
+        const card = createCard(project, true); // Pass true for carousel
         if (carouselTrack) {
           carouselTrack.appendChild(card);
         } else {
-          mainContainer.appendChild(card); // fallback
+          mainContainer.appendChild(card);
         }
       }
     });
 
-    // Show side projects (not in MAIN_PROJECTS or not visible)
-    sideContainer.innerHTML = '';
-    const sideRepos = repos.filter(repo => !mainNames.includes(repo.name));
-    let sideIndex = 0;
-
-    function loadMoreSide() {
-      for (let i = 0; i < 9 && sideIndex < sideRepos.length; i++, sideIndex++) {
-        const repo = sideRepos[sideIndex];
-        const project = {
+    // Collect side projects for paging
+    sideProjects = [];
+    repos.forEach(repo => {
+      if (!mainNames.includes(repo.name)) {
+        sideProjects.push({
           title: repo.name,
           description: repo.description,
           link: repo.html_url
-        };
-        const card = createCard(project);
-        sideContainer.appendChild(card);
-      }
-    }
-
-    loadMoreSide();
-    window.addEventListener('scroll', function onScroll() {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
-        const prevIndex = sideIndex;
-        loadMoreSide();
-        if (sideIndex >= sideRepos.length) {
-          window.removeEventListener('scroll', onScroll);
-        }
+        });
       }
     });
+    sideProjectsPage = 0;
+    renderSideProjects();
 
     initCarousel();
   } catch (err) {
@@ -193,8 +231,3 @@ function initScrollAnimations() {
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  displayRepos();
-  initScrollAnimations();
-});
