@@ -266,6 +266,13 @@ header {
 /* Projects section */
 .projects-section {
   margin: 4vw 0 2vw 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.projects-section.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 .projects-section h2 {
   font-size: 2rem;
@@ -329,7 +336,9 @@ header {
 }
 @media (max-width: 600px) {
   #side-projects {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -486,6 +495,101 @@ footer img {
   box-shadow: 0 2px 16px rgba(0,0,0,0.07);
 }
 
+/* Background fader */
+#background-fader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.18;
+  transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+}
+#background-fader.fade-out {
+  opacity: 0;
+}
+body > *:not(#background-fader) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Profile picture */
+.profile-pic {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 1.2s cubic-bezier(0.4,0,0.2,1), border-radius 0.7s cubic-bezier(0.4,0,0.2,1), width 0.7s, height 0.7s, top 0.7s, left 0.7s;
+  margin-left: 2.5rem;
+  z-index: 2;
+}
+.profile-pic.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+@media (max-width: 900px) {
+  .profile-pic {
+    width: 140px;
+    height: 140px;
+    margin-left: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 1.5rem auto;
+    display: block;
+  }
+}
+
+/* About Me fade out and hero shrink/move */
+.about-container {
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.about-container.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-40px) scale(0.95);
+}
+.hero-text {
+  transition: transform 0.8s cubic-bezier(0.4,0,0.2,1), font-size 0.8s cubic-bezier(0.4,0,0.2,1), left 0.8s, bottom 0.8s;
+  position: relative;
+  z-index: 3;
+}
+.hero-text.shrink-move {
+  font-size: 1.2rem !important;
+  transform: scale(0.7) translate(-40vw, 38vh);
+  position: fixed;
+  left: 2vw;
+  bottom: 2vh;
+  top: auto;
+  right: auto;
+  z-index: 10;
+  text-align: left;
+}
+.profile-pic.sticky {
+  position: fixed;
+  top: 2vw;
+  right: 2vw;
+  left: auto;
+  margin: 0;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  z-index: 20;
+  transition: border-radius 0.7s, width 0.7s, height 0.7s, top 0.7s, right 0.7s;
+}
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .hero {
@@ -512,13 +616,158 @@ footer img {
   .carousel-track {
     gap: 1rem;
   }
-  .carousel-item, #side-projects .project-card {
-    min-width: 90vw;
-    max-width: 95vw;
+  .project-card, .carousel-item.project-card {
+    min-width: 90vw !important;
+    max-width: 95vw !important;
+    width: 95vw !important;
+    font-size: 1em;
+    margin: 0.5em auto !important;
+    padding: 1em 0.5em !important;
+    box-sizing: border-box;
+  }
+  #side-projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .overlay-content {
     min-width: 90vw;
     padding: 1.2rem 1.2rem 1rem 1.2rem;
   }
+}
+
+/* Scroll-for-more section styles */
+.scroll-for-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5rem 0 1.5rem 0;
+  font-size: 1.2em;
+  color: #eee;
+  opacity: 1;
+  transition: opacity 0.7s;
+  z-index: 10;
+  pointer-events: auto;
+}
+.scroll-for-more .scroll-arrow {
+  font-size: 2.2em;
+  animation: bounce 1.2s infinite alternate;
+}
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(12px); }
+}
+.scroll-for-more.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* About Me popup overlay */
+.about-popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(20,20,20,0.92);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+.about-popup-overlay.active {
+  display: flex;
+}
+.about-popup-content {
+  background: #23242a;
+  border-radius: 18px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  padding: 2.2em 1.5em 1.5em 1.5em;
+  max-width: 95vw;
+  width: 400px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  color: #fff;
+}
+.about-popup-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.2em;
+}
+.about-popup-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  display: block;
+}
+.about-popup-contact {
+  font-size: 0.98em;
+  color: #b0b0b0;
+  margin: 0.2em 0 0.7em 0;
+  display: block;
+}
+.about-popup-close {
+  position: absolute;
+  top: 1.1em;
+  right: 1.2em;
+  font-size: 2em;
+  cursor: pointer;
+  color: #fff;
+  z-index: 10;
+}
+.about-popup-carousel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.2em;
+}
+.about-popup-carousel-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0 0.5em;
+  transition: color 0.2s;
+}
+.about-popup-carousel-btn:hover {
+  color: #00bfff;
+}
+.about-popup-paragraph {
+  flex: 1;
+  min-height: 80px;
+  padding: 0 0.7em;
+  font-size: 1.08em;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+.about-popup-cv-btn {
+  display: inline-block;
+  margin-top: 0.7em;
+  padding: 0.7em 2em;
+  background: #007acc;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.08em;
+  transition: background 0.2s;
+}
+.about-popup-cv-btn:hover {
+  background: #005fa3;
+}
+@media (max-width: 600px) {
+  .about-popup-content {
+    width: 95vw;
+    padding: 1.2em 0.5em 1em 0.5em;
+  }
+  .about-popup-title {
+    font-size: 1.1em;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 

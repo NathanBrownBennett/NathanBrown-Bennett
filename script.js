@@ -130,6 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
   displayRepos();
   initScrollAnimations();
 
+  // Fade in About and profile-pic
+  setTimeout(() => {
+    document.querySelector('.about-container').classList.add('visible');
+    document.querySelector('.profile-pic').classList.add('visible');
+  }, 200);
+
   // About Me Read More button logic
   const aboutSection = document.querySelector('.about-container');
   const readMoreBtn = document.getElementById('about-read-more');
@@ -145,6 +151,94 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // About Me Read More popup logic
+  function showAboutPopup() {
+    const popup = document.getElementById('about-popup');
+    if (!popup) return;
+    popup.classList.add('active');
+  }
+  function hideAboutPopup() {
+    const popup = document.getElementById('about-popup');
+    if (!popup) return;
+    popup.classList.remove('active');
+  }
+  function setAboutPopupParagraphs(paragraphs) {
+    let idx = 0;
+    const paraDiv = document.getElementById('about-popup-paragraph');
+    const prevBtn = document.getElementById('about-popup-prev');
+    const nextBtn = document.getElementById('about-popup-next');
+    function render() {
+      paraDiv.textContent = paragraphs[idx];
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === paragraphs.length - 1;
+    }
+    prevBtn.onclick = () => { if (idx > 0) { idx--; render(); } };
+    nextBtn.onclick = () => { if (idx < paragraphs.length - 1) { idx++; render(); } };
+    render();
+  }
+  function setupAboutPopup() {
+    const closeBtn = document.getElementById('about-popup-close');
+    if (closeBtn) closeBtn.onclick = hideAboutPopup;
+    // Set paragraphs from About section
+    const aboutSection = document.querySelector('.about-container');
+    if (!aboutSection) return;
+    const summary = aboutSection.querySelector('.about-summary');
+    const projects = aboutSection.querySelector('.about-projects');
+    const extra = aboutSection.querySelector('.about-extra');
+    let paragraphs = [];
+    if (summary) summary.querySelectorAll('p').forEach(p => paragraphs.push(p.textContent));
+    if (projects) paragraphs.push(projects.innerText);
+    if (extra) extra.querySelectorAll('p').forEach(p => paragraphs.push(p.textContent));
+    setAboutPopupParagraphs(paragraphs);
+  }
+  // Show popup on Read More for mobile/tablet
+  function setupReadMorePopup() {
+    const readMoreBtn = document.getElementById('about-read-more');
+    if (!readMoreBtn) return;
+    readMoreBtn.addEventListener('click', function(e) {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        setupAboutPopup();
+        showAboutPopup();
+      }
+    });
+  }
+
+  // Scroll-triggered transitions
+  let triggered = false;
+  window.addEventListener('scroll', function() {
+    const about = document.querySelector('.about-container');
+    const profile = document.querySelector('.profile-pic');
+    const hero = document.querySelector('.hero-text');
+    const mainSections = document.querySelectorAll('.projects-section');
+    const scrollForMore = document.querySelector('.scroll-for-more');
+    const triggerPoint = window.innerHeight * 0.35;
+    if (window.scrollY > triggerPoint && !triggered) {
+      about.classList.add('fade-out');
+      profile.classList.add('sticky');
+      hero.classList.add('shrink-move');
+      mainSections.forEach(s => s.classList.add('visible'));
+      if (scrollForMore) scrollForMore.classList.add('hide');
+      triggered = true;
+    } else if (window.scrollY <= triggerPoint && triggered) {
+      about.classList.remove('fade-out');
+      profile.classList.remove('sticky');
+      hero.classList.remove('shrink-move');
+      mainSections.forEach(s => s.classList.remove('visible'));
+      if (scrollForMore) scrollForMore.classList.remove('hide');
+      triggered = false;
+    }
+  });
+
+  // Hide main/side projects initially
+  document.querySelectorAll('.projects-section').forEach(s => s.classList.remove('visible'));
+  // Show scroll-for-more initially
+  const scrollForMore = document.querySelector('.scroll-for-more');
+  if (scrollForMore) scrollForMore.classList.remove('hide');
+
+  document.getElementById('side-projects-next').addEventListener('click', handleSideProjectsNext);
+  setupReadMorePopup();
 });
 
 async function displayRepos() {

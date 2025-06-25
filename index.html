@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="background-fader"></div>
   <header>
     <div class="header-icons">
       <a class="header-icon-link" href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" title="LinkedIn">
@@ -23,13 +24,12 @@
 
   <div class="hero">
     <div class="hero-text">
-      Nathan Brown-Bennett
-      <span class="visionary">a creator</span><br>
+      Nathan Brown-Bennett <div class="visionary">a creator</div>
     </div>
   </div>
 
   <main class="container">
-    <div style="display: flex; justify-content: center; width: 100%;">
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 2.5rem;">
       <section class="about fade-in about-container">
         <h2>About Me</h2>
         <div class="about-summary">
@@ -52,6 +52,11 @@
         </div>
         <button id="about-read-more" class="about-read-more">Read More</button>
       </section>
+      <img src="assets/profile.jpg" alt="Profile" class="profile-pic fade-in" />
+    </div>
+    <div class="scroll-for-more">
+      <span class="scroll-arrow">&#8595;</span>
+      <span>Scroll for more</span>
     </div>
 
     <section class="projects-section fade-in">
@@ -73,7 +78,6 @@
   </main>
 
   <footer class="fade-in">
-    <img src="assets/logo.png" alt="Logo" width="50" />
     <p>&copy; 2025 Nathan Brown-Bennett</p>
   </footer>
 
@@ -86,7 +90,55 @@
     </div>
   </div>
 
+  <!-- About Me Read More Popup Overlay -->
+  <div id="about-popup" class="about-popup-overlay">
+    <div class="about-popup-content">
+      <div class="about-popup-header">
+        <span class="about-popup-title">Nathan Brown-Bennett</span>
+        <span class="about-popup-contact">nathanbrown-bennett@hotmail.com<br>+44 1234 567890</span>
+        <span id="about-popup-close" class="about-popup-close">&times;</span>
+      </div>
+      <div class="about-popup-carousel">
+        <button id="about-popup-prev" class="about-popup-carousel-btn">&#8249;</button>
+        <div id="about-popup-paragraph" class="about-popup-paragraph"></div>
+        <button id="about-popup-next" class="about-popup-carousel-btn">&#8250;</button>
+      </div>
+      <a id="about-popup-cv" class="about-popup-cv-btn" href="assets/NathanBrownBennett_CV.pdf" download>Download CV</a>
+    </div>
+  </div>
+
   <script src="script.js"></script>
   <script src="matrix-bg.js"></script>
+  <script>
+    // Background image fader
+    (function() {
+      const images = [
+        'assets/Background_Images/IMG_1711.jpg',
+        'assets/Background_Images/stairs.jpg',
+        'assets/Background_Images/bw.JPG',
+        'assets/Background_Images/performance.JPG',
+        'assets/Background_Images/standing.webp',
+        'assets/Background_Images/bench.webp',
+        'assets/Background_Images/arm out.jpg',
+        'assets/Background_Images/5thfloor.jpg',
+        'assets/Background_Images/gradwall.jpg',
+        'assets/Background_Images/reliablesawce.jpg'
+      ];
+      let idx = 0;
+      const fader = document.getElementById('background-fader');
+      function setBg(i) {
+        fader.style.backgroundImage = `url('${images[i]}')`;
+      }
+      setBg(idx);
+      setInterval(() => {
+        idx = (idx + 1) % images.length;
+        fader.classList.add('fade-out');
+        setTimeout(() => {
+          setBg(idx);
+          fader.classList.remove('fade-out');
+        }, 1200);
+      }, 7000);
+    })();
+  </script>
 </body>
 </html>
