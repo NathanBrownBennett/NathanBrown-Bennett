@@ -126,6 +126,8 @@ window.addEventListener('resize', () => {
   renderSideProjects();
 });
 
+const MOBILE_MAX_WIDTH = 900;
+
 document.addEventListener('DOMContentLoaded', () => {
   displayRepos();
   initScrollAnimations();
@@ -140,14 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const aboutSection = document.querySelector('.about-container');
   const readMoreBtn = document.getElementById('about-read-more');
   if (aboutSection && readMoreBtn) {
-    readMoreBtn.addEventListener('click', function() {
-      aboutSection.classList.toggle('expanded');
-      if (aboutSection.classList.contains('expanded')) {
-        readMoreBtn.textContent = 'Show Less';
+    readMoreBtn.addEventListener('click', function(e) {
+      if (window.innerWidth <= MOBILE_MAX_WIDTH) {
+        e.preventDefault();
+        showAboutPopup();
       } else {
-        readMoreBtn.textContent = 'Read More';
-        // Scroll back to top of about section if collapsed
-        aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        aboutSection.classList.toggle('expanded');
+        if (aboutSection.classList.contains('expanded')) {
+          readMoreBtn.textContent = 'Show Less';
+        } else {
+          readMoreBtn.textContent = 'Read More';
+          aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     });
   }
@@ -192,36 +198,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (extra) extra.querySelectorAll('p').forEach(p => paragraphs.push(p.textContent));
     setAboutPopupParagraphs(paragraphs);
   }
-  // Show popup on Read More for mobile/tablet
-  function setupReadMorePopup() {
-    const readMoreBtn = document.getElementById('about-read-more');
-    if (!readMoreBtn) return;
-    readMoreBtn.addEventListener('click', function(e) {
-      if (window.innerWidth <= 900) {
-        e.preventDefault();
-        setupAboutPopup();
-        showAboutPopup();
-      }
-    });
-  }
+
+  setupAboutPopup();
 
   // Scroll-triggered transitions
   let triggered = false;
-  window.addEventListener('scroll', function() {
+  function handleScroll() {
     const about = document.querySelector('.about-container');
     const profile = document.querySelector('.profile-pic');
     const hero = document.querySelector('.hero-text');
     const mainSections = document.querySelectorAll('.projects-section');
     const scrollForMore = document.querySelector('.scroll-for-more');
-    const triggerPoint = window.innerHeight * 0.35;
-    if (window.scrollY > triggerPoint && !triggered) {
+    const aboutBottom = about.getBoundingClientRect().bottom;
+    const threshold = window.innerHeight * 0.2;
+    if (aboutBottom <= threshold && !triggered) {
       about.classList.add('fade-out');
       profile.classList.add('sticky');
       hero.classList.add('shrink-move');
       mainSections.forEach(s => s.classList.add('visible'));
       if (scrollForMore) scrollForMore.classList.add('hide');
       triggered = true;
-    } else if (window.scrollY <= triggerPoint && triggered) {
+    } else if (aboutBottom > threshold && triggered) {
       about.classList.remove('fade-out');
       profile.classList.remove('sticky');
       hero.classList.remove('shrink-move');
@@ -229,7 +226,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (scrollForMore) scrollForMore.classList.remove('hide');
       triggered = false;
     }
-  });
+  }
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
 
   // Hide main/side projects initially
   document.querySelectorAll('.projects-section').forEach(s => s.classList.remove('visible'));
@@ -238,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (scrollForMore) scrollForMore.classList.remove('hide');
 
   document.getElementById('side-projects-next').addEventListener('click', handleSideProjectsNext);
-  setupReadMorePopup();
 });
 
 async function displayRepos() {
@@ -323,5 +321,9 @@ function initScrollAnimations() {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in').forEach(el => {
+    if (!el.classList.contains('manual-control')) {
+      observer.observe(el);
+    }
+  });
 }
