@@ -680,6 +680,34 @@ body > *:not(#background-fader) {
 .about-popup-overlay.active {
   display: flex;
 }
+.contact-overlay {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  padding: 0.8em 1.2em;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3em;
+  z-index: 1050;
+  color: #fff;
+  font-size: 0.95em;
+}
+.contact-item {
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+.contact-item:hover {
+  color: #00bfff;
+  transform: scale(1.05);
+}
+.contact-item.copied {
+  color: #4caf50;
+}
 .about-popup-content {
   background: #23242a;
   border-radius: 18px;
@@ -768,6 +796,11 @@ body > *:not(#background-fader) {
   }
   .about-popup-title {
     font-size: 1.1em;
+  }
+  .contact-overlay {
+    width: 90vw;
+    font-size: 0.9em;
+    padding: 0.6em 1em;
   }
 }
 @keyframes fadeIn {
