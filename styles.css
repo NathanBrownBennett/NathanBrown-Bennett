@@ -410,12 +410,14 @@ header {
 .overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(200,200,200,0.92);
+  background: rgba(200,200,200,0.6);
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2000;
   transition: background 0.2s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .overlay.active {
@@ -670,12 +672,14 @@ body > *:not(#background-fader) {
 .about-popup-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(20,20,20,0.92);
-  z-index: 1000;
+  background: rgba(20,20,20,0.6);
+  z-index: 2000;
   display: none;
   align-items: center;
   justify-content: center;
   animation: fadeIn 0.3s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 .about-popup-overlay.active {
   display: flex;
