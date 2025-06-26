@@ -186,6 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function setupAboutPopup() {
     const closeBtn = document.getElementById('about-popup-close');
     if (closeBtn) closeBtn.onclick = hideAboutPopup;
+    const overlay = document.getElementById('about-popup');
+    if (overlay) overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) hideAboutPopup();
+    });
     // Set paragraphs from About section
     const aboutSection = document.querySelector('.about-container');
     if (!aboutSection) return;
@@ -200,6 +204,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   setupAboutPopup();
+
+  function flashCopied(el) {
+    el.classList.add('copied');
+    setTimeout(() => el.classList.remove('copied'), 1200);
+  }
+
+  function setupContactOverlay() {
+    const nameEl = document.getElementById('contact-name');
+    const phoneEl = document.getElementById('contact-phone');
+    const emailEl = document.getElementById('contact-email');
+
+    if (nameEl) {
+      nameEl.addEventListener('click', () => {
+        navigator.clipboard.writeText(nameEl.dataset.copy || nameEl.textContent)
+          .then(() => flashCopied(nameEl));
+      });
+    }
+    if (phoneEl) {
+      phoneEl.addEventListener('click', () => {
+        navigator.clipboard.writeText(phoneEl.dataset.copy || phoneEl.textContent)
+          .then(() => flashCopied(phoneEl));
+      });
+    }
+    if (emailEl) {
+      emailEl.addEventListener('click', () => {
+        navigator.clipboard.writeText(emailEl.textContent)
+          .then(() => flashCopied(emailEl));
+      });
+    }
+  }
+
+  setupContactOverlay();
 
   // Scroll-triggered transitions
   let triggered = false;
