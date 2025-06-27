@@ -32,6 +32,15 @@ async function loadRepos(user) {
   return response.json();
 }
 
+// Overlay/Popup: blur background when active
+function setBodyBlur(active) {
+  if (active) {
+    document.body.classList.add('blurred');
+  } else {
+    document.body.classList.remove('blurred');
+  }
+}
+
 function openOverlay(project) {
   const overlay = document.getElementById('overlay');
   document.getElementById('overlay-title').textContent = project.title;
@@ -44,10 +53,12 @@ function openOverlay(project) {
     link.style.display = 'none';
   }
   overlay.classList.add('active');
+  setBodyBlur(true);
 }
 
 function closeOverlay() {
   document.getElementById('overlay').classList.remove('active');
+  setBodyBlur(false);
 }
 
 document.getElementById('overlay-close').addEventListener('click', closeOverlay);
@@ -162,11 +173,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function showAboutPopup() {
     const popup = document.getElementById('about-popup');
     if (!popup) return;
+    document.body.classList.add('blurred');
+    aboutSection.classList.add('position-relative');
     popup.classList.add('active');
   }
   function hideAboutPopup() {
     const popup = document.getElementById('about-popup');
     if (!popup) return;
+    document.body.classList.remove('blurred');
+    aboutSection.classList.remove('position-relative');
     popup.classList.remove('active');
   }
   function setAboutPopupParagraphs(paragraphs) {
@@ -175,7 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('about-popup-prev');
     const nextBtn = document.getElementById('about-popup-next');
     function render() {
-      paraDiv.textContent = paragraphs[idx];
+      paraDiv.classList.remove('visible');
+      setTimeout(() => {
+        paraDiv.innerHTML = paragraphs[idx];
+        paraDiv.classList.add('visible');
+      }, 100);
       prevBtn.disabled = idx === 0;
       nextBtn.disabled = idx === paragraphs.length - 1;
     }
@@ -183,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.onclick = () => { if (idx < paragraphs.length - 1) { idx++; render(); } };
     render();
   }
+
   function setupAboutPopup() {
     const closeBtn = document.getElementById('about-popup-close');
     if (closeBtn) closeBtn.onclick = hideAboutPopup;
@@ -193,13 +213,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const projects = aboutSection.querySelector('.about-projects');
     const extra = aboutSection.querySelector('.about-extra');
     let paragraphs = [];
-    if (summary) summary.querySelectorAll('p').forEach(p => paragraphs.push(p.textContent));
-    if (projects) paragraphs.push(projects.innerText);
-    if (extra) extra.querySelectorAll('p').forEach(p => paragraphs.push(p.textContent));
+    if (summary) summary.querySelectorAll('p').forEach(p => paragraphs.push(p.outerHTML));
+    // --- MOBILE/TABLET: Each project as a separate slide ---
+    if (window.innerWidth <= MOBILE_MAX_WIDTH && projects) {
+      const lis = Array.from(projects.querySelectorAll('li'));
+      for (let i = 0; i < lis.length; i += 2) {
+        // li: project title, li: description
+        const titleLi = lis[i];
+        const descLi = lis[i+1];
+        if (titleLi && descLi) {
+          paragraphs.push(`<div style='margin-bottom:0.5em;'>${titleLi.outerHTML}</div><div style='font-size:1em;'>${descLi.textContent}</div>`);
+        } else if (titleLi) {
+          paragraphs.push(titleLi.outerHTML);
+        }
+      }
+    } else if (projects) {
+      // Desktop: show all projects as a list
+      paragraphs.push(projects.innerHTML);
+    }
+    if (extra) extra.querySelectorAll('p').forEach(p => paragraphs.push(p.outerHTML));
     setAboutPopupParagraphs(paragraphs);
   }
 
   setupAboutPopup();
+
+  // Copy to clipboard logic for About Me popup
+  function setupCopyIcons() {
+    const email = document.getElementById('about-popup-email');
+    const phone = document.getElementById('about-popup-phone');
+    const copyEmail = document.getElementById('copy-email');
+    const copyPhone = document.getElementById('copy-phone');
+    if (copyEmail && email) {
+      copyEmail.onclick = function() {
+        navigator.clipboard.writeText(email.textContent.trim());
+        copyEmail.classList.add('copied');
+        setTimeout(() => copyEmail.classList.remove('copied'), 600);
+      };
+    }
+    if (copyPhone && phone) {
+      copyPhone.onclick = function() {
+        navigator.clipboard.writeText(phone.textContent.trim());
+        copyPhone.classList.add('copied');
+        setTimeout(() => copyPhone.classList.remove('copied'), 600);
+      };
+    }
+  }
 
   // Scroll-triggered transitions
   let triggered = false;
@@ -237,6 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (scrollForMore) scrollForMore.classList.remove('hide');
 
   document.getElementById('side-projects-next').addEventListener('click', handleSideProjectsNext);
+
+  setupCopyIcons();
 });
 
 async function displayRepos() {
@@ -325,5 +385,23 @@ function initScrollAnimations() {
     if (!el.classList.contains('manual-control')) {
       observer.observe(el);
     }
+  });
+}
+
+// Update event listeners for About Me popup
+const aboutReadMoreBtn = document.getElementById('about-read-more');
+if (aboutReadMoreBtn) {
+  aboutReadMoreBtn.addEventListener('click', showAboutPopup);
+}
+const aboutPopupCloseBtn = document.getElementById('about-popup-close');
+if (aboutPopupCloseBtn) {
+  aboutPopupCloseBtn.addEventListener('click', hideAboutPopup);
+}
+
+// Close About popup when clicking outside the content
+const aboutPopup = document.getElementById('about-popup');
+if (aboutPopup) {
+  aboutPopup.addEventListener('click', function(e) {
+    if (e.target === aboutPopup) hideAboutPopup();
   });
 }

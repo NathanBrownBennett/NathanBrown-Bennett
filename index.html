@@ -29,7 +29,7 @@
   </div>
 
   <main class="container">
-    <div style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 2.5rem;">
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 0.5rem;">
       <section class="about fade-in about-container">
         <h2>About Me</h2>
         <div class="about-summary">
@@ -38,12 +38,18 @@
         </div>
         <div class="about-projects">
           <ul>
-            <li><strong><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">Dynamic Flowchart for Device Provisioning</a></strong></li>
+            <li><strong><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">How Do We Decide What Devices We Provide?</a></strong></li>
+            <li class="about-project-desc">A Web-app for smart, secure and efficient Device Provisioning helping the public, companies & government find exactly what they need.</li>
             <li><strong><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank">Cyclomatic Complexity Calculator</a></strong></li>
-            <li><strong><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></strong> – Media fingerprinting & blockchain watermarking tool</li>
-            <li><strong><a href="https://github.com/NathanBrownBennett/BlockBash" target="_blank">BlockBash</a></strong> – Visual cybersecurity education platform</li>
-            <li><strong><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></strong> – Secure & Anonymouse Social Media that encrypts conversations and hides them steganographically</li>
-            <li><strong><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></strong> – Gamified cybersecurity adventure app</li>
+            <li class="about-project-desc">A Web-App to help developers improve their codebase efficiently.</li>
+            <li><strong><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></strong></li>
+            <li class="about-project-desc">Media fingerprinting & blockchain watermarking tool.</li>
+            <li><strong><a href="https://github.com/NathanBrownBennett/BlockBash" target="_blank">BlockBash</a></strong></li>
+            <li class="about-project-desc">Visual cybersecurity education platform.</li>
+            <li><strong><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></strong></li>
+            <li class="about-project-desc">Secure & Anonymous Social Media that encrypts conversations and hides them steganographically.</li>
+            <li><strong><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></strong></li>
+            <li class="about-project-desc">Gamified cybersecurity adventure app.</li>
           </ul>
         </div>
         <div class="about-extra">
@@ -59,7 +65,44 @@
       <span>Scroll for more</span>
     </div>
 
+    <div id="blur-overlay"></div>
+    <!-- About Me Read More Popup Overlay -->
+    <div id="about-popup" class="about-popup-overlay">
+      <div class="about-popup-content">
+        <div class="about-popup-header">
+          <span class="about-popup-title">Nathan Brown-Bennett</span>
+          <span class="about-popup-contact">
+            <span class="about-popup-contact-row">
+              <span id="about-popup-email">nathanbrown-bennett@hotmail.com</span>
+              <span class="copy-icon" id="copy-email" title="Copy email">📋</span>
+            </span>
+            <span class="about-popup-contact-row">
+              <span id="about-popup-phone">+44 7800 931786</span>
+              <span class="copy-icon" id="copy-phone" title="Copy phone">📋</span>
+            </span>
+          </span>
+          <span id="about-popup-close" class="about-popup-close" style="position:absolute;top:12px;right:18px;font-size:2.2rem;cursor:pointer;color:#fff;z-index:20;">&times;</span>
+        </div>
+        <div class="about-popup-carousel">
+          <button id="about-popup-prev" class="about-popup-carousel-btn">&#8249;</button>
+          <div id="about-popup-paragraph" class="about-popup-paragraph"></div>
+          <button id="about-popup-next" class="about-popup-carousel-btn">&#8250;</button>
+        </div>
+        <a id="about-popup-cv" class="about-popup-cv-btn" href="Professional Resume Nathan Brown-Bennett 2025.pdf" download>Download CV</a>
+      </div>
+    </div>
+    
+  </main>
+
+  <!-- Desktop CV Download Button -->
+  <div class="about-cv-desktop">
+    <a class="about-cv-btn" href="Professional Resume Nathan Brown-Bennett 2025.pdf" download>Download CV</a>
+  </div>
+
+  <main class="projects">
     <section class="projects-section fade-in manual-control">
+      <h2 class="fade-in">Projects</h2>
+      <p class="projects-intro fade-in">Explore my main and side projects, showcasing my skills in cybersecurity, software development, and innovative tech solutions.</p>
       <h2>Main Projects</h2>
       <div class="carousel">
         <button id="prev-btn" class="carousel-btn prev">&#8249;</button>
@@ -69,43 +112,27 @@
         <button id="next-btn" class="carousel-btn next">&#8250;</button>
       </div>
     </section>
-
+  
+  
     <section class="projects-section fade-in manual-control">
       <h2>Side Projects</h2>
       <div id="side-projects" class="projects"></div>
       <button id="side-projects-next" style="margin: 2rem auto 0 auto; display: block; padding: 0.8em 2em; font-size: 1.1em; border-radius: 8px; border: none; background: #222; color: #fff; cursor: pointer;">Load Next</button>
     </section>
+  
+    <div id="overlay" class="overlay">
+      <div class="overlay-content">
+        <span id="overlay-close">&times;</span>
+        <h3 id="overlay-title"></h3>
+        <p id="overlay-description"></p>
+        <a id="overlay-link" href="#" target="_blank">View on GitHub</a>
+      </div>
+    </div>
   </main>
 
   <footer class="fade-in">
     <p>&copy; 2025 Nathan Brown-Bennett</p>
   </footer>
-
-  <div id="overlay" class="overlay">
-    <div class="overlay-content">
-      <span id="overlay-close">&times;</span>
-      <h3 id="overlay-title"></h3>
-      <p id="overlay-description"></p>
-      <a id="overlay-link" href="#" target="_blank">View on GitHub</a>
-    </div>
-  </div>
-
-  <!-- About Me Read More Popup Overlay -->
-  <div id="about-popup" class="about-popup-overlay">
-    <div class="about-popup-content">
-      <div class="about-popup-header">
-        <span class="about-popup-title">Nathan Brown-Bennett</span>
-        <span class="about-popup-contact">nathanbrown-bennett@hotmail.com<br>+44 1234 567890</span>
-        <span id="about-popup-close" class="about-popup-close">&times;</span>
-      </div>
-      <div class="about-popup-carousel">
-        <button id="about-popup-prev" class="about-popup-carousel-btn">&#8249;</button>
-        <div id="about-popup-paragraph" class="about-popup-paragraph"></div>
-        <button id="about-popup-next" class="about-popup-carousel-btn">&#8250;</button>
-      </div>
-      <a id="about-popup-cv" class="about-popup-cv-btn" href="assets/NathanBrownBennett_CV.pdf" download>Download CV</a>
-    </div>
-  </div>
 
   <script src="script.js"></script>
   <script src="matrix-bg.js"></script>
