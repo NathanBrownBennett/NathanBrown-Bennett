@@ -416,7 +416,14 @@ header {
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  background: rgba(200,200,200,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
   transition: background 0.2s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .overlay.active {
@@ -669,6 +676,7 @@ body > *:not(#background-fader) {
 
 /* About Me popup overlay */
 .about-popup-overlay {
+<<<<<<< HEAD
   position: absolute;
   top: 0;
   left: 0;
@@ -683,9 +691,49 @@ body > *:not(#background-fader) {
 .about-container.position-relative {
   position: relative;
   z-index: 10;
+=======
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(20,20,20,0.6);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+>>>>>>> 54f48fd4fbb014e3b02e986f1c151230f9d628a7
 }
 .about-popup-overlay.active {
   display: flex;
+}
+.contact-overlay {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  padding: 0.8em 1.2em;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3em;
+  z-index: 1050;
+  color: #fff;
+  font-size: 0.95em;
+}
+.contact-item {
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+.contact-item:hover {
+  color: #00bfff;
+  transform: scale(1.05);
+}
+.contact-item.copied {
+  color: #4caf50;
 }
 .about-popup-content {
   background: transparent !important;
@@ -802,9 +850,25 @@ body > *:not(#background-fader) {
   color: #232323;
   border: 2px solid #232323;
 }
+<<<<<<< HEAD
 @media (min-width: 901px) {
   .about-cv-desktop { display: block; }
   .about-popup-cv-btn { display: none !important; }
+=======
+@media (max-width: 600px) {
+  .about-popup-content {
+    width: 95vw;
+    padding: 1.2em 0.5em 1em 0.5em;
+  }
+  .about-popup-title {
+    font-size: 1.1em;
+  }
+  .contact-overlay {
+    width: 90vw;
+    font-size: 0.9em;
+    padding: 0.6em 1em;
+  }
+>>>>>>> 54f48fd4fbb014e3b02e986f1c151230f9d628a7
 }
 @media (max-width: 900px) {
   .about-cv-desktop { display: none !important; }
