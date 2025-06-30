@@ -1,30 +1,16 @@
-const MAIN_PROJECTS = {
-  'Dynamic-Flowchart-For-Device-Provisioning': {
-    title: 'Dynamic Flowchart for Device Provisioning',
-    description: 'Interactive device provisioning flowchart.',
-    visible: true
-  },
-  'CyclomaticComplexityCalc': {
-    title: 'Cyclomatic Complexity Calculator',
-    description: 'Tool for measuring code complexity.',
-    visible: true
-  },
-  'MyMark': {
-    title: 'MyMark',
-    description: 'Media fingerprinting & blockchain watermarking tool.',
-    visible: true
-  },
-  'BlockBash': {
-    title: 'BlockBash',
-    description: 'Visual cybersecurity education platform.',
-    visible: true
-  },
-  'HackerGo': {
-    title: 'HackerGo',
-    description: 'Gamified cybersecurity adventure app.',
-    visible: true
-  }
-};
+// Pull carousel items dynamically from these GitHub repo slugs, in this order:
+const MAIN_PROJECT_ORDER = [
+  'HackerGO',
+  'blockbash',
+  'MyMark',
+  'BPO',
+  'bluetakk',
+  'PicChat',
+  'MultiVol',
+  'CYHA-MVP',
+  'CyclomaticComplexityCalc',
+  'Dynamic-Flowchart-For-Device-Provisioning-'
+];
 
 async function loadRepos(user) {
   const response = await fetch(`https://api.github.com/users/${user}/repos?sort=updated`);
@@ -53,12 +39,12 @@ function openOverlay(project) {
     link.style.display = 'none';
   }
   overlay.classList.add('active');
-  setBodyBlur(true);
+  // no body-blur here—let the overlay background handle itself
 }
 
 function closeOverlay() {
   document.getElementById('overlay').classList.remove('active');
-  setBodyBlur(false);
+  // don't touch the About-popup blur
 }
 
 document.getElementById('overlay-close').addEventListener('click', closeOverlay);
@@ -337,35 +323,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function displayRepos() {
   const mainContainer = document.getElementById('main-projects');
-  const sideContainer = document.getElementById('side-projects');
+  if (!mainContainer) return;
   const carouselTrack = mainContainer.querySelector('.carousel-track');
   if (carouselTrack) carouselTrack.innerHTML = '';
+
   try {
     const users = ['NathanBrownBennett', 'JakkuAzzo'];
     const reposArrays = await Promise.all(users.map(loadRepos));
     const repos = reposArrays.flat();
     repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
-    const mainNames = Object.keys(MAIN_PROJECTS).filter(
-      name => MAIN_PROJECTS[name].visible
-    );
+    // use our ordered slugs
+    const mainNames = MAIN_PROJECT_ORDER;
 
-    mainNames.forEach(name => {
-      const repo = repos.find(r => r.name === name);
-      if (repo) {
-        const info = MAIN_PROJECTS[name];
-        const project = {
-          title: info.title,
-          description: info.description,
-          link: repo.html_url
-        };
-        const card = createCard(project, true); // Pass true for carousel
-        if (carouselTrack) {
-          carouselTrack.appendChild(card);
-        } else {
-          mainContainer.appendChild(card);
-        }
-      }
+    // build case-insensitive lookup
+    const repoMap = {};
+    repos.forEach(r => { repoMap[r.name.toLowerCase()] = r; });
+
+    mainNames.forEach(slug => {
+      const repo = repoMap[slug.toLowerCase()];
+      if (!repo) return;  // skip if not found
+      const project = {
+        // you can title-case or replace dashes, e.g. repo.name.replace(/-/g,' ')
+        title: repo.name,
+        description: repo.description || '',
+        link: repo.html_url
+      };
+
+      const card = createCard(project, true);
+      carouselTrack.appendChild(card);
     });
 
     // Collect side projects for paging
@@ -385,7 +371,6 @@ async function displayRepos() {
     initCarousel();
   } catch (err) {
     mainContainer.textContent = 'Failed to load repositories.';
-    sideContainer.textContent = '';
   }
 }
 

@@ -29,43 +29,60 @@
   </div>
 
   <main class="container">
-    <div style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 0.5rem;">
-      <section class="about fade-in about-container">
-        <h2>About Me</h2>
-        <div class="about-summary">
-          <p>I’m Nathan Brown-Bennett, a cybersecurity researcher, software developer, and MSc student in Network and Information Security at Kingston University London.</p>
-          <p class="about-short-mobile">I build secure, user-friendly tech for social impact. MSc student, BSc in Cyber Security & Digital Forensics.</p>
-        </div>
-        <div class="about-projects">
-          <ul>
-            <li><strong><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">How Do We Decide What Devices We Provide?</a></strong></li>
-            <li class="about-project-desc">A Web-app for smart, secure and efficient Device Provisioning helping the public, companies & government find exactly what they need.</li>
-            <li><strong><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank">Cyclomatic Complexity Calculator</a></strong></li>
-            <li class="about-project-desc">A Web-App to help developers improve their codebase efficiently.</li>
-            <li><strong><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></strong></li>
-            <li class="about-project-desc">Media fingerprinting & blockchain watermarking tool.</li>
-            <li><strong><a href="https://github.com/NathanBrownBennett/BlockBash" target="_blank">BlockBash</a></strong></li>
-            <li class="about-project-desc">Visual cybersecurity education platform.</li>
-            <li><strong><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></strong></li>
-            <li class="about-project-desc">Secure & Anonymous Social Media that encrypts conversations and hides them steganographically.</li>
-            <li><strong><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></strong></li>
-            <li class="about-project-desc">Gamified cybersecurity adventure app.</li>
-          </ul>
-        </div>
-        <div class="about-extra">
-          <p>My work focuses on designing solutions that are both technically robust and user-friendly. I’ve led and co-developed several software projects including those above.</p>
-          <p>I’ve delivered workshops, taught scripting, led student clubs, and collaborated with mentors and researchers. I’m passionate about ethical hacking, AI security, and building tech for social impact.</p>
-        </div>
-        <button id="about-read-more" class="about-read-more">Read More</button>
-      </section>
-      <img src="assets/profile.jpg" alt="Profile" class="profile-pic fade-in" />
+    <section id="about-section" class="container about-container fade-in">
+      <div style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 0.5rem;">
+        <section class="about fade-in about-container">
+          <h2>About Me</h2>
+          <div class="about-summary">
+            <p>I’m Nathan Brown-Bennett, a cybersecurity researcher, software developer, and MSc student in Network and Information Security at Kingston University London.</p>
+            <p class="about-short-mobile">I build secure, user-friendly tech for social impact. MSc student, BSc in Cyber Security & Digital Forensics.</p>
+          </div>
+          <div class="about-projects">
+            <ul>
+              <li><strong><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">How Do We Decide What Devices We Provide?</a></strong></li>
+              <li class="about-project-desc">A Web-app for smart, secure and efficient Device Provisioning helping the public, companies & government find exactly what they need.</li>
+              <li><strong><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank">Cyclomatic Complexity Calculator</a></strong></li>
+              <li class="about-project-desc">A Web-App to help developers improve their codebase efficiently.</li>
+              <li><strong><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></strong></li>
+              <li class="about-project-desc">Media fingerprinting & blockchain watermarking tool.</li>
+              <li><strong><a href="https://github.com/NathanBrownBennett/BlockBash" target="_blank">BlockBash</a></strong></li>
+              <li class="about-project-desc">Visual cybersecurity education platform.</li>
+              <li><strong><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></strong></li>
+              <li class="about-project-desc">Secure & Anonymous Social Media that encrypts conversations and hides them steganographically.</li>
+              <li><strong><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></strong></li>
+              <li class="about-project-desc">Gamified cybersecurity adventure app.</li>
+            </ul>
+          </div>
+          <div class="about-extra">
+            <!-- Tablet Download CV -->
+            <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-cv-btn cv-tablet">Download CV</a>
+            <p>My work focuses on designing solutions that are both technically robust and user-friendly. I’ve led and co-developed several software projects including those above.</p>
+          </div>
+          <button id="about-read-more" class="about-read-more">Read More</button>
+        </section>
+        <img src="assets/profile.jpg" alt="Profile" class="profile-pic fade-in" />
+      </div>
+      <!-- end of About-section content -->
+    </section>
+
+    <div class="about-cv-desktop cv-desktop">
+      <a class="about-cv-btn" href="Professional Resume Nathan Brown-Bennett 2025.pdf" download>Download CV</a>
     </div>
+
+    <!-- Mobile Download CV in Popup -->
+    <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-popup-cv-btn cv-mobile">Download CV</a>
+    
+    <!-- Scroll prompt BELOW the About section; locked until user scrolls past -->
     <div class="scroll-for-more">
       <span class="scroll-arrow">&#8595;</span>
       <span>Scroll for more</span>
     </div>
 
+
+    <!-- Blur overlay for Read More popup -->
     <div id="blur-overlay"></div>
+
+
     <!-- About Me Read More Popup Overlay -->
     <div id="about-popup" class="about-popup-overlay">
       <div class="about-popup-content">
@@ -88,38 +105,29 @@
           <div id="about-popup-paragraph" class="about-popup-paragraph"></div>
           <button id="about-popup-next" class="about-popup-carousel-btn">&#8250;</button>
         </div>
-        <a id="about-popup-cv" class="about-popup-cv-btn" href="Professional Resume Nathan Brown-Bennett 2025.pdf" download>Download CV</a>
       </div>
     </div>
-    
+  
   </main>
 
-  <!-- Desktop CV Download Button -->
-  <div class="about-cv-desktop">
-    <a class="about-cv-btn" href="Professional Resume Nathan Brown-Bennett 2025.pdf" download>Download CV</a>
-  </div>
-
-  <main class="projects">
+  <section id="projects-section" class="projects-section fade-in manual-control">
     <section class="projects-section fade-in manual-control">
       <h2 class="fade-in">Projects</h2>
       <p class="projects-intro fade-in">Explore my main and side projects, showcasing my skills in cybersecurity, software development, and innovative tech solutions.</p>
       <h2>Main Projects</h2>
       <div class="carousel">
-        <button id="prev-btn" class="carousel-btn prev">&#8249;</button>
+        <button id="prev-btn" class="nav-arrow prev">&#8249;</button>
         <div id="main-projects">
           <div class="carousel-track"></div>
         </div>
-        <button id="next-btn" class="carousel-btn next">&#8250;</button>
+        <button id="next-btn" class="nav-arrow next">&#8250;</button>
       </div>
     </section>
-  
-  
     <section class="projects-section fade-in manual-control">
       <h2>Side Projects</h2>
       <div id="side-projects" class="projects"></div>
       <button id="side-projects-next" style="margin: 2rem auto 0 auto; display: block; padding: 0.8em 2em; font-size: 1.1em; border-radius: 8px; border: none; background: #222; color: #fff; cursor: pointer;">Load Next</button>
     </section>
-  
     <div id="overlay" class="overlay">
       <div class="overlay-content">
         <span id="overlay-close">&times;</span>
@@ -128,7 +136,7 @@
         <a id="overlay-link" href="#" target="_blank">View on GitHub</a>
       </div>
     </div>
-  </main>
+  </section>
 
   <footer class="fade-in">
     <p>&copy; 2025 Nathan Brown-Bennett</p>
