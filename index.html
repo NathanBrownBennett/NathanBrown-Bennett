@@ -24,7 +24,7 @@
 
   <div class="hero">
     <div class="hero-text">
-      Nathan Brown-Bennett <div class="visionary">a creator</div>
+      Nathan Brown-Bennett <div class="visionary">MSc</div>
     </div>
   </div>
 
@@ -52,21 +52,21 @@
               <li><strong><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></strong></li>
               <li class="about-project-desc">Gamified cybersecurity adventure app.</li>
             </ul>
-          </div>
-          <div class="about-extra">
-            <!-- Tablet Download CV -->
-            <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-cv-btn cv-tablet">Download CV</a>
-            <p>My work focuses on designing solutions that are both technically robust and user-friendly. I’ve led and co-developed several software projects including those above.</p>
+            <div class="about-extra">
+              <!-- Tablet Download CV -->
+              <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-cv-btn cv-tablet">Download CV</a>
+              <!-- Desktop Download CV -->
+              <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-cv-btn cv-desktop">Download CV</a>
+              <p>My work focuses on designing solutions that are both technically robust and user-friendly. I've led and co-developed several software projects including those above.</p>
+            </div>
           </div>
           <button id="about-read-more" class="about-read-more">Read More</button>
+          <!-- Extra content for non-mobile sizes -->
         </section>
         <img src="assets/profile.jpg" alt="Profile" class="profile-pic fade-in" />
       </div>
       <!-- end of About-section content -->
     </section>
-
-    <!-- Mobile Download CV in Popup -->
-    <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-popup-cv-btn cv-mobile">Download CV</a>
     
     <!-- Scroll prompt BELOW the About section; locked until user scrolls past -->
     <div class="scroll-for-more">
@@ -77,8 +77,6 @@
 
     <!-- Blur overlay for Read More popup -->
     <div id="blur-overlay"></div>
-
-
     <!-- About Me Read More Popup Overlay -->
     <div id="about-popup" class="about-popup-overlay">
       <div class="about-popup-content">
@@ -101,29 +99,32 @@
           <div id="about-popup-paragraph" class="about-popup-paragraph"></div>
           <button id="about-popup-next" class="about-popup-carousel-btn">&#8250;</button>
         </div>
+        <!-- Mobile Download CV in Popup -->
+        <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-popup-cv-btn cv-mobile">Download CV</a>
       </div>
     </div>
   
   </main>
 
   <section id="projects-section" class="projects-section fade-in manual-control">
-    <section class="projects-section fade-in manual-control">
-      <h2 class="fade-in">Projects</h2>
+    <div class="container projects-header-container">
+      <h2 class="fade-in projects-main-title">Projects</h2>
       <p class="projects-intro fade-in">Explore my main and side projects, showcasing my skills in cybersecurity, software development, and innovative tech solutions.</p>
-      <h2>Main Projects</h2>
-      <div class="carousel">
-        <button id="prev-btn" class="nav-arrow prev">&#8249;</button>
-        <div id="main-projects">
-          <div class="carousel-track"></div>
-        </div>
-        <button id="next-btn" class="nav-arrow next">&#8250;</button>
+    </div>
+    
+    <h2 class="projects-subsection-title">Main Projects</h2>
+    <div class="carousel">
+      <button id="prev-btn" class="nav-arrow prev">&#8249;</button>
+      <div id="main-projects">
+        <div class="carousel-track"></div>
       </div>
-    </section>
-    <section class="projects-section fade-in manual-control">
-      <h2>Side Projects</h2>
-      <div id="side-projects" class="projects"></div>
-      <button id="side-projects-next" style="margin: 2rem auto 0 auto; display: block; padding: 0.8em 2em; font-size: 1.1em; border-radius: 8px; border: none; background: #222; color: #fff; cursor: pointer;">Load Next</button>
-    </section>
+      <button id="next-btn" class="nav-arrow next">&#8250;</button>
+    </div>
+    
+    <h2 class="projects-subsection-title">Side Projects</h2>
+    <div id="side-projects" class="projects"></div>
+    <button id="side-projects-next" style="margin: 2rem auto 0 auto; display: block; padding: 0.8em 2em; font-size: 1.1em; border-radius: 8px; border: none; background: #222; color: #fff; cursor: pointer;">Load Next</button>
+    
     <div id="overlay" class="overlay">
       <div class="overlay-content">
         <span id="overlay-close">&times;</span>

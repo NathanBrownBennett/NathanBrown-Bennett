@@ -378,9 +378,22 @@ function initCarousel() {
   const track = document.querySelector('.carousel-track');
   const items = track.querySelectorAll('.carousel-item');
   let index = 0;
+  
   function update() {
-    track.style.transform = `translateX(-${index * 100}% )`;
+    if (items.length === 0) return;
+    
+    // Calculate the width of one item plus gap
+    const firstItem = items[0];
+    const itemWidth = firstItem.offsetWidth;
+    const trackStyle = window.getComputedStyle(track);
+    const gap = parseFloat(trackStyle.gap) || 40; // fallback to 2.5rem = 40px
+    
+    const moveDistance = itemWidth + gap;
+    const translateX = -(index * moveDistance);
+    
+    track.style.transform = `translateX(${translateX}px)`;
   }
+  
   document.getElementById('prev-btn').addEventListener('click', () => {
     index = (index - 1 + items.length) % items.length;
     update();
@@ -389,7 +402,10 @@ function initCarousel() {
     index = (index + 1) % items.length;
     update();
   });
+  
+  // Initial update and handle window resize
   update();
+  window.addEventListener('resize', update);
 }
 
 function initScrollAnimations() {
