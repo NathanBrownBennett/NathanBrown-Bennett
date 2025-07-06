@@ -128,24 +128,26 @@ const MOBILE_MAX_WIDTH = 900;
 document.addEventListener('DOMContentLoaded', () => {
   displayRepos();
   initScrollAnimations();
+  initMainCarousel(); // Initialize the main content carousel
 
   // Fade in About and profile-pic
   setTimeout(() => {
-    document.querySelector('.about-container').classList.add('visible');
+    document.querySelector('#about-section').classList.add('visible');
     document.querySelector('.profile-pic').classList.add('visible');
   }, 200);
 
   // About Me Read More button logic
-  const aboutSection = document.querySelector('.about-container');
+  const aboutSection = document.querySelector('#about-section');
+  const aboutElement = document.querySelector('.about');
   const readMoreBtn = document.getElementById('about-read-more');
-  if (aboutSection && readMoreBtn) {
+  if (aboutSection && aboutElement && readMoreBtn) {
     readMoreBtn.addEventListener('click', function(e) {
       if (window.innerWidth <= MOBILE_MAX_WIDTH) {
         e.preventDefault();
         showAboutPopup();
       } else {
-        aboutSection.classList.toggle('expanded');
-        if (aboutSection.classList.contains('expanded')) {
+        aboutElement.classList.toggle('expanded');
+        if (aboutElement.classList.contains('expanded')) {
           readMoreBtn.textContent = 'Show Less';
         } else {
           readMoreBtn.textContent = 'Read More';
@@ -197,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === overlay) hideAboutPopup();
     });
     // Set paragraphs from About section
-    const aboutSection = document.querySelector('.about-container');
+    const aboutSection = document.querySelector('#about-section');
     if (!aboutSection) return;
     const summary = aboutSection.querySelector('.about-summary');
     const projects = aboutSection.querySelector('.about-projects');
@@ -284,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Scroll-triggered transitions
   let triggered = false;
   function handleScroll() {
-    const about = document.querySelector('.about-container');
+    const about = document.querySelector('#about-section');
     const profile = document.querySelector('.profile-pic');
     const hero = document.querySelector('.hero-text');
     const mainSections = document.querySelectorAll('.projects-section');
@@ -320,6 +322,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupCopyIcons();
 });
+
+// Social Media Content Functionality
+function loadSocialMediaContent() {
+  // Since we can't access social media APIs directly from the client-side without authentication,
+  // we'll use placeholder content that simulates dynamic updates
+  const socialContent = {
+    instagram: [
+      "Latest: Exploring automated security testing frameworks",
+      "New post: Cybersecurity trends for 2025",
+      "Behind the scenes: Working on my MSc research"
+    ],
+    linkedin: [
+      "Published: Network Security Best Practices",
+      "Shared: Insights from Kingston University research",
+      "Connected: Growing professional network in cybersecurity"
+    ],
+    youtube: [
+      "Latest video: Device Provisioning Explained",
+      "Tutorial: Building Security Tools with Python",
+      "Walkthrough: Cyclomatic Complexity Analysis"
+    ]
+  };
+  
+  // Simulate loading delay
+  setTimeout(() => {
+    const instagramEl = document.getElementById('instagram-posts');
+    const linkedinEl = document.getElementById('linkedin-posts');
+    const youtubeEl = document.getElementById('youtube-posts');
+    
+    if (instagramEl) {
+      instagramEl.textContent = socialContent.instagram[Math.floor(Math.random() * socialContent.instagram.length)];
+    }
+    
+    if (linkedinEl) {
+      linkedinEl.textContent = socialContent.linkedin[Math.floor(Math.random() * socialContent.linkedin.length)];
+    }
+    
+    if (youtubeEl) {
+      youtubeEl.textContent = socialContent.youtube[Math.floor(Math.random() * socialContent.youtube.length)];
+    }
+  }, 1000);
+}
+
+// Initialize social media content when page loads
+document.addEventListener('DOMContentLoaded', loadSocialMediaContent);
 
 async function displayRepos() {
   const mainContainer = document.getElementById('main-projects');
@@ -406,6 +453,82 @@ function initCarousel() {
   // Initial update and handle window resize
   update();
   window.addEventListener('resize', update);
+}
+
+// Main Content Carousel functionality
+let currentSlide = 0;
+const totalSlides = 3;
+
+function updateCarousel() {
+  const track = document.querySelector('.carousel-track');
+  const indicators = document.querySelectorAll('.indicator');
+  
+  if (track) {
+    track.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+  }
+  
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentSlide);
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateCarousel();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
+function goToSlide(slideIndex) {
+  currentSlide = slideIndex;
+  updateCarousel();
+}
+
+function initMainCarousel() {
+  const prevBtn = document.getElementById('main-carousel-prev');
+  const nextBtn = document.getElementById('main-carousel-next');
+  const indicators = document.querySelectorAll('.indicator');
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', nextSlide);
+  }
+  
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => goToSlide(index));
+  });
+  
+  // Handle contact form submission
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      // Create mailto link
+      const subject = `Message from ${name}`;
+      const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+      const mailtoLink = `mailto:nathanbrownbennett@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Reset form
+      contactForm.reset();
+    });
+  }
+  
+  // Initialize carousel
+  updateCarousel();
 }
 
 function initScrollAnimations() {
