@@ -6,6 +6,7 @@
   <title>Nathan Brown-Bennett Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
 </head>
 <body>
   <div id="background-fader"></div>
@@ -25,6 +26,9 @@
   <div class="hero">
     <div class="hero-text">
       Nathan Brown-Bennett <div class="visionary">MSc</div>
+    </div>
+    <div class="hero-profile">
+      <img src="assets/profile.jpg" alt="Profile" class="hero-profile-pic" />
     </div>
   </div>
 
@@ -68,7 +72,6 @@
                   </div>
                   <button id="about-read-more" class="about-read-more">Read More</button>
                 </section>
-                <img src="assets/profile.jpg" alt="Profile" class="profile-pic fade-in" />
               </div>
             </div>
             
@@ -87,12 +90,8 @@
                         </div>
                       </div>
                       <div class="social-content">
-                        <p>Latest cybersecurity research insights and project updates</p>
-                        <div class="social-engagement">
-                          <span id="instagram-posts">Loading recent posts...</span>
-                        </div>
+                        <blockquote class="instagram-media" data-instgrm-version="2" style=" background:#000000; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"><div style=" background:#000000; line-height:0; margin-top:40px; padding-bottom:55%; padding-top:45%; text-align:center; width:100%;"><div style="position:relative;"><div style=" -webkit-animation:dkaXkpbBxI 1s ease-out infinite; animation:dkaXkpbBxI 1s ease-out infinite; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-44px; width:44px;"></div><span style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:12px; font-style:normal; font-weight:bold; position:relative; top:15px;">Loading</span></div></div><p style=" line-height:32px; margin-bottom:0; margin-top:8px; padding:0; text-align:center;"> <a href="https://www.instagram.com/p/DAT2gGFOZmm/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; text-decoration:none;" target="_top"> View on Instagram</a></p></div><style>@-webkit-keyframes"dkaXkpbBxI"{ 0%{opacity:0.5;} 50%{opacity:1;} 100%{opacity:0.5;} } @keyframes"dkaXkpbBxI"{ 0%{opacity:0.5;} 50%{opacity:1;} 100%{opacity:0.5;} }</style></blockquote>
                       </div>
-                      <a href="https://instagram.com/nathanbrownbennett" target="_blank" class="social-link">View on Instagram</a>
                     </div>
                     
                     <div class="social-card linkedin-card">
@@ -189,7 +188,7 @@
                         <input type="email" id="email" name="email" placeholder="Your Email" required>
                       </div>
                       <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                        <textarea id="message" name="message" placeholder="Your Message" rows="1" required></textarea>
                       </div>
                       <button type="submit" class="send-btn">Send Message</button>
                     </form>
@@ -201,9 +200,6 @@
         </div>
         
         <!-- Carousel Navigation -->
-        <button class="carousel-btn prev-btn" id="main-carousel-prev">❮</button>
-        <button class="carousel-btn next-btn" id="main-carousel-next">❯</button>
-        
         <div class="carousel-nav">
           <div class="carousel-indicators">
             <button class="indicator active" data-slide="0">About Me</button>

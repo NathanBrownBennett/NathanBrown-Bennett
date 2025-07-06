@@ -488,17 +488,7 @@ function goToSlide(slideIndex) {
 }
 
 function initMainCarousel() {
-  const prevBtn = document.getElementById('main-carousel-prev');
-  const nextBtn = document.getElementById('main-carousel-next');
   const indicators = document.querySelectorAll('.indicator');
-  
-  if (prevBtn) {
-    prevBtn.addEventListener('click', prevSlide);
-  }
-  
-  if (nextBtn) {
-    nextBtn.addEventListener('click', nextSlide);
-  }
   
   indicators.forEach((indicator, index) => {
     indicator.addEventListener('click', () => goToSlide(index));
