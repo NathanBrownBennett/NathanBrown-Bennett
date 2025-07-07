@@ -36,50 +36,84 @@
     <section id="about-section" class="fade-in">
       <!-- Main Content Carousel -->
       <div class="main-carousel-container">
-        <div class="main-carousel">
-          <div class="carousel-track">
+        <div class="main-carousel" role="region" aria-label="Main content carousel">
+          <div class="carousel-track" aria-live="polite">
             <!-- Slide 1: About Me -->
-            <div class="carousel-slide about-slide">
+            <div class="carousel-slide about-slide" role="tabpanel" aria-labelledby="about-indicator">
               <div class="slide-content">
                 <section class="about fade-in">
-                  <h2>About Me</h2>
+                  <h2 id="about-heading">About Me</h2>
                   <div class="about-summary">
                     <p>I'm Nathan Brown-Bennett, a cybersecurity researcher, software developer, and MSc student in Network and Information Security at Kingston University London.</p>
                     <p class="about-short-mobile">I build secure, user-friendly tech for social impact. MSc student, BSc in Cyber Security & Digital Forensics.</p>
                   </div>
-                  <div class="about-projects">
-                    <ul>
-                      <li><strong><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">How Do We Decide What Devices We Provide?</a></strong></li>
-                      <li class="about-project-desc">A Web-app for smart, secure and efficient Device Provisioning helping the public, companies & government find exactly what they need.</li>
-                      <li><strong><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank">Cyclomatic Complexity Calculator</a></strong></li>
-                      <li class="about-project-desc">A Web-App to help developers improve their codebase efficiently.</li>
-                      <li><strong><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></strong></li>
-                      <li class="about-project-desc">Media fingerprinting & blockchain watermarking tool.</li>
-                      <li><strong><a href="https://github.com/JakkuAzzo/BlockBash" target="_blank">BlockBash</a></strong></li>
-                      <li class="about-project-desc">Visual cybersecurity education platform.</li>
-                      <li><strong><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></strong></li>
-                      <li class="about-project-desc">Secure & Anonymous Social Media that encrypts conversations and hides them steganographically.</li>
-                      <li><strong><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></strong></li>
-                      <li class="about-project-desc">Gamified cybersecurity adventure app.</li>
-                      <div class="about-extra">
-                        <!-- Tablet Download CV -->
-                        <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-cv-btn cv-tablet">Download CV</a>
-                        <!-- Desktop Download CV -->
-                        <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-cv-btn cv-desktop">Download CV</a>
-                        <p>My work focuses on designing solutions that are both technically robust and user-friendly. I've led and co-developed several software projects including those above.</p>
+                  
+                  <div class="about-projects-grid">
+                    <div class="project-item">
+                      <div class="project-icon">🔧</div>
+                      <div class="project-content">
+                        <h3><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">Device Provisioning</a></h3>
+                        <p>Smart, secure device provisioning web-app</p>
                       </div>
-                    </ul>
+                    </div>
+                    <div class="project-item">
+                      <div class="project-icon">📊</div>
+                      <div class="project-content">
+                        <h3><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank">Complexity Calculator</a></h3>
+                        <p>Helps developers improve code quality</p>
+                      </div>
+                    </div>
+                    <div class="project-item">
+                      <div class="project-icon">🔒</div>
+                      <div class="project-content">
+                        <h3><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></h3>
+                        <p>Media fingerprinting & blockchain watermarking</p>
+                      </div>
+                    </div>
+                    <div class="project-item">
+                      <div class="project-icon">🛡️</div>
+                      <div class="project-content">
+                        <h3><a href="https://github.com/JakkuAzzo/BlockBash" target="_blank">BlockBash</a></h3>
+                        <p>Visual cybersecurity education platform</p>
+                      </div>
+                    </div>
+                    <div class="project-item">
+                      <div class="project-icon">💬</div>
+                      <div class="project-content">
+                        <h3><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></h3>
+                        <p>Secure & anonymous social media</p>
+                      </div>
+                    </div>
+                    <div class="project-item">
+                      <div class="project-icon">🎮</div>
+                      <div class="project-content">
+                        <h3><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></h3>
+                        <p>Gamified cybersecurity adventure app</p>
+                      </div>
+                    </div>
                   </div>
+                  
+                  <div class="about-footer">
+                    <div class="about-cv-container">
+                      <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-cv-btn primary-btn">
+                        📄 Download CV
+                      </a>
+                    </div>
+                    <div class="about-extra-text">
+                      <p>My work focuses on designing solutions that are both technically robust and user-friendly.</p>
+                    </div>
+                  </div>
+                  
                   <button id="about-read-more" class="about-read-more">Read More</button>
                 </section>
               </div>
             </div>
             
             <!-- Slide 2: Updates -->
-            <div class="carousel-slide updates-slide">
+            <div class="carousel-slide updates-slide" role="tabpanel" aria-labelledby="updates-indicator">
               <div class="slide-content">
                 <div class="updates-container">
-                  <h2>Updates</h2>
+                  <h2 id="updates-heading">Updates</h2>
                   <div class="social-feed">
                     <div class="social-card instagram-card">
                       <div class="social-header">
@@ -90,7 +124,7 @@
                         </div>
                       </div>
                       <div class="social-content">
-                        <blockquote class="instagram-media" data-instgrm-version="2" style=" background:#000000; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"><div style=" background:#000000; line-height:0; margin-top:40px; padding-bottom:55%; padding-top:45%; text-align:center; width:100%;"><div style="position:relative;"><div style=" -webkit-animation:dkaXkpbBxI 1s ease-out infinite; animation:dkaXkpbBxI 1s ease-out infinite; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-44px; width:44px;"></div><span style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:12px; font-style:normal; font-weight:bold; position:relative; top:15px;">Loading</span></div></div><p style=" line-height:32px; margin-bottom:0; margin-top:8px; padding:0; text-align:center;"> <a href="https://www.instagram.com/p/DAT2gGFOZmm/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; text-decoration:none;" target="_top"> View on Instagram</a></p></div><style>@-webkit-keyframes"dkaXkpbBxI"{ 0%{opacity:0.5;} 50%{opacity:1;} 100%{opacity:0.5;} } @keyframes"dkaXkpbBxI"{ 0%{opacity:0.5;} 50%{opacity:1;} 100%{opacity:0.5;} }</style></blockquote>
+                        <blockquote class="instagram-media" data-instgrm-version="2" style=" background:#000000; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"><div style=" background:#000000; line-height:0; margin-top:40px; padding-bottom:55%; padding-top:45%; text-align:center; width:100%;"><div style="position:relative;"><div style=" -webkit-animation:dkaXkpbBxI 1s ease-out infinite; animation:dkaXkpbBxI 1s ease-out infinite; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-44px; width:44px;"></div><span style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:12px; font-style:normal; font-weight:bold; position:relative; top:15px;">Loading</span></div></div><p style=" line-height:32px; margin-bottom:0; margin-top:8px; padding:0; text-align:center;"> <a href="https://www.instagram.com/p/DAT2gGFOZmm/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; text-decoration:none;" target="_top"> View on Instagram</a></p></div><style>@-webkit-keyframes dkaXkpbBxI{ 0%{opacity:0.5;} 50%{opacity:1;} 100%{opacity:0.5;} } @keyframes dkaXkpbBxI{ 0%{opacity:0.5;} 50%{opacity:1;} 100%{opacity:0.5;} }</style></blockquote>
                       </div>
                     </div>
                     
@@ -103,9 +137,14 @@
                         </div>
                       </div>
                       <div class="social-content">
+                        <div class="social-preview">
+                          <div class="preview-placeholder">
+                            <span class="preview-text">📈 Latest Professional Updates</span>
+                          </div>
+                        </div>
                         <p>Professional updates and industry insights</p>
                         <div class="social-engagement">
-                          <span id="linkedin-posts">Loading recent posts...</span>
+                          <span class="engagement-stat">🔗 Connect for updates</span>
                         </div>
                       </div>
                       <a href="https://linkedin.com/in/nathanbrownbennett" target="_blank" class="social-link">View on LinkedIn</a>
@@ -120,9 +159,14 @@
                         </div>
                       </div>
                       <div class="social-content">
+                        <div class="social-preview">
+                          <div class="preview-placeholder">
+                            <span class="preview-text">🎬 Educational Content</span>
+                          </div>
+                        </div>
                         <p>Educational content and project walkthroughs</p>
                         <div class="social-engagement">
-                          <span id="youtube-posts">Loading recent videos...</span>
+                          <span class="engagement-stat">▶️ Watch latest videos</span>
                         </div>
                       </div>
                       <a href="https://youtube.com/@nathanbrownbennett" target="_blank" class="social-link">View on YouTube</a>
@@ -133,10 +177,10 @@
             </div>
             
             <!-- Slide 3: Get in Touch -->
-            <div class="carousel-slide contact-slide">
+            <div class="carousel-slide contact-slide" role="tabpanel" aria-labelledby="contact-indicator">
               <div class="slide-content">
                 <div class="contact-container">
-                  <h2>Get in Touch</h2>
+                  <h2 id="contact-heading">Get in Touch</h2>
                   <div class="contact-info">
                     <div class="contact-card">
                       <div class="contact-icon">📧</div>
@@ -164,34 +208,26 @@
                         <a href="https://github.com/NathanBrownBennett" target="_blank" class="contact-link">View Projects</a>
                       </div>
                     </div>
-                    
-                    <div class="contact-card">
-                      <div class="contact-icon">📱</div>
-                      <div class="contact-details">
-                        <h3>Social Media</h3>
-                        <p>Follow my journey</p>
-                        <div class="social-links">
-                          <a href="https://instagram.com/nathanbrownbennett" target="_blank" class="social-link-small">Instagram</a>
-                          <a href="https://youtube.com/@nathanbrownbennett" target="_blank" class="social-link-small">YouTube</a>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                   
-                  <div class="contact-form">
-                    <h3>Quick Message</h3>
-                    <form id="contact-form">
-                      <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                      </div>
-                      <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                      </div>
-                      <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="1" required></textarea>
-                      </div>
-                      <button type="submit" class="send-btn">Send Message</button>
-                    </form>
+                  <div class="contact-form-container">
+                    <div class="contact-form">
+                      <h3>Send me a message</h3>
+                      <form id="contact-form">
+                        <div class="form-group">
+                          <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                          <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                          <textarea id="message" name="message" placeholder="Your Message" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="send-btn primary-cta">
+                          ✉️ Send Message
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -200,11 +236,11 @@
         </div>
         
         <!-- Carousel Navigation -->
-        <div class="carousel-nav">
+        <div class="carousel-nav" role="tablist" aria-label="Carousel navigation">
           <div class="carousel-indicators">
-            <button class="indicator active" data-slide="0">About Me</button>
-            <button class="indicator" data-slide="1">Updates</button>
-            <button class="indicator" data-slide="2">Get in Touch</button>
+            <button class="indicator active" data-slide="0" role="tab" aria-selected="true" aria-controls="about-slide" id="about-indicator">About Me</button>
+            <button class="indicator" data-slide="1" role="tab" aria-selected="false" aria-controls="updates-slide" id="updates-indicator">Updates</button>
+            <button class="indicator" data-slide="2" role="tab" aria-selected="false" aria-controls="contact-slide" id="contact-indicator">Get in Touch</button>
           </div>
         </div>
       </div>

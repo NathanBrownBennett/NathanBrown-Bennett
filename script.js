@@ -130,10 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initMainCarousel(); // Initialize the main content carousel
 
-  // Fade in About and profile-pic
+  // Fade in About section and hero profile
   setTimeout(() => {
     document.querySelector('#about-section').classList.add('visible');
-    document.querySelector('.profile-pic').classList.add('visible');
+    const heroProfile = document.querySelector('.hero-profile-pic');
+    if (heroProfile) heroProfile.classList.add('visible');
   }, 200);
 
   // About Me Read More button logic
@@ -286,24 +287,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // Scroll-triggered transitions
   let triggered = false;
   function handleScroll() {
-    const about = document.querySelector('#about-section');
-    const profile = document.querySelector('.profile-pic');
+    const aboutSection = document.querySelector('#about-section');
+    const heroProfile = document.querySelector('.hero-profile-pic');
     const hero = document.querySelector('.hero-text');
     const mainSections = document.querySelectorAll('.projects-section');
     const scrollForMore = document.querySelector('.scroll-for-more');
-    const aboutBottom = about.getBoundingClientRect().bottom;
+    
+    if (!aboutSection) return;
+    
+    const aboutBottom = aboutSection.getBoundingClientRect().bottom;
     const threshold = window.innerHeight * 0.2;
     if (aboutBottom <= threshold && !triggered) {
-      about.classList.add('fade-out');
-      profile.classList.add('sticky');
-      hero.classList.add('shrink-move');
+      aboutSection.classList.add('fade-out');
+      if (heroProfile) heroProfile.classList.add('sticky');
+      if (hero) hero.classList.add('shrink-move');
       mainSections.forEach(s => s.classList.add('visible'));
       if (scrollForMore) scrollForMore.classList.add('hide');
       triggered = true;
     } else if (aboutBottom > threshold && triggered) {
-      about.classList.remove('fade-out');
-      profile.classList.remove('sticky');
-      hero.classList.remove('shrink-move');
+      aboutSection.classList.remove('fade-out');
+      if (heroProfile) heroProfile.classList.remove('sticky');
+      if (hero) hero.classList.remove('shrink-move');
       mainSections.forEach(s => s.classList.remove('visible'));
       if (scrollForMore) scrollForMore.classList.remove('hide');
       triggered = false;
@@ -464,11 +468,13 @@ function updateCarousel() {
   const indicators = document.querySelectorAll('.indicator');
   
   if (track) {
-    track.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+    track.style.transform = `translateX(-${currentSlide * 33.333333}%)`;
   }
   
   indicators.forEach((indicator, index) => {
-    indicator.classList.toggle('active', index === currentSlide);
+    const isActive = index === currentSlide;
+    indicator.classList.toggle('active', isActive);
+    indicator.setAttribute('aria-selected', isActive);
   });
 }
 
@@ -555,3 +561,77 @@ if (aboutPopup) {
     if (e.target === aboutPopup) hideAboutPopup();
   });
 }
+
+// Add touch support for mobile carousel navigation
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
+
+function initTouchCarousel() {
+  const carousel = document.querySelector('.main-carousel');
+  if (!carousel) return;
+
+  carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  carousel.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    currentX = e.touches[0].clientX;
+  });
+
+  carousel.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const deltaX = currentX - startX;
+    const threshold = 50; // Minimum swipe distance
+    
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    }
+  });
+}
+
+// Initialize touch carousel after DOM is loaded
+document.addEventListener('DOMContentLoaded', initTouchCarousel);
+
+// Add keyboard navigation for carousel
+function initKeyboardNavigation() {
+  document.addEventListener('keydown', (e) => {
+    // Only handle keyboard navigation when carousel is in focus
+    const carousel = document.querySelector('.main-carousel');
+    if (!carousel || !carousel.contains(document.activeElement)) return;
+    
+    switch(e.key) {
+      case 'ArrowLeft':
+        e.preventDefault();
+        prevSlide();
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        nextSlide();
+        break;
+      case 'Home':
+        e.preventDefault();
+        goToSlide(0);
+        break;
+      case 'End':
+        e.preventDefault();
+        goToSlide(totalSlides - 1);
+        break;
+      case 'Tab':
+        // Let tab work normally for navigation
+        break;
+    }
+  });
+}
+
+// Initialize keyboard navigation
+document.addEventListener('DOMContentLoaded', initKeyboardNavigation);
