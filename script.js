@@ -468,7 +468,10 @@ function updateCarousel() {
   const indicators = document.querySelectorAll('.indicator');
   
   if (track) {
-    track.style.transform = `translateX(-${currentSlide * 33.333333}%)`;
+    // Use percentage-based calculation to match CSS exactly
+    const slidePercentage = 100 / 3; // Each slide is 1/3 of the track (33.333333%)
+    const scrollPercentage = currentSlide * slidePercentage;
+    track.style.transform = `translateX(-${scrollPercentage}%)`;
   }
   
   indicators.forEach((indicator, index) => {
@@ -635,3 +638,86 @@ function initKeyboardNavigation() {
 
 // Initialize keyboard navigation
 document.addEventListener('DOMContentLoaded', initKeyboardNavigation);
+
+// Dynamic Contact Card Resizing
+function initContactCardResize() {
+  const contactCards = document.querySelectorAll('.contact-card');
+  const contactContainer = document.querySelector('.contact-container');
+  
+  if (!contactCards.length || !contactContainer) return;
+  
+  function adjustContactCards() {
+    const container = contactContainer;
+    const containerRect = container.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+    
+    // Calculate optimal size based on available space
+    const availableHeight = Math.min(containerRect.height, viewportHeight * 0.6);
+    const availableWidth = Math.min(containerRect.width, viewportWidth * 0.9);
+    
+    contactCards.forEach(card => {
+      // Dynamic sizing based on viewport
+      if (viewportWidth <= 480) {
+        // Mobile - compact cards
+        card.style.minHeight = '60px';
+        card.style.maxWidth = '140px';
+        card.style.padding = '0.6rem';
+      } else if (viewportWidth <= 768) {
+        // Tablet - medium cards
+        card.style.minHeight = '70px';
+        card.style.maxWidth = '160px';
+        card.style.padding = '0.8rem';
+      } else {
+        // Desktop - full size cards
+        const optimalHeight = Math.max(80, Math.min(120, availableHeight / 3));
+        const optimalWidth = Math.max(140, Math.min(200, availableWidth / 4));
+        
+        card.style.minHeight = `${optimalHeight}px`;
+        card.style.maxWidth = `${optimalWidth}px`;
+        card.style.padding = '1rem';
+      }
+    });
+  }
+  
+  // Throttled resize function for better performance
+  let resizeTimeout;
+  function throttledResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(adjustContactCards, 100);
+  }
+  
+  // Initial setup
+  adjustContactCards();
+  
+  // Listen for resize events
+  window.addEventListener('resize', throttledResize);
+  
+  // Listen for carousel slide changes
+  const indicators = document.querySelectorAll('.indicator');
+  indicators.forEach(indicator => {
+    indicator.addEventListener('click', () => {
+      // Delay to ensure slide transition completes
+      setTimeout(adjustContactCards, 300);
+    });
+  });
+  
+  // Observe when contact slide becomes visible
+  const contactSlide = document.querySelector('.contact-slide');
+  if (contactSlide) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(adjustContactCards, 100);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+    
+    observer.observe(contactSlide);
+  }
+}
+
+// Initialize contact card resize on DOM load
+document.addEventListener('DOMContentLoaded', initContactCardResize);
