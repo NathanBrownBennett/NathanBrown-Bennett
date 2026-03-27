@@ -3,463 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nathan Brown-Bennett Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Nathan Brown-Bennett — Portfolio</title>
+  <meta name="description" content="Nathan Brown-Bennett – Cybersecurity Researcher &amp; Software Developer. MSc Network &amp; Information Security, Kingston University London.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
 </head>
 <body>
-  <div id="background-fader"></div>
-  <header>
-    <div class="header-icons">
-      <a class="header-icon-link" href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" title="LinkedIn">
-        <!-- LinkedIn SVG -->
-        <svg viewBox="0 0 32 32"><path d="M29 0h-26c-1.7 0-3 1.3-3 3v26c0 1.7 1.3 3 3 3h26c1.7 0 3-1.3 3-3v-26c0-1.7-1.3-3-3-3zM9.4 27h-5v-14h5v14zM6.9 11.5c-1.6 0-2.9-1.3-2.9-2.9s1.3-2.9 2.9-2.9c1.6 0 2.9 1.3 2.9 2.9s-1.3 2.9-2.9 2.9zM27 27h-5v-7c0-1.7-0.7-2.7-2.1-2.7-1.2 0-1.9 0.8-2.2 1.6-0.1 0.3-0.1 0.7-0.1 1.1v7h-5s0.1-11.4 0-14h5v2c0.7-1.1 2-2.6 4.8-2.6 3.5 0 6.1 2.3 6.1 7.2v7.4z"/></svg>
-      </a>
-      <a class="header-icon-link" href="https://github.com/NathanBrownBennett" target="_blank" rel="noopener" title="GitHub">
-        <!-- GitHub SVG -->
-        <svg viewBox="0 0 32 32"><path d="M16 2.6c-7.5 0-13.4 6-13.4 13.4 0 5.9 3.8 10.9 9.1 12.7 0.7 0.1 0.9-0.3 0.9-0.7v-2.5c-3.7 0.8-4.5-1.6-4.5-1.6-0.6-1.4-1.5-1.8-1.5-1.8-1.2-0.8 0.1-0.8 0.1-0.8 1.3 0.1 2 1.3 2 1.3 1.2 2 3.1 1.4 3.8 1.1 0.1-0.9 0.5-1.4 0.9-1.7-3-0.3-6.2-1.5-6.2-6.7 0-1.5 0.5-2.7 1.3-3.7-0.1-0.3-0.6-1.6 0.1-3.3 0 0 1.1-0.3 3.7 1.3 1.1-0.3 2.3-0.5 3.5-0.5s2.4 0.2 3.5 0.5c2.6-1.6 3.7-1.3 3.7-1.3 0.7 1.7 0.2 3 0.1 3.3 0.8 1 1.3 2.2 1.3 3.7 0 5.2-3.2 6.4-6.2 6.7 0.5 0.4 1 1.3 1 2.6v3.8c0 0.4 0.2 0.8 0.9 0.7 5.3-1.8 9.1-6.8 9.1-12.7 0-7.4-5.9-13.4-13.4-13.4z"/></svg>
-      </a>
-    </div>
-  </header>
+  <canvas id="matrix-bg" aria-hidden="true"></canvas>
+  <div id="background-fader" aria-hidden="true"></div>
 
-  <div class="hero">
-    <div class="hero-text">
-      Nathan Brown-Bennett <div class="visionary">MSc</div>
-    </div>
-    <div class="hero-profile">
-      <img src="assets/profile.jpg" alt="Profile" class="hero-profile-pic" />
-    </div>
-  </div>
+  <!-- ============================
+       Navigation
+       ============================ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Nathan Brown-Bennett — Home">NBB</a>
 
-  <main class="container">
-    <section id="about-section" class="fade-in">
-      <!-- Main Content Carousel -->
-      <div class="main-carousel-container">
-        <div class="main-carousel" role="region" aria-label="Main content carousel">
-          <div class="carousel-track" aria-live="polite">
-            <!-- Slide 1: About Me -->
-            <div class="carousel-slide about-slide" role="tabpanel" aria-labelledby="about-indicator">
-              <div class="slide-content">
-                <section class="about fade-in">
-                  <h2 id="about-heading">About Me</h2>
-                  <div class="about-summary">
-                    <p>I'm Nathan Brown-Bennett, a cybersecurity researcher, software developer, and MSc student in Network and Information Security at Kingston University London.</p>
-                    <p class="about-short-mobile">I build secure, user-friendly tech for social impact. MSc student, BSc in Cyber Security & Digital Forensics.</p>
-                  </div>
-                  
-                  <div class="about-projects-grid">
-                    <div class="project-item">
-                      <div class="project-icon">🔧</div>
-                      <div class="project-content">
-                        <h3><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank">Device Provisioning</a></h3>
-                        <p>Smart, secure device provisioning web-app</p>
-                      </div>
-                    </div>
-                    <div class="project-item">
-                      <div class="project-icon">📊</div>
-                      <div class="project-content">
-                        <h3><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank">Complexity Calculator</a></h3>
-                        <p>Helps developers improve code quality</p>
-                      </div>
-                    </div>
-                    <div class="project-item">
-                      <div class="project-icon">🔒</div>
-                      <div class="project-content">
-                        <h3><a href="https://github.com/JakkuAzzo/MyMark" target="_blank">MyMark</a></h3>
-                        <p>Media fingerprinting & blockchain watermarking</p>
-                      </div>
-                    </div>
-                    <div class="project-item">
-                      <div class="project-icon">🛡️</div>
-                      <div class="project-content">
-                        <h3><a href="https://github.com/JakkuAzzo/BlockBash" target="_blank">BlockBash</a></h3>
-                        <p>Visual cybersecurity education platform</p>
-                      </div>
-                    </div>
-                    <div class="project-item">
-                      <div class="project-icon">💬</div>
-                      <div class="project-content">
-                        <h3><a href="https://github.com/JakkuAzzo/PicChat" target="_blank">PicChat</a></h3>
-                        <p>Secure & anonymous social media</p>
-                      </div>
-                    </div>
-                    <div class="project-item">
-                      <div class="project-icon">🎮</div>
-                      <div class="project-content">
-                        <h3><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank">HackerGo</a></h3>
-                        <p>Gamified cybersecurity adventure app</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="about-footer">
-                    <div class="about-cv-container">
-                      <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-cv-btn primary-btn">
-                        📄 Download CV
-                      </a>
-                    </div>
-                    <div class="about-extra-text">
-                      <p>My work focuses on designing solutions that are both technically robust and user-friendly.</p>
-                    </div>
-                  </div>
-                  
-                  <button id="about-read-more" class="about-read-more">Read More</button>
-                </section>
-              </div>
-            </div>
-            
-            <!-- Slide 2: Updates -->
-            <div class="carousel-slide updates-slide" role="tabpanel" aria-labelledby="updates-indicator">
-              <div class="slide-content">
-                <div class="updates-container">
-                  <h2 id="updates-heading">Updates</h2>
-                  <div class="social-feed">
-                    <div class="social-card instagram-card">
-                      <div class="social-header">
-                        <div class="social-icon">📷</div>
-                        <div class="social-info">
-                          <h3>Instagram</h3>
-                          <p>@n.brown02</p>
-                        </div>
-                      </div>
-                      <div class="social-content">
-                        <div class="social-preview">
-                          <div class="preview-placeholder instagram-preview">
-                            <div class="instagram-grid">
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                            </div>
-                            <div class="instagram-profile">
-                              <div class="profile-pic-mini"></div>
-                              <span class="username">@n.brown02</span>
-                            </div>
-                          </div>
-                        </div>
-                        <p>Music and creative content updates</p>
-                        <div class="social-engagement">
-                          <span class="engagement-stat">🎵 Music enquiries</span>
-                        </div>
-                      </div>
-                      <a href="https://www.instagram.com/n.brown02/" target="_blank" class="social-link">View on Instagram</a>
-                    </div>
-                    
-                    <div class="social-card instagram-card">
-                      <div class="social-header">
-                        <div class="social-icon">📷</div>
-                        <div class="social-info">
-                          <h3>Instagram</h3>
-                          <p>@nxth.b</p>
-                        </div>
-                      </div>
-                      <div class="social-content">
-                        <div class="social-preview">
-                          <div class="preview-placeholder instagram-preview">
-                            <div class="instagram-grid">
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                              <div class="insta-post"></div>
-                            </div>
-                            <div class="instagram-profile">
-                              <div class="profile-pic-mini"></div>
-                              <span class="username">@nxth.b</span>
-                            </div>
-                          </div>
-                        </div>
-                        <p>Development and coding journey</p>
-                        <div class="social-engagement">
-                          <span class="engagement-stat">� Dev updates</span>
-                        </div>
-                      </div>
-                      <a href="https://www.instagram.com/nxth.b/" target="_blank" class="social-link">View on Instagram</a>
-                    </div>
-                    
-                    <div class="social-card youtube-card">
-                      <div class="social-header">
-                        <div class="social-icon">🎥</div>
-                        <div class="social-info">
-                          <h3>YouTube</h3>
-                          <p>Latest Project Demo</p>
-                        </div>
-                      </div>
-                      <div class="social-content">
-                        <div class="social-preview">
-                          <div class="preview-placeholder youtube-preview">
-                            <div class="youtube-player">
-                              <div class="youtube-thumbnail">
-                                <div class="play-button">▶</div>
-                              </div>
-                              <div class="youtube-info">
-                                <div class="video-title">Device Provisioning Demo</div>
-                                <div class="video-stats">1.2K views • 2 days ago</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <p>Watch the latest demonstration of my dynamic device provisioning system</p>
-                        <div class="social-engagement">
-                          <span class="engagement-stat">▶️ Technical walkthrough</span>
-                        </div>
-                      </div>
-                      <a href="https://youtu.be/2_rwCbVFsDY?si=COd9ZLzcPHIm7auT" target="_blank" class="social-link">Watch Video</a>
-                    </div>
-                    
-                    <div class="social-card blog-card">
-                      <div class="social-header">
-                        <div class="social-icon">📝</div>
-                        <div class="social-info">
-                          <h3>Croydonites Review</h3>
-                          <p>CroydonBites Feature</p>
-                        </div>
-                      </div>
-                      <div class="social-content">
-                        <div class="social-preview">
-                          <div class="preview-placeholder blog-preview">
-                            <div class="blog-header">
-                              <div class="blog-logo">Croydonites</div>
-                              <div class="blog-date">Dec 15, 2024</div>
-                            </div>
-                            <div class="blog-content">
-                              <div class="blog-title">Review: CroydonBites</div>
-                              <div class="blog-excerpt">Local business impact and community engagement...</div>
-                            </div>
-                          </div>
-                        </div>
-                        <p>Featured review of local business impact and community engagement</p>
-                        <div class="social-engagement">
-                          <span class="engagement-stat">📖 Community feature</span>
-                        </div>
-                      </div>
-                      <a href="https://www.croydonites.com/post/review-croydonbites" target="_blank" class="social-link">Read Article</a>
-                    </div>
-                    
-                    <div class="social-card youtube-card">
-                      <div class="social-header">
-                        <div class="social-icon">🎥</div>
-                        <div class="social-info">
-                          <h3>YouTube</h3>
-                          <p>Previous Project</p>
-                        </div>
-                      </div>
-                      <div class="social-content">
-                        <div class="social-preview">
-                          <div class="preview-placeholder youtube-preview">
-                            <div class="youtube-player">
-                              <div class="youtube-thumbnail">
-                                <div class="play-button">▶</div>
-                              </div>
-                              <div class="youtube-info">
-                                <div class="video-title">Technical Project Showcase</div>
-                                <div class="video-stats">856 views • 1 week ago</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <p>Earlier project demonstration and technical overview</p>
-                        <div class="social-engagement">
-                          <span class="engagement-stat">▶️ Development insights</span>
-                        </div>
-                      </div>
-                      <a href="https://youtu.be/k7Oax-m1lbY" target="_blank" class="social-link">Watch Video</a>
-                    </div>
-                    
-                    <div class="social-card school-card">
-                      <div class="social-header">
-                        <div class="social-icon">🎵</div>
-                        <div class="social-info">
-                          <h3>Cedars School</h3>
-                          <p>Music Concert</p>
-                        </div>
-                      </div>
-                      <div class="social-content">
-                        <div class="social-preview">
-                          <div class="preview-placeholder school-preview">
-                            <div class="school-header">
-                              <div class="school-logo">🎵</div>
-                              <div class="school-name">Cedars School</div>
-                            </div>
-                            <div class="school-content">
-                              <div class="event-title">Music Concert</div>
-                              <div class="event-details">Featured Performance • Dec 2024</div>
-                            </div>
-                          </div>
-                        </div>
-                        <p>Featured in Cedars School music concert performance</p>
-                        <div class="social-engagement">
-                          <span class="engagement-stat">🎭 Creative showcase</span>
-                        </div>
-                      </div>
-                      <a href="https://www.thecedarsschool.org.uk/cedars-music-concert/utm_sourcerssutm_mediumrssutm_campaigncedars-music-concert" target="_blank" class="social-link">View Event</a>
-                    </div>
-                    
-                    <div class="social-card linkedin-card">
-                      <div class="social-header">
-                        <div class="social-icon">💼</div>
-                        <div class="social-info">
-                          <h3>LinkedIn</h3>
-                          <p>Professional Updates</p>
-                        </div>
-                      </div>
-                      <div class="social-content">
-                        <div class="social-preview">
-                          <div class="preview-placeholder linkedin-preview">
-                            <div class="linkedin-header">
-                              <div class="linkedin-profile">
-                                <div class="profile-pic-small"></div>
-                                <div class="profile-info">
-                                  <div class="profile-name">Nathan Brown-Bennett</div>
-                                  <div class="profile-title">MSc Network & Information Security</div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="linkedin-stats">
-                              <span>500+ connections</span>
-                            </div>
-                          </div>
-                        </div>
-                        <p>Latest professional updates and network connections</p>
-                        <div class="social-engagement">
-                          <span class="engagement-stat">🔗 Professional network</span>
-                        </div>
-                      </div>
-                      <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" class="social-link">View Profile</a>
-                    </div>
-                  </div>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#updates">Updates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-social">
+        <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" aria-label="LinkedIn profile" class="nav-icon-link">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M29 0h-26c-1.7 0-3 1.3-3 3v26c0 1.7 1.3 3 3 3h26c1.7 0 3-1.3 3-3v-26c0-1.7-1.3-3-3-3zM9.4 27h-5v-14h5v14zM6.9 11.5c-1.6 0-2.9-1.3-2.9-2.9s1.3-2.9 2.9-2.9c1.6 0 2.9 1.3 2.9 2.9s-1.3 2.9-2.9 2.9zM27 27h-5v-7c0-1.7-0.7-2.7-2.1-2.7-1.2 0-1.9 0.8-2.2 1.6-0.1 0.3-0.1 0.7-0.1 1.1v7h-5s0.1-11.4 0-14h5v2c0.7-1.1 2-2.6 4.8-2.6 3.5 0 6.1 2.3 6.1 7.2v7.4z"/></svg>
+        </a>
+        <a href="https://github.com/NathanBrownBennett" target="_blank" rel="noopener" aria-label="GitHub profile" class="nav-icon-link">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.6c-7.5 0-13.4 6-13.4 13.4 0 5.9 3.8 10.9 9.1 12.7 0.7 0.1 0.9-0.3 0.9-0.7v-2.5c-3.7 0.8-4.5-1.6-4.5-1.6-0.6-1.4-1.5-1.8-1.5-1.8-1.2-0.8 0.1-0.8 0.1-0.8 1.3 0.1 2 1.3 2 1.3 1.2 2 3.1 1.4 3.8 1.1 0.1-0.9 0.5-1.4 0.9-1.7-3-0.3-6.2-1.5-6.2-6.7 0-1.5 0.5-2.7 1.3-3.7-0.1-0.3-0.6-1.6 0.1-3.3 0 0 1.1-0.3 3.7 1.3 1.1-0.3 2.3-0.5 3.5-0.5s2.4 0.2 3.5 0.5c2.6-1.6 3.7-1.3 3.7-1.3 0.7 1.7 0.2 3 0.1 3.3 0.8 1 1.3 2.2 1.3 3.7 0 5.2-3.2 6.4-6.2 6.7 0.5 0.4 1 1.3 1 2.6v3.8c0 0.4 0.2 0.8 0.9 0.7 5.3-1.8 9.1-6.8 9.1-12.7 0-7.4-5.9-13.4-13.4-13.4z"/></svg>
+        </a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+      <li><a href="#updates" class="mobile-nav-link">Updates</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-nav-social">
+      <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" class="nav-icon-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M29 0h-26c-1.7 0-3 1.3-3 3v26c0 1.7 1.3 3 3 3h26c1.7 0 3-1.3 3-3v-26c0-1.7-1.3-3-3-3zM9.4 27h-5v-14h5v14zM6.9 11.5c-1.6 0-2.9-1.3-2.9-2.9s1.3-2.9 2.9-2.9c1.6 0 2.9 1.3 2.9 2.9s-1.3 2.9-2.9 2.9zM27 27h-5v-7c0-1.7-0.7-2.7-2.1-2.7-1.2 0-1.9 0.8-2.2 1.6-0.1 0.3-0.1 0.7-0.1 1.1v7h-5s0.1-11.4 0-14h5v2c0.7-1.1 2-2.6 4.8-2.6 3.5 0 6.1 2.3 6.1 7.2v7.4z"/></svg>
+      </a>
+      <a href="https://github.com/NathanBrownBennett" target="_blank" rel="noopener" class="nav-icon-link" aria-label="GitHub">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.6c-7.5 0-13.4 6-13.4 13.4 0 5.9 3.8 10.9 9.1 12.7 0.7 0.1 0.9-0.3 0.9-0.7v-2.5c-3.7 0.8-4.5-1.6-4.5-1.6-0.6-1.4-1.5-1.8-1.5-1.8-1.2-0.8 0.1-0.8 0.1-0.8 1.3 0.1 2 1.3 2 1.3 1.2 2 3.1 1.4 3.8 1.1 0.1-0.9 0.5-1.4 0.9-1.7-3-0.3-6.2-1.5-6.2-6.7 0-1.5 0.5-2.7 1.3-3.7-0.1-0.3-0.6-1.6 0.1-3.3 0 0 1.1-0.3 3.7 1.3 1.1-0.3 2.3-0.5 3.5-0.5s2.4 0.2 3.5 0.5c2.6-1.6 3.7-1.3 3.7-1.3 0.7 1.7 0.2 3 0.1 3.3 0.8 1 1.3 2.2 1.3 3.7 0 5.2-3.2 6.4-6.2 6.7 0.5 0.4 1 1.3 1 2.6v3.8c0 0.4 0.2 0.8 0.9 0.7 5.3-1.8 9.1-6.8 9.1-12.7 0-7.4-5.9-13.4-13.4-13.4z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ============================
+         Hero Section
+         ============================ -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <div class="hero-image-wrap fade-in">
+          <img src="assets/profile.jpg" alt="Nathan Brown-Bennett" class="hero-profile-pic" />
+        </div>
+        <div class="hero-text fade-in">
+          <p class="hero-greeting">Hi, I'm</p>
+          <h1>Nathan Brown-Bennett <span class="hero-msc">MSc</span></h1>
+          <p class="hero-subtitle">Cybersecurity Researcher &amp; Software Developer</p>
+          <p class="hero-location">MSc Network &amp; Information Security &middot; Kingston University London</p>
+          <div class="hero-actions">
+            <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="btn btn-primary">
+              <span aria-hidden="true">📄</span> Download CV
+            </a>
+            <a href="#projects" class="btn btn-outline">View Projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         About Section
+         ============================ -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-grid">
+          <div class="about-bio fade-in">
+            <p>I'm Nathan Brown-Bennett, a cybersecurity researcher, software developer, and MSc student in Network and Information Security at Kingston University London. I build secure, user-friendly technology for social impact.</p>
+            <p>With a BSc in Cyber Security &amp; Digital Forensics and ongoing MSc studies, I combine academic rigour with hands-on development. My work focuses on designing solutions that are both technically robust and genuinely user-friendly.</p>
+            <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="btn btn-primary about-cv-btn">
+              <span aria-hidden="true">📄</span> Download CV
+            </a>
+          </div>
+          <div class="about-highlights fade-in">
+            <h3 class="highlight-heading">Key Projects</h3>
+            <div class="highlight-grid">
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🔧</span>
+                <div>
+                  <h4><a href="https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-" target="_blank" rel="noopener">Device Provisioning</a></h4>
+                  <p>Smart, secure device provisioning web-app</p>
                 </div>
               </div>
-            </div>
-            
-            <!-- Slide 3: Get in Touch -->
-            <div class="carousel-slide contact-slide" role="tabpanel" aria-labelledby="contact-indicator">
-              <div class="slide-content">
-                <div class="contact-container">
-                  <h2 id="contact-heading">Get in Touch</h2>
-                  <div class="contact-info">
-                    <a href="mailto:nathanbrownbennett@gmail.com" class="contact-card contact-card-link">
-                      <div class="contact-icon">📧</div>
-                      <div class="contact-details">
-                        <h3>Email</h3>
-                        <p>nathanbrownbennett@gmail.com</p>
-                      </div>
-                    </a>
-                    
-                    <a href="https://linkedin.com/in/nathanbrownbennett" target="_blank" class="contact-card contact-card-link">
-                      <div class="contact-icon">💼</div>
-                      <div class="contact-details">
-                        <h3>LinkedIn</h3>
-                        <p>Connect with me professionally</p>
-                      </div>
-                    </a>
-                    
-                    <a href="https://github.com/NathanBrownBennett" target="_blank" class="contact-card contact-card-link">
-                      <div class="contact-icon">💻</div>
-                      <div class="contact-details">
-                        <h3>GitHub</h3>
-                        <p>Check out my projects</p>
-                      </div>
-                    </a>
-                  </div>
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">📊</span>
+                <div>
+                  <h4><a href="https://github.com/NathanBrownBennett/CyclomaticComplexityCalc" target="_blank" rel="noopener">Complexity Calculator</a></h4>
+                  <p>Helps developers improve code quality</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🔒</span>
+                <div>
+                  <h4><a href="https://github.com/JakkuAzzo/MyMark" target="_blank" rel="noopener">MyMark</a></h4>
+                  <p>Media fingerprinting &amp; blockchain watermarking</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🛡️</span>
+                <div>
+                  <h4><a href="https://github.com/JakkuAzzo/BlockBash" target="_blank" rel="noopener">BlockBash</a></h4>
+                  <p>Visual cybersecurity education platform</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">💬</span>
+                <div>
+                  <h4><a href="https://github.com/JakkuAzzo/PicChat" target="_blank" rel="noopener">PicChat</a></h4>
+                  <p>Secure &amp; anonymous social media</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🎮</span>
+                <div>
+                  <h4><a href="https://github.com/NathanBrownBennett/HackerGo" target="_blank" rel="noopener">HackerGo</a></h4>
+                  <p>Gamified cybersecurity adventure app</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- Carousel Navigation -->
-      <div class="carousel-nav" role="tablist" aria-label="Carousel navigation">
-        <div class="carousel-indicators">
-          <button class="indicator active" data-slide="0" role="tab" aria-selected="true" aria-controls="about-slide" id="about-indicator">About Me</button>
-          <button class="indicator" data-slide="1" role="tab" aria-selected="false" aria-controls="updates-slide" id="updates-indicator">Updates</button>
-          <button class="indicator" data-slide="2" role="tab" aria-selected="false" aria-controls="contact-slide" id="contact-indicator">Get in Touch</button>
-        </div>
-      </div>
-      <!-- end of About-section content -->
     </section>
-    
-    <!-- Scroll prompt BELOW the About section; locked until user scrolls past -->
-    <div class="scroll-for-more">
-      <span class="scroll-arrow">&#8595;</span>
-      <span>Scroll for more</span>
-    </div>
 
+    <!-- ============================
+         Projects Section
+         ============================ -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title fade-in">Projects</h2>
+        <p class="section-subtitle fade-in">Explore my main and side projects, showcasing skills in cybersecurity, software development, and innovative tech solutions.</p>
 
-    <!-- Blur overlay for Read More popup -->
-    <div id="blur-overlay"></div>
-    <!-- About Me Read More Popup Overlay -->
-    <div id="about-popup" class="about-popup-overlay">
-      <div class="about-popup-content">
-        <div class="about-popup-header">
-          <span class="about-popup-title">Nathan Brown-Bennett</span>
-          <span class="about-popup-contact">
-            <span class="about-popup-contact-row">
-              <span id="about-popup-email">nathanbrown-bennett@hotmail.com</span>
-              <span class="copy-icon" id="copy-email" title="Copy email">📋</span>
-            </span>
-            <span class="about-popup-contact-row">
-              <span id="about-popup-phone">+44 7800 931786</span>
-              <span class="copy-icon" id="copy-phone" title="Copy phone">📋</span>
-            </span>
-          </span>
-          <span id="about-popup-close" class="about-popup-close" style="position:absolute;top:12px;right:18px;font-size:2.2rem;cursor:pointer;color:#fff;z-index:20;">&times;</span>
+        <h3 class="subsection-title fade-in">Main Projects</h3>
+        <div class="projects-carousel-wrap fade-in">
+          <button id="prev-btn" class="carousel-arrow prev" aria-label="Previous project">&#8249;</button>
+          <div id="main-projects" class="projects-carousel-track-wrap">
+            <div class="carousel-track"></div>
+          </div>
+          <button id="next-btn" class="carousel-arrow next" aria-label="Next project">&#8250;</button>
         </div>
-        <div class="about-popup-carousel">
-          <button id="about-popup-prev" class="about-popup-carousel-btn">&#8249;</button>
-          <div id="about-popup-paragraph" class="about-popup-paragraph"></div>
-          <button id="about-popup-next" class="about-popup-carousel-btn">&#8250;</button>
+
+        <h3 class="subsection-title fade-in">Side Projects</h3>
+        <div id="side-projects" class="side-projects-grid"></div>
+        <div class="side-projects-nav">
+          <button id="side-projects-next" class="btn btn-outline">Load More</button>
         </div>
-        <!-- Mobile Download CV in Popup -->
-        <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="about-popup-cv-btn cv-mobile">Download CV</a>
       </div>
-    </div>
-  
+
+      <!-- Project detail overlay -->
+      <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+        <div class="overlay-content">
+          <button id="overlay-close" class="overlay-close" aria-label="Close project details">&times;</button>
+          <h3 id="overlay-title"></h3>
+          <p id="overlay-description"></p>
+          <a id="overlay-link" href="#" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Updates Section
+         ============================ -->
+    <section id="updates" class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Updates</h2>
+        <p class="section-subtitle fade-in">Latest news, projects, and media from across my platforms.</p>
+        <div class="social-grid">
+          <a href="https://www.instagram.com/n.brown02/" target="_blank" rel="noopener" class="social-card instagram-card fade-in">
+            <div class="social-card-icon" aria-hidden="true">📷</div>
+            <div class="social-card-body">
+              <h3>Instagram</h3>
+              <p>@n.brown02</p>
+              <span class="social-card-tag">🎵 Music &amp; Creative Content</span>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/nxth.b/" target="_blank" rel="noopener" class="social-card instagram-card fade-in">
+            <div class="social-card-icon" aria-hidden="true">📷</div>
+            <div class="social-card-body">
+              <h3>Instagram</h3>
+              <p>@nxth.b</p>
+              <span class="social-card-tag">💻 Dev Updates</span>
+            </div>
+          </a>
+          <a href="https://youtu.be/2_rwCbVFsDY?si=COd9ZLzcPHIm7auT" target="_blank" rel="noopener" class="social-card youtube-card fade-in">
+            <div class="social-card-icon" aria-hidden="true">🎥</div>
+            <div class="social-card-body">
+              <h3>YouTube</h3>
+              <p>Device Provisioning Demo</p>
+              <span class="social-card-tag">▶️ Technical Walkthrough</span>
+            </div>
+          </a>
+          <a href="https://www.croydonites.com/post/review-croydonbites" target="_blank" rel="noopener" class="social-card blog-card fade-in">
+            <div class="social-card-icon" aria-hidden="true">📝</div>
+            <div class="social-card-body">
+              <h3>Croydonites Review</h3>
+              <p>CroydonBites Feature</p>
+              <span class="social-card-tag">📖 Community Feature</span>
+            </div>
+          </a>
+          <a href="https://youtu.be/k7Oax-m1lbY" target="_blank" rel="noopener" class="social-card youtube-card fade-in">
+            <div class="social-card-icon" aria-hidden="true">🎥</div>
+            <div class="social-card-body">
+              <h3>YouTube</h3>
+              <p>Technical Project Showcase</p>
+              <span class="social-card-tag">▶️ Development Insights</span>
+            </div>
+          </a>
+          <a href="https://www.thecedarsschool.org.uk/cedars-music-concert/utm_sourcerssutm_mediumrssutm_campaigncedars-music-concert" target="_blank" rel="noopener" class="social-card school-card fade-in">
+            <div class="social-card-icon" aria-hidden="true">🎵</div>
+            <div class="social-card-body">
+              <h3>Cedars School</h3>
+              <p>Music Concert</p>
+              <span class="social-card-tag">🎭 Creative Showcase</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" class="social-card linkedin-card fade-in">
+            <div class="social-card-icon" aria-hidden="true">💼</div>
+            <div class="social-card-body">
+              <h3>LinkedIn</h3>
+              <p>Professional Updates</p>
+              <span class="social-card-tag">🔗 500+ Connections</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Contact Section
+         ============================ -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title fade-in">Get in Touch</h2>
+        <p class="section-subtitle fade-in">I'm always open to discussing new opportunities, collaborations, and research.</p>
+        <div class="contact-grid">
+          <a href="mailto:nathanbrownbennett@gmail.com" class="contact-card fade-in">
+            <span class="contact-icon" aria-hidden="true">📧</span>
+            <div>
+              <h3>Email</h3>
+              <p>nathanbrownbennett@gmail.com</p>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" class="contact-card fade-in">
+            <span class="contact-icon" aria-hidden="true">💼</span>
+            <div>
+              <h3>LinkedIn</h3>
+              <p>Connect professionally</p>
+            </div>
+          </a>
+          <a href="https://github.com/NathanBrownBennett" target="_blank" rel="noopener" class="contact-card fade-in">
+            <span class="contact-icon" aria-hidden="true">💻</span>
+            <div>
+              <h3>GitHub</h3>
+              <p>Check out my projects</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <section id="projects-section" class="projects-section fade-in manual-control">
-    <div class="container projects-header-container">
-      <h2 class="fade-in projects-main-title">Projects</h2>
-      <p class="projects-intro fade-in">Explore my main and side projects, showcasing my skills in cybersecurity, software development, and innovative tech solutions.</p>
-    </div>
-    
-    <h2 class="projects-subsection-title">Main Projects</h2>
-    <div class="carousel">
-      <button id="prev-btn" class="nav-arrow prev">&#8249;</button>
-      <div id="main-projects">
-        <div class="carousel-track"></div>
-      </div>
-      <button id="next-btn" class="nav-arrow next">&#8250;</button>
-    </div>
-    
-    <h2 class="projects-subsection-title">Side Projects</h2>
-    <div id="side-projects" class="projects"></div>
-    <button id="side-projects-next" style="margin: 2rem auto 0 auto; display: block; padding: 0.8em 2em; font-size: 1.1em; border-radius: 8px; border: none; background: #222; color: #fff; cursor: pointer;">Load Next</button>
-    
-    <div id="overlay" class="overlay">
-      <div class="overlay-content">
-        <span id="overlay-close">&times;</span>
-        <h3 id="overlay-title"></h3>
-        <p id="overlay-description"></p>
-        <a id="overlay-link" href="#" target="_blank">View on GitHub</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="fade-in">
-    <p>&copy; 2025 Nathan Brown-Bennett</p>
+  <footer>
+    <p>&copy; 2025 Nathan Brown-Bennett &mdash; Cybersecurity &amp; Software Development</p>
   </footer>
 
   <script src="script.js"></script>
   <script src="matrix-bg.js"></script>
   <script>
     // Background image fader
-    (function() {
+    (function () {
       const images = [
         'assets/Background_Images/IMG_1711.jpg',
         'assets/Background_Images/stairs.jpg',
@@ -475,13 +311,13 @@
       let idx = 0;
       const fader = document.getElementById('background-fader');
       function setBg(i) {
-        fader.style.backgroundImage = `url('${images[i]}')`;
+        fader.style.backgroundImage = "url('" + images[i] + "')";
       }
       setBg(idx);
-      setInterval(() => {
+      setInterval(function () {
         idx = (idx + 1) % images.length;
         fader.classList.add('fade-out');
-        setTimeout(() => {
+        setTimeout(function () {
           setBg(idx);
           fader.classList.remove('fade-out');
         }, 1200);
