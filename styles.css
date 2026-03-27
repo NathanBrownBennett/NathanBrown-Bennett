@@ -66,6 +66,7 @@ ul {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
+  /* Very subtle — keeps the cybersecurity aesthetic without distracting from content */
   opacity: 0.05;
 }
 

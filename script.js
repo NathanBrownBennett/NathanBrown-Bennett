@@ -16,7 +16,7 @@ const MAIN_PROJECT_ORDER = [
 
 async function loadRepos(user) {
   const response = await fetch(
-    'https://api.github.com/users/' + user + '/repos?sort=updated&per_page=100'
+    `https://api.github.com/users/${user}/repos?sort=updated&per_page=100`
   );
   if (!response.ok) throw new Error('Network response was not ok');
   return response.json();
@@ -84,9 +84,9 @@ function createCard(project, isCarousel) {
 // ============================================================
 // Side Projects Pagination
 // ============================================================
-var sideProjects = [];
-var sideProjectsPage = 0;
-var sideProjectsPerPage = 9;
+let sideProjects = [];
+let sideProjectsPage = 0;
+let sideProjectsPerPage = 9;
 
 function getSideProjectsPerPage() {
   if (window.innerWidth <= 600) return 6;
@@ -95,26 +95,26 @@ function getSideProjectsPerPage() {
 }
 
 function renderSideProjects() {
-  var sideContainer = document.getElementById('side-projects');
+  const sideContainer = document.getElementById('side-projects');
   if (!sideContainer) return;
   sideContainer.innerHTML = '';
   sideProjectsPerPage = getSideProjectsPerPage();
-  var start = sideProjectsPage * sideProjectsPerPage;
-  var end = start + sideProjectsPerPage;
-  var projectsToShow = sideProjects.slice(start, end);
+  const start = sideProjectsPage * sideProjectsPerPage;
+  const end = start + sideProjectsPerPage;
+  const projectsToShow = sideProjects.slice(start, end);
   projectsToShow.forEach(function (project) {
-    var card = createCard(project, false);
+  const card = createCard(project, false);
     sideContainer.appendChild(card);
   });
 }
 
 function handleSideProjectsNext() {
   sideProjectsPerPage = getSideProjectsPerPage();
-  var totalPages = Math.ceil(sideProjects.length / sideProjectsPerPage);
+  const totalPages = Math.ceil(sideProjects.length / sideProjectsPerPage);
   if (totalPages === 0) return;
   sideProjectsPage = (sideProjectsPage + 1) % totalPages;
   renderSideProjects();
-  var el = document.getElementById('side-projects');
+  const el = document.getElementById('side-projects');
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -127,37 +127,37 @@ window.addEventListener('resize', function () {
 // Display GitHub Repos
 // ============================================================
 async function displayRepos() {
-  var mainContainer = document.getElementById('main-projects');
+  const mainContainer = document.getElementById('main-projects');
   if (!mainContainer) return;
-  var carouselTrack = mainContainer.querySelector('.carousel-track');
+  const carouselTrack = mainContainer.querySelector('.carousel-track');
   if (carouselTrack) carouselTrack.innerHTML = '';
 
   try {
-    var users = ['NathanBrownBennett', 'JakkuAzzo'];
-    var reposArrays = await Promise.all(users.map(loadRepos));
-    var repos = reposArrays.flat();
+  const users = ['NathanBrownBennett', 'JakkuAzzo'];
+  const reposArrays = await Promise.all(users.map(loadRepos));
+  const repos = reposArrays.flat();
     repos.sort(function (a, b) {
       return new Date(b.updated_at) - new Date(a.updated_at);
     });
 
-    var mainNames = MAIN_PROJECT_ORDER;
-    var repoMap = {};
+  const mainNames = MAIN_PROJECT_ORDER;
+  const repoMap = {};
     repos.forEach(function (r) { repoMap[r.name.toLowerCase()] = r; });
 
     mainNames.forEach(function (slug) {
-      var repo = repoMap[slug.toLowerCase()];
+  const repo = repoMap[slug.toLowerCase()];
       if (!repo) return;
-      var project = {
+  const project = {
         title: repo.name,
         description: repo.description || '',
         link: repo.html_url
       };
-      var card = createCard(project, true);
+  const card = createCard(project, true);
       carouselTrack.appendChild(card);
     });
 
     sideProjects = [];
-    var mainNamesLower = mainNames.map(function (n) { return n.toLowerCase(); });
+  const mainNamesLower = mainNames.map(function (n) { return n.toLowerCase(); });
     repos.forEach(function (repo) {
       if (!mainNamesLower.includes(repo.name.toLowerCase())) {
         sideProjects.push({
@@ -182,20 +182,20 @@ async function displayRepos() {
 // Projects Carousel (main projects)
 // ============================================================
 function initCarousel() {
-  var track = document.querySelector('#main-projects .carousel-track');
+  const track = document.querySelector('#main-projects .carousel-track');
   if (!track) return;
-  var items = track.querySelectorAll('.carousel-item');
-  var index = 0;
+  const items = track.querySelectorAll('.carousel-item');
+  let index = 0;
 
   function update() {
     if (items.length === 0) return;
-    var itemWidth = items[0].offsetWidth;
-    var gap = parseFloat(window.getComputedStyle(track).gap) || 22;
+  const itemWidth = items[0].offsetWidth;
+  const gap = parseFloat(window.getComputedStyle(track).gap) || 22;
     track.style.transform = 'translateX(' + (-(index * (itemWidth + gap))) + 'px)';
   }
 
-  var prevBtn = document.getElementById('prev-btn');
-  var nextBtn = document.getElementById('next-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
 
   if (prevBtn) {
     prevBtn.addEventListener('click', function () {
@@ -214,14 +214,14 @@ function initCarousel() {
   window.addEventListener('resize', update);
 
   // Touch / swipe support
-  var startX = 0;
-  var wrap = document.getElementById('main-projects');
+  let startX = 0;
+  const wrap = document.getElementById('main-projects');
   if (wrap) {
     wrap.addEventListener('touchstart', function (e) {
       startX = e.touches[0].clientX;
     }, { passive: true });
     wrap.addEventListener('touchend', function (e) {
-      var delta = e.changedTouches[0].clientX - startX;
+  const delta = e.changedTouches[0].clientX - startX;
       if (Math.abs(delta) > 50) {
         if (delta > 0) {
           index = (index - 1 + items.length) % items.length;
@@ -238,7 +238,7 @@ function initCarousel() {
 // Scroll Animations (Intersection Observer)
 // ============================================================
 function initScrollAnimations() {
-  var observer = new IntersectionObserver(function (entries) {
+  const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
@@ -256,8 +256,8 @@ function initScrollAnimations() {
 // Mobile Navigation
 // ============================================================
 function initMobileNav() {
-  var hamburger = document.getElementById('hamburger');
-  var mobileNav = document.getElementById('mobile-nav');
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
   if (!hamburger || !mobileNav) return;
 
   function closeMobileNav() {
@@ -268,7 +268,7 @@ function initMobileNav() {
   }
 
   hamburger.addEventListener('click', function () {
-    var isOpen = mobileNav.classList.toggle('open');
+  const isOpen = mobileNav.classList.toggle('open');
     hamburger.classList.toggle('active', isOpen);
     hamburger.setAttribute('aria-expanded', String(isOpen));
     mobileNav.setAttribute('aria-hidden', String(!isOpen));
@@ -294,7 +294,7 @@ function initMobileNav() {
 // Navbar scroll effect
 // ============================================================
 function initNavbarScroll() {
-  var navbar = document.getElementById('navbar');
+  const navbar = document.getElementById('navbar');
   if (!navbar) return;
   window.addEventListener('scroll', function () {
     if (window.scrollY > 40) {
@@ -322,12 +322,12 @@ document.addEventListener('DOMContentLoaded', function () {
   initNavbarScroll();
 
   // Overlay close handlers
-  var overlayClose = document.getElementById('overlay-close');
+  const overlayClose = document.getElementById('overlay-close');
   if (overlayClose) {
     overlayClose.addEventListener('click', closeOverlay);
   }
 
-  var overlay = document.getElementById('overlay');
+  const overlay = document.getElementById('overlay');
   if (overlay) {
     overlay.addEventListener('click', function (e) {
       if (e.target === overlay) closeOverlay();
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Side projects pagination button
-  var sideNext = document.getElementById('side-projects-next');
+  const sideNext = document.getElementById('side-projects-next');
   if (sideNext) {
     sideNext.addEventListener('click', handleSideProjectsNext);
   }
