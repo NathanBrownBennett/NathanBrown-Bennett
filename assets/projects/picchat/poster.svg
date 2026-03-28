@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0018"/>
+      <stop offset="100%" style="stop-color:#160010"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9B5DE5"/>
+      <stop offset="100%" style="stop-color:#F15BB5"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Subtle bokeh circles -->
+  <circle cx="650" cy="80" r="60" fill="#9B5DE5" opacity="0.04"/>
+  <circle cx="120" cy="340" r="80" fill="#F15BB5" opacity="0.04"/>
+  <circle cx="400" cy="200" r="120" fill="#9B5DE5" opacity="0.03"/>
+
+  <!-- Phone frame (centre) -->
+  <g transform="translate(315, 60)">
+    <rect width="170" height="310" rx="22" fill="#1a0025" stroke="#9B5DE5" stroke-width="2" opacity="0.95"/>
+    <!-- Notch -->
+    <rect x="55" y="6" width="60" height="14" rx="7" fill="#0d0018"/>
+    <!-- Screen content -->
+    <!-- App header -->
+    <rect x="8" y="26" width="154" height="40" rx="4" fill="#21003a" opacity="0.9"/>
+    <text x="85" y="42" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#F15BB5">PicChat 🤫</text>
+    <text x="85" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" fill="#9B5DE5" opacity="0.8">Anonymous · Ephemeral</text>
+
+    <!-- Chat bubble 1 (left, other user) -->
+    <rect x="10" y="74" width="110" height="36" rx="12" rx-br="4" fill="#2d0050" stroke="#9B5DE5" stroke-width="1" opacity="0.9"/>
+    <text x="20" y="90" font-family="Inter, Arial, sans-serif" font-size="9" fill="#e0e0e0">Hey, saw your post 🔥</text>
+    <text x="20" y="104" font-family="monospace" font-size="8" fill="#9B5DE5" opacity="0.6">🕐 5m · E2E encrypted</text>
+
+    <!-- Chat bubble 2 (right, own) -->
+    <rect x="42" y="118" width="120" height="36" rx="12" fill="url(#accent)" opacity="0.75"/>
+    <text x="52" y="134" font-family="Inter, Arial, sans-serif" font-size="9" fill="#fff">Thanks! Posting more soon</text>
+    <text x="52" y="148" font-family="monospace" font-size="8" fill="#fff" opacity="0.7">🔒 Read once only</text>
+
+    <!-- Chat bubble 3 (left) -->
+    <rect x="10" y="162" width="90" height="28" rx="12" fill="#2d0050" stroke="#9B5DE5" stroke-width="1" opacity="0.9"/>
+    <text x="20" y="176" font-family="Inter, Arial, sans-serif" font-size="9" fill="#e0e0e0">Love this app 💜</text>
+    <text x="20" y="186" font-family="monospace" font-size="7" fill="#9B5DE5" opacity="0.6">anon_user_842</text>
+
+    <!-- Story strip -->
+    <text x="12" y="210" font-family="Inter, Arial, sans-serif" font-size="8" fill="#9B5DE5" opacity="0.7">MOMENTS · disappear in 24h</text>
+    <circle cx="28" cy="238" r="20" fill="#2d0050" stroke="#F15BB5" stroke-width="2"/>
+    <text x="28" y="244" text-anchor="middle" font-family="sans-serif" font-size="14">🌃</text>
+    <circle cx="78" cy="238" r="20" fill="#2d0050" stroke="#9B5DE5" stroke-width="2"/>
+    <text x="78" y="244" text-anchor="middle" font-family="sans-serif" font-size="14">🎵</text>
+    <circle cx="128" cy="238" r="20" fill="#2d0050" stroke="#F15BB5" stroke-width="2"/>
+    <text x="128" y="244" text-anchor="middle" font-family="sans-serif" font-size="14">✨</text>
+
+    <!-- Bottom nav -->
+    <rect x="8" y="268" width="154" height="34" rx="4" fill="#21003a" opacity="0.9"/>
+    <text x="30" y="289" text-anchor="middle" font-family="sans-serif" font-size="16">🏠</text>
+    <text x="70" y="289" text-anchor="middle" font-family="sans-serif" font-size="16">🔍</text>
+    <text x="110" y="289" text-anchor="middle" font-family="sans-serif" font-size="16">💬</text>
+    <text x="150" y="289" text-anchor="middle" font-family="sans-serif" font-size="16">👤</text>
+  </g>
+
+  <!-- Privacy features (left panel) -->
+  <g transform="translate(70, 130)">
+    <rect width="190" height="150" rx="8" fill="#1a0025" stroke="#9B5DE5" stroke-width="1.2" opacity="0.9"/>
+    <text x="12" y="22" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#F15BB5">🛡 Privacy First</text>
+    <text x="12" y="44" font-family="monospace" font-size="9" fill="#9B5DE5">✓ End-to-end encrypted</text>
+    <text x="12" y="60" font-family="monospace" font-size="9" fill="#9B5DE5">✓ No real names needed</text>
+    <text x="12" y="76" font-family="monospace" font-size="9" fill="#9B5DE5">✓ Ephemeral posts</text>
+    <text x="12" y="92" font-family="monospace" font-size="9" fill="#9B5DE5">✓ No data harvesting</text>
+    <text x="12" y="108" font-family="monospace" font-size="9" fill="#9B5DE5">✓ Anonymous personas</text>
+    <text x="12" y="124" font-family="monospace" font-size="9" fill="#9B5DE5">✓ Delete anytime</text>
+    <text x="12" y="140" font-family="monospace" font-size="9" fill="#F15BB5">Zero-knowledge design</text>
+  </g>
+
+  <!-- Right side: encryption indicator -->
+  <g transform="translate(560, 140)">
+    <rect width="170" height="100" rx="8" fill="#1a0025" stroke="#F15BB5" stroke-width="1.2" opacity="0.9"/>
+    <text x="12" y="22" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#9B5DE5">🔐 E2E Encryption</text>
+    <text x="12" y="42" font-family="monospace" font-size="9" fill="#F15BB5">AES-256-GCM</text>
+    <text x="12" y="58" font-family="monospace" font-size="9" fill="#F15BB5">ECDH key exchange</text>
+    <text x="12" y="74" font-family="monospace" font-size="8" fill="#9B5DE5" opacity="0.7">Only you &amp; recipient</text>
+    <text x="12" y="90" font-family="monospace" font-size="8" fill="#9B5DE5" opacity="0.7">can read messages</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="400" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="url(#accent)" filter="url(#glow)">PicChat</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#8892b0">Secure &amp; Anonymous Social Media Platform</text>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="800" height="3" fill="url(#accent)"/>
+</svg>

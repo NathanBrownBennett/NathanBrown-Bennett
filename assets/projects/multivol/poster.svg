@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0020"/>
+      <stop offset="100%" style="stop-color:#000820"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8338EC"/>
+      <stop offset="100%" style="stop-color:#3A86FF"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Storage disks stacked (visualised as layered rects) -->
+  <!-- Disk 1 (back) -->
+  <g transform="translate(100, 200)">
+    <!-- Volume D (cloud) -->
+    <ellipse cx="90" cy="14" rx="90" ry="14" fill="#8338EC" opacity="0.15"/>
+    <rect x="0" y="14" width="180" height="60" rx="4" fill="#12002e" stroke="#8338EC" stroke-width="1.5" opacity="0.8"/>
+    <ellipse cx="90" cy="74" rx="90" ry="14" fill="#12002e" stroke="#8338EC" stroke-width="1.5" opacity="0.8"/>
+    <text x="90" y="48" text-anchor="middle" font-family="monospace" font-size="10" fill="#8338EC">VOL C — Cloud</text>
+    <text x="90" y="64" text-anchor="middle" font-family="monospace" font-size="9" fill="#3A86FF" opacity="0.7">AES-256 · 4.2 GB</text>
+  </g>
+
+  <!-- Volume B (USB) -->
+  <g transform="translate(100, 130)">
+    <ellipse cx="90" cy="14" rx="90" ry="14" fill="#3A86FF" opacity="0.15"/>
+    <rect x="0" y="14" width="180" height="60" rx="4" fill="#12002e" stroke="#3A86FF" stroke-width="1.5" opacity="0.9"/>
+    <ellipse cx="90" cy="74" rx="90" ry="14" fill="#12002e" stroke="#3A86FF" stroke-width="1.5" opacity="0.9"/>
+    <text x="90" y="48" text-anchor="middle" font-family="monospace" font-size="10" fill="#3A86FF">VOL B — USB Drive</text>
+    <text x="90" y="64" text-anchor="middle" font-family="monospace" font-size="9" fill="#8338EC" opacity="0.7">AES-256 · 2.1 GB</text>
+  </g>
+
+  <!-- Volume A (NAS) -->
+  <g transform="translate(100, 60)">
+    <ellipse cx="90" cy="14" rx="90" ry="14" fill="#8338EC" opacity="0.2"/>
+    <rect x="0" y="14" width="180" height="60" rx="4" fill="#12002e" stroke="#8338EC" stroke-width="2" opacity="0.95"/>
+    <ellipse cx="90" cy="74" rx="90" ry="14" fill="#12002e" stroke="#8338EC" stroke-width="2" opacity="0.95"/>
+    <text x="90" y="48" text-anchor="middle" font-family="monospace" font-size="10" fill="#8338EC">VOL A — NAS</text>
+    <text x="90" y="64" text-anchor="middle" font-family="monospace" font-size="9" fill="#3A86FF" opacity="0.7">AES-256 · 3.7 GB</text>
+  </g>
+
+  <!-- Lock / key icon (centre) -->
+  <g transform="translate(350, 130)" filter="url(#glow)">
+    <rect x="0" y="36" width="80" height="68" rx="8" fill="#12002e" stroke="url(#accent)" stroke-width="2" opacity="0.95"/>
+    <path d="M20,36 Q20,0 40,0 Q60,0 60,36" fill="none" stroke="url(#accent)" stroke-width="2.5"/>
+    <circle cx="40" cy="70" r="10" fill="url(#accent)" opacity="0.7"/>
+    <line x1="40" y1="80" x2="40" y2="94" stroke="url(#accent)" stroke-width="3" opacity="0.7"/>
+  </g>
+
+  <!-- Assembly manifest (right) -->
+  <g transform="translate(500, 80)">
+    <rect width="220" height="240" rx="8" fill="#12002e" stroke="#8338EC" stroke-width="1.5" opacity="0.95"/>
+    <!-- Header -->
+    <rect width="220" height="30" rx="8" fill="#8338EC" opacity="0.3"/>
+    <text x="12" y="20" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#e0e0e0">📋 manifest.mvol</text>
+    <!-- Manifest lines -->
+    <text x="12" y="50" font-family="monospace" font-size="8" fill="#8338EC">file: "archive.zip"</text>
+    <text x="12" y="64" font-family="monospace" font-size="8" fill="#3A86FF">chunks: 3</text>
+    <text x="12" y="78" font-family="monospace" font-size="8" fill="#8338EC">algo: AES-256-GCM</text>
+    <text x="12" y="92" font-family="monospace" font-size="8" fill="#3A86FF">---</text>
+    <text x="12" y="106" font-family="monospace" font-size="8" fill="#8338EC">vol_a: NAS  [part 1/3]</text>
+    <text x="12" y="120" font-family="monospace" font-size="8" fill="#8338EC">vol_b: USB  [part 2/3]</text>
+    <text x="12" y="134" font-family="monospace" font-size="8" fill="#8338EC">vol_c: Cloud[part 3/3]</text>
+    <text x="12" y="148" font-family="monospace" font-size="8" fill="#3A86FF">---</text>
+    <text x="12" y="162" font-family="monospace" font-size="8" fill="#00FF88">hash: sha256:3f2a...</text>
+    <text x="12" y="176" font-family="monospace" font-size="8" fill="#3A86FF">size: 10.0 GB total</text>
+    <text x="12" y="190" font-family="monospace" font-size="8" fill="#3A86FF">created: 2025-01-15</text>
+    <text x="12" y="210" font-family="monospace" font-size="9" fill="#00FF88" opacity="0.9">✓ Integrity verified</text>
+    <text x="12" y="228" font-family="monospace" font-size="9" fill="#00FF88" opacity="0.8">✓ Encrypted at rest</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="400" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="url(#accent)" filter="url(#glow)">MultiVol</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#8892b0">Multi-Volume Secure Storage Manager</text>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="800" height="3" fill="url(#accent)"/>
+</svg>

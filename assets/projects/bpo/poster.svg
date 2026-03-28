@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0e00"/>
+      <stop offset="100%" style="stop-color:#150a00"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B1A"/>
+      <stop offset="100%" style="stop-color:#FFB347"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Process flow diagram -->
+  <!-- Node 1: Start -->
+  <g transform="translate(80, 170)">
+    <rect width="100" height="50" rx="25" fill="#FF8C42" opacity="0.25" stroke="#FF8C42" stroke-width="1.5"/>
+    <text x="50" y="30" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#FFB347">START</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <line x1="180" y1="195" x2="218" y2="195" stroke="#FF8C42" stroke-width="2" opacity="0.7"/>
+  <polygon points="218,190 228,195 218,200" fill="#FF8C42" opacity="0.7"/>
+
+  <!-- Node 2: Input -->
+  <g transform="translate(228, 160)">
+    <rect width="110" height="70" rx="8" fill="#221000" stroke="#FF8C42" stroke-width="1.5" opacity="0.95"/>
+    <text x="55" y="22" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#FFB347">INPUT</text>
+    <text x="55" y="38" text-anchor="middle" font-family="monospace" font-size="9" fill="#FF8C42" opacity="0.8">Process Data</text>
+    <text x="55" y="54" text-anchor="middle" font-family="monospace" font-size="9" fill="#FF8C42" opacity="0.6">Config: JSON</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <line x1="338" y1="195" x2="376" y2="195" stroke="#FF8C42" stroke-width="2" opacity="0.7"/>
+  <polygon points="376,190 386,195 376,200" fill="#FF8C42" opacity="0.7"/>
+
+  <!-- Node 3: Analyse (diamond) -->
+  <g transform="translate(386, 155)">
+    <polygon points="60,0 120,40 60,80 0,40" fill="#221000" stroke="#FFB347" stroke-width="1.5" opacity="0.95"/>
+    <text x="60" y="36" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" fill="#FFB347">ANALYSE</text>
+    <text x="60" y="50" text-anchor="middle" font-family="monospace" font-size="8" fill="#FF8C42">bottleneck?</text>
+  </g>
+
+  <!-- Arrow yes (down) -->
+  <line x1="446" y1="235" x2="446" y2="275" stroke="#FF8C42" stroke-width="2" opacity="0.6"/>
+  <polygon points="441,275 446,285 451,275" fill="#FF8C42" opacity="0.6"/>
+  <text x="455" y="260" font-family="Inter, Arial, sans-serif" font-size="9" fill="#FFB347" opacity="0.7">YES</text>
+
+  <!-- Node 4: Optimise -->
+  <g transform="translate(396, 285)">
+    <rect width="100" height="50" rx="8" fill="#221000" stroke="#FF8C42" stroke-width="1.5" opacity="0.95"/>
+    <text x="50" y="22" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#FFB347">OPTIMISE</text>
+    <text x="50" y="38" text-anchor="middle" font-family="monospace" font-size="9" fill="#FF8C42" opacity="0.8">Refactor step</text>
+  </g>
+
+  <!-- Arrow no (right) -->
+  <line x1="506" y1="195" x2="544" y2="195" stroke="#FF8C42" stroke-width="2" opacity="0.6"/>
+  <polygon points="544,190 554,195 544,200" fill="#FF8C42" opacity="0.6"/>
+  <text x="512" y="187" font-family="Inter, Arial, sans-serif" font-size="9" fill="#FFB347" opacity="0.7">NO</text>
+
+  <!-- Node 5: Output -->
+  <g transform="translate(554, 160)">
+    <rect width="110" height="70" rx="8" fill="#221000" stroke="#FF8C42" stroke-width="1.5" opacity="0.95"/>
+    <text x="55" y="22" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#FFB347">OUTPUT</text>
+    <text x="55" y="38" text-anchor="middle" font-family="monospace" font-size="9" fill="#FF8C42" opacity="0.8">Flow Map</text>
+    <text x="55" y="54" text-anchor="middle" font-family="monospace" font-size="9" fill="#00FF88" opacity="0.7">+18% faster</text>
+  </g>
+
+  <!-- Arrow to end -->
+  <line x1="664" y1="195" x2="700" y2="195" stroke="#FF8C42" stroke-width="2" opacity="0.7"/>
+  <polygon points="700,190 710,195 700,200" fill="#FF8C42" opacity="0.7"/>
+
+  <!-- Node 6: End -->
+  <g transform="translate(710, 170)">
+    <rect width="80" height="50" rx="25" fill="#FF8C42" opacity="0.25" stroke="#FF8C42" stroke-width="1.5"/>
+    <text x="40" y="30" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#FFB347">END</text>
+  </g>
+
+  <!-- Stats panel (top right) -->
+  <g transform="translate(580, 60)">
+    <rect width="160" height="80" rx="8" fill="#221000" stroke="#FFB347" stroke-width="1" opacity="0.8"/>
+    <text x="12" y="20" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#FFB347">📊 Metrics</text>
+    <text x="12" y="38" font-family="monospace" font-size="9" fill="#FF8C42">Bottlenecks: 3</text>
+    <text x="12" y="52" font-family="monospace" font-size="9" fill="#00FF88">Savings: 22%</text>
+    <text x="12" y="66" font-family="monospace" font-size="9" fill="#FF8C42">Throughput: ↑ 18%</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="400" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="url(#accent)" filter="url(#glow)">BPO</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#8892b0">Business Process Optimisation Tool</text>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="800" height="3" fill="url(#accent)"/>
+</svg>
