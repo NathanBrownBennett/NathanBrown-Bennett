@@ -18,14 +18,14 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/mymark/poster.svg',
     dissertation: 'assets/projects/mymark/MyMark-MSc-Dissertation.pdf',
     repoUrl: null,
-    emoji: '🔏',
+    logo: 'assets/projects/mymark/poster.png',
     tech: ['Blockchain', 'Python', 'React', 'Web3', 'Cryptography']
   },
   {
     id: 'blockbash',
-    title: 'BlockBash',
-    tagline: 'Visual Cybersecurity Education Platform',
-    description: `BlockBash is an interactive, gamified cybersecurity education platform designed to make learning about network security, cryptography, and ethical hacking accessible and genuinely engaging.\n\nThe platform features real-time visual simulations of cyber-attacks and defences, allowing learners to understand how threats like SQL injection, XSS, and man-in-the-middle attacks operate in a safe, controlled environment. By turning complex security concepts into interactive visual experiences, BlockBash bridges the gap between theoretical knowledge and practical understanding.\n\nDesigned for students, enthusiasts, and professionals alike, BlockBash offers structured learning paths, live challenge scenarios, and visual feedback that makes the invisible world of cybersecurity tangible.`,
+    title: 'Inspector',
+    tagline: 'Gamified Cybersecurity Education Platform',
+    description: `Inspector is a comprehensive gamified cybersecurity education platform that combines visual programming, interactive workshops, and real terminal environments to teach hacking and core cybersecurity principles.\n\nBuilt on a modular Node.js and Express architecture, Inspector delivers practical, hands-on learning through integrated block editing, network topology design, and immersive workshop scenarios.\n\nThe platform is designed to make complex cybersecurity workflows approachable while preserving technical depth for learners who want realistic penetration testing and network security practice.`,
     theme: {
       primary: '#00FF41',
       secondary: '#00CC33',
@@ -34,11 +34,11 @@ const MAIN_PROJECTS = [
       border: '#00FF41'
     },
     youtubeId: null,
-    poster: 'assets/projects/blockbash/poster.svg',
+    poster: 'assets/projects/blockbash/inspector-poster.png',
     dissertation: null,
-    repoUrl: null,
-    emoji: '🛡️',
-    tech: ['JavaScript', 'Node.js', 'D3.js', 'Canvas API', 'Security']
+    repoUrl: 'https://github.com/JakkuAzzo/BlockBash',
+    logo: 'assets/projects/blockbash/inspector-logo.svg',
+    tech: ['Node.js', 'Express', 'WebSockets', 'SQLite', 'Cybersecurity']
   },
   {
     id: 'hackergo',
@@ -56,7 +56,7 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/hackergo/poster.svg',
     dissertation: null,
     repoUrl: null,
-    emoji: '🎮',
+    logo: 'assets/projects/hackergo/poster.png',
     tech: ['React Native', 'Node.js', 'GPS API', 'Gamification']
   },
   {
@@ -75,7 +75,7 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/bpo/poster.svg',
     dissertation: null,
     repoUrl: 'https://github.com/NathanBrownBennett/AutoTimeSheet',
-    emoji: '⚙️',
+    logo: 'assets/projects/bpo/poster.png',
     tech: ['Python', 'React', 'Graph Analysis', 'REST API']
   },
   {
@@ -94,7 +94,7 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/bluetakk/poster.svg',
     dissertation: null,
     repoUrl: null,
-    emoji: '📡',
+    logo: 'assets/projects/bluetakk/poster.png',
     tech: ['BLE', 'Python', 'React', 'IoT', 'Real-time']
   },
   {
@@ -113,7 +113,7 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/picchat/poster.svg',
     dissertation: null,
     repoUrl: null,
-    emoji: '💬',
+    logo: 'assets/projects/picchat/poster.png',
     tech: ['React Native', 'Node.js', 'E2E Encryption', 'Privacy']
   },
   {
@@ -132,7 +132,7 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/multivol/poster.svg',
     dissertation: null,
     repoUrl: null,
-    emoji: '💾',
+    logo: 'assets/projects/multivol/poster.svg',
     tech: ['Python', 'AES Encryption', 'CLI', 'Cross-platform']
   },
   {
@@ -151,7 +151,7 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/cyha-mvp/poster.png',
     dissertation: null,
     repoUrl: 'https://github.com/NathanBrownBennett/CYHA-MVP',
-    emoji: '🏠',
+    logo: 'assets/projects/cyha-mvp/poster-from-repo.png',
     tech: ['React', 'Node.js', 'RBAC', 'GDPR', 'PostgreSQL']
   },
   {
@@ -170,7 +170,7 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/complexity-calc/poster.webp',
     dissertation: null,
     repoUrl: 'https://github.com/NathanBrownBennett/CyclomaticComplexityCalc',
-    emoji: '📊',
+    logo: 'assets/projects/complexity-calc/poster-from-repo.webp',
     tech: ['Python', 'AST Parsing', 'VS Code API', 'CI/CD']
   },
   {
@@ -189,8 +189,31 @@ const MAIN_PROJECTS = [
     poster: 'assets/projects/device-provisioning/poster.png',
     dissertation: null,
     repoUrl: 'https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-',
-    emoji: '🔧',
+    logo: 'assets/projects/device-provisioning/poster-from-repo.png',
     tech: ['JavaScript', 'Node.js', 'D3.js', 'IoT', 'Network Security']
+  },
+  {
+    id: 'inspire',
+    title: 'Inspire',
+    tagline: 'Personal Inspiration & Motivation Platform',
+    description: `Inspire is a platform concept focused on motivation, reflective growth, and daily momentum. It curates uplifting content, tracks progress through personal goals, and provides a lightweight journaling experience designed to keep users moving forward consistently.
+
+Built around clarity and positivity, Inspire combines curated prompts, progress checkpoints, and shareable milestones. The project explores how intentional product design can support habit-building and mental wellbeing without overwhelming users.
+
+The long-term direction for Inspire includes personalised recommendation signals, stronger community features, and a companion mobile experience to make inspiration accessible throughout the day.`,
+    theme: {
+      primary: '#F97316',
+      secondary: '#FACC15',
+      gradient: 'linear-gradient(135deg, #F97316 0%, #FACC15 100%)',
+      cardGradient: 'linear-gradient(160deg, rgba(249,115,22,0.14) 0%, rgba(250,204,21,0.08) 100%)',
+      border: '#F97316'
+    },
+    youtubeId: null,
+    poster: 'assets/projects/inspire/poster.svg',
+    logo: 'assets/projects/inspire/logo.svg',
+    dissertation: null,
+    repoUrl: 'https://github.com/NathanBrownBennett/Inspire',
+    tech: ['React', 'Node.js', 'Product Design', 'Wellbeing Tech']
   }
 ];
 
@@ -212,6 +235,9 @@ function buildMailtoLink(project) {
 // Project Overlay — rich themed modal
 // ============================================================
 function openOverlay(project) {
+    const headerVisualSrc = project.logo || project.poster || '';
+    const headerFallback = escapeHtml((project.title || 'P').slice(0, 2).toUpperCase());
+
   const overlay = document.getElementById('overlay');
   const content = document.getElementById('overlay-content');
   if (!overlay || !content) return;
@@ -255,24 +281,28 @@ function openOverlay(project) {
   if (project.dissertation) {
     actionsHtml +=
       '<a href="' + escapeHtml(project.dissertation) + '" download class="btn btn-download">' +
-        '<span aria-hidden="true">📄</span> Download Dissertation' +
+        'Download Dissertation' +
       '</a>';
   }
   if (project.repoUrl) {
     actionsHtml +=
       '<a href="' + escapeHtml(project.repoUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-repo">' +
-        '<span aria-hidden="true">💻</span> View on GitHub' +
+        'View on GitHub' +
       '</a>';
   }
   actionsHtml +=
     '<a href="' + buildMailtoLink(project) + '" class="btn btn-contact">' +
-      '<span aria-hidden="true">✉️</span> Get in Touch if Interested' +
+      'Get in Touch if Interested' +
     '</a>';
 
   // Assemble full overlay HTML
   content.innerHTML =
     '<div class="overlay-project-header">' +
-      '<span class="overlay-project-emoji" aria-hidden="true">' + project.emoji + '</span>' +
+      '<div class="overlay-project-visual" aria-hidden="true">' +
+        (headerVisualSrc
+          ? '<img src="' + escapeHtml(headerVisualSrc) + '" alt="" class="overlay-project-logo" onerror="this.parentNode.innerHTML=\'<' + 'span class=\\\"overlay-project-fallback\\\">' + headerFallback + '</span>\'">'
+          : '<span class="overlay-project-fallback">' + headerFallback + '</span>') +
+      '</div>' +
       '<div class="overlay-project-title-wrap">' +
         '<h3 id="overlay-title">' + escapeHtml(project.title) + '</h3>' +
         '<p class="overlay-project-tagline">' + escapeHtml(project.tagline) + '</p>' +
@@ -345,8 +375,15 @@ function createMainCard(project) {
     .map(function (t) { return '<span class="tech-tag-sm">' + escapeHtml(t) + '</span>'; })
     .join('');
 
+  const cardMedia = project.logo || project.poster || '';
+  const fallbackText = escapeHtml((project.title || 'P').slice(0, 2).toUpperCase());
+
   card.innerHTML =
-    '<div class="project-card-emoji" style="color:' + project.theme.primary + '">' + project.emoji + '</div>' +
+    '<div class="project-card-media">' +
+      (cardMedia
+        ? '<img src="' + escapeHtml(cardMedia) + '" alt="' + escapeHtml(project.title) + ' visual" class="project-card-logo" onerror="this.parentNode.innerHTML=\'<' + 'span class=\\\"project-card-fallback\\\" style=\\\"background:' + project.theme.gradient + '\\\">' + fallbackText + '</span>\'">'
+        : '<span class="project-card-fallback" style="background:' + project.theme.gradient + '">' + fallbackText + '</span>') +
+    '</div>' +
     '<h3 class="project-card-title">' + escapeHtml(project.title) + '</h3>' +
     '<p class="project-card-tagline">' + escapeHtml(project.tagline) + '</p>' +
     (tagsHtml ? '<div class="project-card-tags">' + tagsHtml + '</div>' : '') +
@@ -364,14 +401,20 @@ function createMainCard(project) {
 // Side project card (from GitHub API)
 function createSideCard(project) {
   const card = document.createElement('div');
-  card.className = 'project-card';
+  card.className = 'project-card side-project-card type-' + slugifyType(project.type || 'Other');
   card.setAttribute('role', 'button');
   card.setAttribute('tabindex', '0');
   card.setAttribute('aria-label', project.title + ': click to view details');
+  card.style.setProperty('--side-accent', project.accent);
 
   card.innerHTML =
+    '<div class="side-card-head">' +
+      '<span class="side-type-chip">' + escapeHtml(project.type || 'Other') + '</span>' +
+      '<span class="side-language">' + escapeHtml(project.language || 'Unknown') + '</span>' +
+    '</div>' +
     '<h3>' + escapeHtml(project.title) + '</h3>' +
-    '<p>' + escapeHtml(project.description || 'No description available.') + '</p>';
+    '<p>' + escapeHtml(project.description || 'No description available.') + '</p>' +
+    '<span class="side-card-cta">View details</span>';
 
   function openThis() { openSideOverlay(project); }
   card.addEventListener('click', openThis);
@@ -387,15 +430,16 @@ function openSideOverlay(project) {
     title: project.title,
     tagline: project.description || '',
     description: project.description || 'No description available.',
-    tech: [],
-    emoji: '💻',
+    tech: [project.type || 'Other', project.language || 'Unknown'],
     youtubeId: null,
     poster: null,
+    logo: project.image || '',
     dissertation: null,
+    repoUrl: project.url || null,
     theme: {
-      primary: '#007acc',
+      primary: project.accent || '#007acc',
       secondary: '#64ffda',
-      gradient: 'linear-gradient(135deg, #007acc 0%, #64ffda 100%)',
+      gradient: 'linear-gradient(135deg, ' + (project.accent || '#007acc') + ' 0%, #64ffda 100%)',
       cardGradient: ''
     }
   };
@@ -406,8 +450,20 @@ function openSideOverlay(project) {
 // Side Projects Pagination
 // ============================================================
 let sideProjects = [];
+let filteredSideProjects = [];
 let sideProjectsPage = 0;
 let sideProjectsPerPage = 9;
+let activeSideType = 'All';
+const SIDE_PROJECT_TAXONOMY = [
+  'Cybersecurity',
+  'Websites',
+  'Web App',
+  'Tooling',
+  'Mobile',
+  'AI/Data',
+  'Game',
+  'Other'
+];
 
 function getSideProjectsPerPage() {
   if (window.innerWidth <= 600) return 6;
@@ -415,21 +471,126 @@ function getSideProjectsPerPage() {
   return 9;
 }
 
+function slugifyType(type) {
+  return String(type || 'other').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+
+function stringToColor(text) {
+  let hash = 0;
+  const value = String(text || 'project');
+  for (let i = 0; i < value.length; i += 1) {
+    hash = value.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash) % 360;
+  return 'hsl(' + hue + ', 78%, 60%)';
+}
+
+function inferProjectType(repo) {
+  const name = (repo.name || '').toLowerCase();
+  const description = (repo.description || '').toLowerCase();
+  const language = (repo.language || '').toLowerCase();
+  const homepage = (repo.homepage || '').toLowerCase();
+  const text = name + ' ' + description;
+
+  if (/website|portfolio|landing page|wordpress|webflow|squarespace|wix|client site|marketing site/.test(text)) return 'Websites';
+  if (/guy\s*rofe|guyrofe|shayonika/.test(text)) return 'Websites';
+  if (/\.com|\.co\.uk|\.dev/.test(homepage)) return 'Websites';
+  if (/security|cyber|crypto|forensic|hacker|pentest|auth|privacy|encrypt/.test(text)) return 'Cybersecurity';
+  if (/game|play|adventure|quest|blockbash/.test(text)) return 'Game';
+  if (/mobile|android|ios|react native|flutter/.test(text)) return 'Mobile';
+  if (/ai|ml|machine learning|llm|vision|neural|model/.test(text)) return 'AI/Data';
+  if (/tool|cli|script|calc|compiler|extension|plugin|automation/.test(text)) return 'Tooling';
+  if (/web|site|frontend|backend|api|dashboard|app/.test(text)) return 'Web App';
+  if (/python|typescript|javascript|go|java|c\+\+|rust/.test(language)) {
+    return language === 'python' ? 'Tooling' : 'Web App';
+  }
+  return 'Other';
+}
+
+function refreshFilteredSideProjects() {
+  filteredSideProjects = activeSideType === 'All'
+    ? sideProjects.slice()
+    : sideProjects.filter(function (project) { return project.type === activeSideType; });
+}
+
+function renderSideProjectFilters() {
+  const filterContainer = document.getElementById('side-project-filters');
+  if (!filterContainer) return;
+
+  const uniqueTypes = sideProjects
+    .map(function (project) { return project.type; })
+    .filter(function (type, index, arr) { return arr.indexOf(type) === index; })
+    .sort(function (a, b) {
+      const orderA = SIDE_PROJECT_TAXONOMY.indexOf(a);
+      const orderB = SIDE_PROJECT_TAXONOMY.indexOf(b);
+      if (orderA === -1 && orderB === -1) return a.localeCompare(b);
+      if (orderA === -1) return 1;
+      if (orderB === -1) return -1;
+      return orderA - orderB;
+    });
+
+  const countsByType = sideProjects.reduce(function (acc, project) {
+    const key = project.type || 'Other';
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+
+  const unknownTypes = uniqueTypes.filter(function (type) {
+    return SIDE_PROJECT_TAXONOMY.indexOf(type) === -1;
+  });
+  const allTypes = ['All'].concat(SIDE_PROJECT_TAXONOMY).concat(unknownTypes);
+  filterContainer.innerHTML = '';
+  allTypes.forEach(function (type) {
+    const count = type === 'All' ? sideProjects.length : (countsByType[type] || 0);
+    const btn = document.createElement('button');
+    btn.className = 'side-filter-btn' + (type === activeSideType ? ' active' : '');
+    btn.type = 'button';
+    btn.innerHTML =
+      '<span class="side-filter-label">' + escapeHtml(type) + '</span>' +
+      '<span class="side-filter-count">' + String(count) + '</span>';
+    btn.setAttribute('aria-pressed', String(type === activeSideType));
+    btn.setAttribute('aria-label', type + ', ' + count + ' projects');
+    btn.addEventListener('click', function () {
+      activeSideType = type;
+      sideProjectsPage = 0;
+      refreshFilteredSideProjects();
+      renderSideProjectFilters();
+      renderSideProjects();
+    });
+    filterContainer.appendChild(btn);
+  });
+}
+
 function renderSideProjects() {
   const sideContainer = document.getElementById('side-projects');
   if (!sideContainer) return;
+
+  refreshFilteredSideProjects();
   sideContainer.innerHTML = '';
   sideProjectsPerPage = getSideProjectsPerPage();
+  const totalPages = Math.ceil(filteredSideProjects.length / sideProjectsPerPage) || 1;
+  if (sideProjectsPage >= totalPages) sideProjectsPage = 0;
+
   const start = sideProjectsPage * sideProjectsPerPage;
   const end = start + sideProjectsPerPage;
-  sideProjects.slice(start, end).forEach(function (project) {
+  filteredSideProjects.slice(start, end).forEach(function (project) {
     sideContainer.appendChild(createSideCard(project));
   });
+
+  if (filteredSideProjects.length === 0) {
+    sideContainer.innerHTML = '<p class="side-empty-state">No side projects match this type yet.</p>';
+  }
+
+  const nextButton = document.getElementById('side-projects-next');
+  if (nextButton) {
+    const hasMultiplePages = filteredSideProjects.length > sideProjectsPerPage;
+    nextButton.style.display = hasMultiplePages ? 'inline-flex' : 'none';
+  }
 }
 
 function handleSideProjectsNext() {
   sideProjectsPerPage = getSideProjectsPerPage();
-  const totalPages = Math.ceil(sideProjects.length / sideProjectsPerPage);
+  const totalPages = Math.ceil(filteredSideProjects.length / sideProjectsPerPage);
   if (totalPages === 0) return;
   sideProjectsPage = (sideProjectsPage + 1) % totalPages;
   renderSideProjects();
@@ -447,7 +608,12 @@ window.addEventListener('resize', function () {
 // ============================================================
 async function loadRepos(user) {
   const response = await fetch(
-    'https://api.github.com/users/' + user + '/repos?sort=updated&per_page=100'
+    'https://api.github.com/users/' + user + '/repos?sort=updated&per_page=100',
+    {
+      headers: {
+        Accept: 'application/vnd.github+json'
+      }
+    }
   );
   if (!response.ok) throw new Error('Network response was not ok');
   return response.json();
@@ -471,6 +637,7 @@ async function displayProjects() {
   // Build the exclusion list solely from MAIN_PROJECTS ids plus the portfolio repo itself.
   // Also exclude known alternate repo-name spellings that differ from the id.
   const mainNamesLower = MAIN_PROJECTS.map(function (p) { return p.id; }).concat([
+    'inspire',
     'cyclomaticcomplexitycalc',
     'dynamic-flowchart-for-device-provisioning-',
     'nathanbrown-bennett'
@@ -485,15 +652,25 @@ async function displayProjects() {
     });
 
     sideProjects = [];
+    const seen = new Set();
     repos.forEach(function (repo) {
-      if (!mainNamesLower.includes(repo.name.toLowerCase())) {
+      const repoName = (repo.name || '').toLowerCase();
+      const fullName = (repo.full_name || '').toLowerCase();
+      if (!mainNamesLower.includes(repoName) && !seen.has(fullName)) {
+        seen.add(fullName);
         sideProjects.push({
           title: repo.name,
-          description: repo.description || ''
+          description: repo.description || '',
+          language: repo.language || 'Unknown',
+          url: repo.html_url || '',
+          image: 'https://opengraph.githubassets.com/1/' + repo.full_name,
+          type: inferProjectType(repo),
+          accent: stringToColor(repo.full_name || repo.name)
         });
       }
     });
     sideProjectsPage = 0;
+    renderSideProjectFilters();
     renderSideProjects();
   } catch (err) {
     // Side projects unavailable — hide that section gracefully
@@ -502,6 +679,8 @@ async function displayProjects() {
       sideContainer.innerHTML =
         '<p style="color:var(--text-muted);padding:1rem;">Side projects unavailable right now.</p>';
     }
+    const filterContainer = document.getElementById('side-project-filters');
+    if (filterContainer) filterContainer.innerHTML = '';
   }
 }
 

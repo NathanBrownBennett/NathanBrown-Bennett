@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Inspire Poster</title>
+  <desc id="desc">Inspire project poster with dynamic gradient, streaks, and motivational messaging.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="45%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#0b1020"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#FACC15"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bgGrad)"/>
+  <circle cx="1030" cy="120" r="260" fill="#f97316" opacity="0.14"/>
+  <circle cx="210" cy="610" r="280" fill="#facc15" opacity="0.10"/>
+
+  <g opacity="0.3" stroke="url(#accentGrad)" stroke-width="2">
+    <path d="M110 130 C 340 40, 540 220, 820 140" fill="none"/>
+    <path d="M150 200 C 410 120, 650 300, 930 230" fill="none"/>
+    <path d="M80 280 C 360 200, 620 380, 980 300" fill="none"/>
+  </g>
+
+  <rect x="96" y="98" width="1088" height="524" rx="28" fill="#0f172a" opacity="0.78" stroke="#334155"/>
+
+  <text x="170" y="248" fill="url(#accentGrad)" font-family="Montserrat, Poppins, 'Segoe UI', sans-serif" font-size="128" font-weight="800" letter-spacing="4">INSPIRE</text>
+  <text x="176" y="312" fill="#e2e8f0" font-family="Montserrat, Poppins, 'Segoe UI', sans-serif" font-size="28" font-weight="500" letter-spacing="3">PERSONAL INSPIRATION AND MOTIVATION PLATFORM</text>
+
+  <text x="176" y="402" fill="#cbd5e1" font-family="Inter, 'Segoe UI', sans-serif" font-size="34" font-weight="600">Curated prompts. Habit momentum. Personal growth.</text>
+  <text x="176" y="454" fill="#94a3b8" font-family="Inter, 'Segoe UI', sans-serif" font-size="28">Designed to keep progress visible and motivation consistent.</text>
+
+  <g transform="translate(175, 515)">
+    <rect x="0" y="0" width="280" height="62" rx="12" fill="#f97316"/>
+    <text x="140" y="40" text-anchor="middle" fill="#ffffff" font-family="Montserrat, Poppins, 'Segoe UI', sans-serif" font-size="30" font-weight="700">DAILY MOMENTUM</text>
+  </g>
+
+  <g transform="translate(480, 515)">
+    <rect x="0" y="0" width="260" height="62" rx="12" fill="#facc15"/>
+    <text x="130" y="40" text-anchor="middle" fill="#1f2937" font-family="Montserrat, Poppins, 'Segoe UI', sans-serif" font-size="30" font-weight="700">MILESTONES</text>
+  </g>
+</svg>
