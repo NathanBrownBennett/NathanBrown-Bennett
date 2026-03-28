@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#001a00"/>
+      <stop offset="100%" style="stop-color:#002200"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Matrix rain effect (columns of characters) -->
+  <g font-family="monospace" font-size="12" fill="#00FF41" opacity="0.15">
+    <text x="30" y="30">1</text><text x="30" y="48">0</text><text x="30" y="66">1</text><text x="30" y="84">1</text><text x="30" y="102">0</text><text x="30" y="120">0</text><text x="30" y="138">1</text><text x="30" y="156">0</text>
+    <text x="60" y="50">0</text><text x="60" y="68">1</text><text x="60" y="86">0</text><text x="60" y="104">1</text><text x="60" y="122">1</text>
+    <text x="720" y="60">1</text><text x="720" y="78">0</text><text x="720" y="96">1</text><text x="720" y="114">0</text>
+    <text x="750" y="40">0</text><text x="750" y="58">1</text><text x="750" y="76">0</text><text x="750" y="94">1</text><text x="750" y="112">1</text>
+    <text x="780" y="80">1</text><text x="780" y="98">0</text><text x="780" y="116">1</text>
+  </g>
+
+  <!-- Shield (centre) -->
+  <g transform="translate(350, 90)" filter="url(#glow)">
+    <path d="M50,0 L100,20 L100,70 Q100,120 50,140 Q0,120 0,70 L0,20 Z"
+          fill="none" stroke="#00FF41" stroke-width="2.5" opacity="0.9"/>
+    <!-- Shield inner glow -->
+    <path d="M50,10 L90,26 L90,68 Q90,108 50,125 Q10,108 10,68 L10,26 Z"
+          fill="#00FF41" opacity="0.04"/>
+    <!-- Check mark inside shield -->
+    <polyline points="30,70 45,88 75,52"
+              fill="none" stroke="#00FF41" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  </g>
+
+  <!-- Terminal window (left) -->
+  <g transform="translate(80, 130)">
+    <rect width="200" height="150" rx="8" fill="#001800" stroke="#00CC33" stroke-width="1.5" opacity="0.9"/>
+    <!-- Terminal header -->
+    <rect width="200" height="24" rx="8" fill="#002800" opacity="0.8"/>
+    <circle cx="16" cy="12" r="5" fill="#ff5f57" opacity="0.7"/>
+    <circle cx="32" cy="12" r="5" fill="#febc2e" opacity="0.7"/>
+    <circle cx="48" cy="12" r="5" fill="#28c840" opacity="0.7"/>
+    <!-- Terminal text -->
+    <text x="12" y="46" font-family="monospace" font-size="10" fill="#00FF41" opacity="0.9">$ nmap -sV 192.168.1.1</text>
+    <text x="12" y="62" font-family="monospace" font-size="10" fill="#00CC33" opacity="0.7">Starting Nmap scan...</text>
+    <text x="12" y="78" font-family="monospace" font-size="10" fill="#00FF41" opacity="0.8">PORT   STATE SERVICE</text>
+    <text x="12" y="94" font-family="monospace" font-size="10" fill="#00CC33" opacity="0.7">22/tcp open  ssh</text>
+    <text x="12" y="110" font-family="monospace" font-size="10" fill="#00CC33" opacity="0.7">80/tcp open  http</text>
+    <text x="12" y="126" font-family="monospace" font-size="10" fill="#00FF41" opacity="0.9">443/tcp open  https</text>
+    <text x="12" y="142" font-family="monospace" font-size="10" fill="#00FF41" opacity="0.6">▮</text>
+  </g>
+
+  <!-- XSS / Attack visualisation (right) -->
+  <g transform="translate(530, 130)">
+    <rect width="180" height="130" rx="8" fill="#001800" stroke="#00CC33" stroke-width="1.5" opacity="0.9"/>
+    <rect width="180" height="24" rx="8" fill="#002800" opacity="0.8"/>
+    <text x="8" y="14" font-family="monospace" font-size="9" fill="#00CC33" opacity="0.8">attack_sim.py</text>
+    <text x="10" y="46" font-family="monospace" font-size="9" fill="#FF4444" opacity="0.8">ALERT: SQLi detected</text>
+    <text x="10" y="62" font-family="monospace" font-size="9" fill="#00FF41" opacity="0.7">BLOCKED ✓</text>
+    <text x="10" y="78" font-family="monospace" font-size="9" fill="#FF4444" opacity="0.8">ALERT: XSS payload</text>
+    <text x="10" y="94" font-family="monospace" font-size="9" fill="#00FF41" opacity="0.7">BLOCKED ✓</text>
+    <text x="10" y="110" font-family="monospace" font-size="9" fill="#00CC33" opacity="0.5">Simulation complete</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="400" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#00FF41" filter="url(#glow)">BlockBash</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#8892b0">Visual Cybersecurity Education Platform</text>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="800" height="3" fill="#00FF41"/>
+</svg>

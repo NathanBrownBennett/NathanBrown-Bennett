@@ -15,8 +15,9 @@ const MAIN_PROJECTS = [
       border: '#6C63FF'
     },
     youtubeId: null,
-    poster: 'assets/projects/mymark/poster.jpg',
+    poster: 'assets/projects/mymark/poster.svg',
     dissertation: 'assets/projects/mymark/MyMark-MSc-Dissertation.pdf',
+    repoUrl: null,
     emoji: '🔏',
     tech: ['Blockchain', 'Python', 'React', 'Web3', 'Cryptography']
   },
@@ -33,8 +34,9 @@ const MAIN_PROJECTS = [
       border: '#00FF41'
     },
     youtubeId: null,
-    poster: 'assets/projects/blockbash/poster.jpg',
+    poster: 'assets/projects/blockbash/poster.svg',
     dissertation: null,
+    repoUrl: null,
     emoji: '🛡️',
     tech: ['JavaScript', 'Node.js', 'D3.js', 'Canvas API', 'Security']
   },
@@ -51,8 +53,9 @@ const MAIN_PROJECTS = [
       border: '#FFD700'
     },
     youtubeId: null,
-    poster: 'assets/projects/hackergo/poster.jpg',
+    poster: 'assets/projects/hackergo/poster.svg',
     dissertation: null,
+    repoUrl: null,
     emoji: '🎮',
     tech: ['React Native', 'Node.js', 'GPS API', 'Gamification']
   },
@@ -69,8 +72,9 @@ const MAIN_PROJECTS = [
       border: '#FF8C42'
     },
     youtubeId: null,
-    poster: 'assets/projects/bpo/poster.jpg',
+    poster: 'assets/projects/bpo/poster.svg',
     dissertation: null,
+    repoUrl: 'https://github.com/NathanBrownBennett/AutoTimeSheet',
     emoji: '⚙️',
     tech: ['Python', 'React', 'Graph Analysis', 'REST API']
   },
@@ -87,8 +91,9 @@ const MAIN_PROJECTS = [
       border: '#0082FC'
     },
     youtubeId: null,
-    poster: 'assets/projects/bluetakk/poster.jpg',
+    poster: 'assets/projects/bluetakk/poster.svg',
     dissertation: null,
+    repoUrl: null,
     emoji: '📡',
     tech: ['BLE', 'Python', 'React', 'IoT', 'Real-time']
   },
@@ -105,8 +110,9 @@ const MAIN_PROJECTS = [
       border: '#9B5DE5'
     },
     youtubeId: null,
-    poster: 'assets/projects/picchat/poster.jpg',
+    poster: 'assets/projects/picchat/poster.svg',
     dissertation: null,
+    repoUrl: null,
     emoji: '💬',
     tech: ['React Native', 'Node.js', 'E2E Encryption', 'Privacy']
   },
@@ -123,8 +129,9 @@ const MAIN_PROJECTS = [
       border: '#8338EC'
     },
     youtubeId: null,
-    poster: 'assets/projects/multivol/poster.jpg',
+    poster: 'assets/projects/multivol/poster.svg',
     dissertation: null,
+    repoUrl: null,
     emoji: '💾',
     tech: ['Python', 'AES Encryption', 'CLI', 'Cross-platform']
   },
@@ -141,8 +148,9 @@ const MAIN_PROJECTS = [
       border: '#3D5A80'
     },
     youtubeId: null,
-    poster: 'assets/projects/cyha-mvp/poster.jpg',
+    poster: 'assets/projects/cyha-mvp/poster.png',
     dissertation: null,
+    repoUrl: 'https://github.com/NathanBrownBennett/CYHA-MVP',
     emoji: '🏠',
     tech: ['React', 'Node.js', 'RBAC', 'GDPR', 'PostgreSQL']
   },
@@ -159,8 +167,9 @@ const MAIN_PROJECTS = [
       border: '#3ECF8E'
     },
     youtubeId: null,
-    poster: 'assets/projects/complexity-calc/poster.jpg',
+    poster: 'assets/projects/complexity-calc/poster.webp',
     dissertation: null,
+    repoUrl: 'https://github.com/NathanBrownBennett/CyclomaticComplexityCalc',
     emoji: '📊',
     tech: ['Python', 'AST Parsing', 'VS Code API', 'CI/CD']
   },
@@ -177,8 +186,9 @@ const MAIN_PROJECTS = [
       border: '#0096C7'
     },
     youtubeId: '2_rwCbVFsDY',
-    poster: 'assets/projects/device-provisioning/poster.jpg',
+    poster: 'assets/projects/device-provisioning/poster.png',
     dissertation: null,
+    repoUrl: 'https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-',
     emoji: '🔧',
     tech: ['JavaScript', 'Node.js', 'D3.js', 'IoT', 'Network Security']
   }
@@ -246,6 +256,12 @@ function openOverlay(project) {
     actionsHtml +=
       '<a href="' + escapeHtml(project.dissertation) + '" download class="btn btn-download">' +
         '<span aria-hidden="true">📄</span> Download Dissertation' +
+      '</a>';
+  }
+  if (project.repoUrl) {
+    actionsHtml +=
+      '<a href="' + escapeHtml(project.repoUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-repo">' +
+        '<span aria-hidden="true">💻</span> View on GitHub' +
       '</a>';
   }
   actionsHtml +=

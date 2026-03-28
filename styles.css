@@ -917,6 +917,18 @@ body > *:not(#matrix-bg):not(#background-fader) {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
+.btn-repo {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-repo:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
 .btn-contact {
   background: var(--project-primary, #007acc);
   color: #fff;
