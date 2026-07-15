@@ -3,25 +3,6 @@
 // ============================================================
 const MAIN_PROJECTS = [
   {
-    id: 'mymark',
-    title: 'MyMark',
-    tagline: 'Media Fingerprinting & Blockchain Watermarking',
-    description: `MyMark is my MSc dissertation project that tackles the critical challenge of digital media ownership in an era of AI-generated content and rampant copying. The platform creates tamper-proof cryptographic fingerprints of digital media — images, videos, and documents — and records them immutably on a blockchain ledger.\n\nContent creators register their work through an intuitive web dashboard, generating a unique fingerprint that serves as undeniable proof of authorship. Third parties can verify any piece of content against the blockchain, instantly detecting unauthorised copies or alterations. The system operates without any central authority, ensuring ownership records cannot be manipulated or deleted.\n\nMyMark bridges cutting-edge blockchain technology with practical intellectual property protection, delivering a solution that is both technically robust and accessible to everyday users.`,
-    theme: {
-      primary: '#6C63FF',
-      secondary: '#48CAE4',
-      gradient: 'linear-gradient(135deg, #6C63FF 0%, #48CAE4 100%)',
-      cardGradient: 'linear-gradient(160deg, rgba(108,99,255,0.18) 0%, rgba(72,202,228,0.07) 100%)',
-      border: '#6C63FF'
-    },
-    youtubeId: null,
-    poster: 'assets/projects/mymark/poster.svg',
-    dissertation: 'assets/projects/mymark/MyMark-MSc-Dissertation.pdf',
-    repoUrl: null,
-    logo: 'assets/projects/mymark/poster.png',
-    tech: ['Blockchain', 'Python', 'React', 'Web3', 'Cryptography']
-  },
-  {
     id: 'blockbash',
     title: 'Inspector',
     tagline: 'Gamified Cybersecurity Education Platform',
@@ -191,31 +172,128 @@ const MAIN_PROJECTS = [
     repoUrl: 'https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-',
     logo: 'assets/projects/device-provisioning/poster-from-repo.png',
     tech: ['JavaScript', 'Node.js', 'D3.js', 'IoT', 'Network Security']
-  },
-  {
-    id: 'inspire',
-    title: 'Inspire',
-    tagline: 'Personal Inspiration & Motivation Platform',
-    description: `Inspire is a platform concept focused on motivation, reflective growth, and daily momentum. It curates uplifting content, tracks progress through personal goals, and provides a lightweight journaling experience designed to keep users moving forward consistently.
-
-Built around clarity and positivity, Inspire combines curated prompts, progress checkpoints, and shareable milestones. The project explores how intentional product design can support habit-building and mental wellbeing without overwhelming users.
-
-The long-term direction for Inspire includes personalised recommendation signals, stronger community features, and a companion mobile experience to make inspiration accessible throughout the day.`,
-    theme: {
-      primary: '#F97316',
-      secondary: '#FACC15',
-      gradient: 'linear-gradient(135deg, #F97316 0%, #FACC15 100%)',
-      cardGradient: 'linear-gradient(160deg, rgba(249,115,22,0.14) 0%, rgba(250,204,21,0.08) 100%)',
-      border: '#F97316'
-    },
-    youtubeId: null,
-    poster: 'assets/projects/inspire/poster.svg',
-    logo: 'assets/projects/inspire/logo.svg',
-    dissertation: null,
-    repoUrl: 'https://github.com/NathanBrownBennett/Inspire',
-    tech: ['React', 'Node.js', 'Product Design', 'Wellbeing Tech']
   }
 ];
+
+// ============================================================
+// Recent work — verified against the active repositories and Codex project runs
+// ============================================================
+const RECENT_PROJECTS = [
+  {
+    id: 'cards-recent',
+    title: 'Cards',
+    category: 'Experiments',
+    type: 'Local-first game platform',
+    status: 'Cross-platform preview',
+    role: 'Product design & cross-platform engineering',
+    summary: 'A local-first iPhone and Android platform for creating and playing validated card-game templates on conventional and optional AR tables.',
+    challenge: 'Make nearby multiplayer and lightweight game creation predictable across platforms without relying on a cloud store or unrestricted code generation.',
+    built: 'Closed manifests, shared deterministic shuffle fixtures, host-authoritative state, encrypted Apple nearby transport, Android Nearby Connections, ARKit, and ARCore previews.',
+    proof: 'Shared schema, Swift, and Java conformance checks verify deterministic state; the web preview is tested at desktop and mobile sizes.',
+    boundary: 'Prompt draw is playable. Dedicated Poker and Guess Who runtimes, production cross-platform host/join, signing, and shared AR alignment remain milestones.',
+    tech: ['Swift', 'Java', 'ARKit', 'ARCore', 'JSON Schema', 'Nearby APIs'],
+    screenshots: [
+      { src: 'assets/projects/recent/cards/web-home.png', label: 'Browser preview' },
+      { src: 'assets/projects/recent/cards/ios-live-table.png', label: 'iOS live table' }
+    ],
+    repoUrl: 'https://github.com/JakkuAzzo/Cards_PythonQT_Demo',
+    releaseUrl: 'https://jakkuazzo.github.io/Cards_PythonQT_Demo/',
+    accent: '#f2b84b',
+    size: 'standard'
+  },
+  {
+    id: 'ghp-webeditor-recent',
+    title: 'GhP WebEditor',
+    category: 'Developer tools',
+    type: 'GitHub Pages visual editor',
+    status: 'Working prototype',
+    role: 'Product design & full-stack engineering',
+    summary: 'A visual-and-code workflow for editing GitHub Pages repositories with file navigation, GUI composition, previews, themes, plugins, and collaboration concepts.',
+    challenge: 'Give non-specialists a friendlier route into static-site editing while preserving direct access to code, diffs, files, and Git history.',
+    built: 'Repository cloning, recursive file navigation, CodeMirror editing, GUI/code modes, split preview, diff and history tools, plugin hooks, and an Electron shell.',
+    proof: 'The demo repository includes captured browser flows for clone, file creation, GUI editing, preview, tabs, and save interactions.',
+    boundary: 'The current package has no automated test suite. Authentication, collaboration, Copilot integration, and production commit/push need further hardening.',
+    tech: ['CodeMirror 5', 'Express 4', 'Electron 39', 'simple-git', 'Marked', 'Font Awesome'],
+    screenshots: [
+      { src: 'assets/projects/recent/ghp-webeditor/app-loaded.png', label: 'Editor workspace' },
+      { src: 'assets/projects/recent/ghp-webeditor/gui-preview.png', label: 'GUI editor mode' }
+    ],
+    repoUrl: 'https://github.com/JakkuAzzo/GhP-WebEditor',
+    releaseUrl: null,
+    accent: '#4d9cff',
+    size: 'standard'
+  },
+  {
+    id: 'flowcue-recent',
+    title: 'FlowCue',
+    category: 'Creative tools',
+    type: 'Local/LAN performance controller',
+    status: 'Public beta · v1.2.0',
+    role: 'Product design & full-stack engineering',
+    summary: 'A trusted local controller that keeps performer and audience screens in sync for churches, business presentations, and live stages.',
+    challenge: 'Keep running order, lyrics, cues, and display state reliable across venue screens without depending on a hosted cloud service.',
+    built: 'Three remembered modes, persistent SQLite content, synchronized controller/performer/audience screens, media backgrounds, web embeds, presence, and reconnect snapshots.',
+    proof: 'Lint, unit/integration, production build, and Chromium E2E checks pass; v1.2.0 installers are published for Windows and Intel/Apple Silicon macOS.',
+    boundary: 'Local/LAN public beta. Installers are unsigned; physical venue Wi-Fi, hardware, reconnect, and long-running media validation remains.',
+    tech: ['React 19', 'Vite 7', 'Express 5', 'Socket.IO 4', 'SQLite', 'Electron'],
+    screenshots: [
+      { src: 'assets/projects/recent/flowcue/controller.png', label: 'Church controller' },
+      { src: 'assets/projects/recent/flowcue/home.png', label: 'Mode selection' }
+    ],
+    repoUrl: 'https://github.com/JakkuAzzo/FlowCue',
+    releaseUrl: 'https://github.com/JakkuAzzo/FlowCue/releases/tag/v1.2.0',
+    accent: '#ff765d',
+    size: 'wide'
+  },
+  {
+    id: 'inspector-recent',
+    title: 'Inspector',
+    category: 'Security',
+    type: 'Cybersecurity learning platform',
+    status: 'Institution pilot ready',
+    role: 'Product direction, security engineering & full-stack development',
+    summary: 'A browser-based cyber education platform that combines story-led lessons, a block command editor, isolated learner terminals, and a beta network lab.',
+    challenge: 'Make practical command-line and networking concepts approachable without letting training exercises touch real targets or uncontrolled infrastructure.',
+    built: 'Four stable story lessons, a block-based command workflow, Docker-backed terminals, learner evidence, administration tools, and a Containerlab topology editor with proof-mode validation.',
+    proof: 'The unstable branch contains unit and integration coverage, Playwright pilot flows, security-boundary documentation, and timestamped visual evidence for story and network-runtime paths.',
+    boundary: 'Built for a controlled, desktop-first institution pilot of roughly one class. Local Docker and SMTP setup are required; the Network Editor remains beta and this is not presented as public SaaS.',
+    tech: ['Express 4', 'WebSockets', 'SQLite 3', 'Dockerode', 'PASETO', 'Containerlab'],
+    screenshots: [
+      { src: 'assets/projects/recent/inspector/story-arc.png', label: 'Mira story arc evidence' },
+      { src: 'assets/projects/recent/inspector/network-runtime.png', label: 'Containerlab runtime evidence' }
+    ],
+    repoUrl: 'https://github.com/JakkuAzzo/BlockBash/tree/unstable',
+    releaseUrl: null,
+    accent: '#f4cb4b',
+    size: 'tall'
+  },
+  {
+    id: 'device-provisioning-recent',
+    title: 'Device Provisioning Toolkit',
+    category: 'Security',
+    type: 'Secure device decision toolkit',
+    status: 'Verified prototype',
+    role: 'Research, product design & full-stack engineering',
+    summary: 'A procurement and hardening toolkit that compares devices, explains security posture, and turns a selection into practical setup guidance.',
+    challenge: 'Bring fragmented hardware, security, purchasing, and deployment decisions into one understandable workflow for personal, business, and government use.',
+    built: 'Use-case filtering, security scoring, device comparisons, Graphviz decision flows, retailer links, tailored hardening guidance, downloadable checklists, and script-generation controls.',
+    proof: 'The repository includes a complete walkthrough and captured end-to-end evidence across search, device detail, security guidance, purchasing, and responsive states.',
+    boundary: 'This is a research prototype, not a procurement guarantee. Live retailer data can be slow or change without notice, and generated hardening scripts must be reviewed before use.',
+    tech: ['Python', 'Flask 3', 'SQLite', 'Graphviz', 'Pandas', 'Bootstrap 5'],
+    screenshots: [
+      { src: 'assets/projects/recent/device-provisioning/home.png', label: 'Device discovery and scoring' },
+      { src: 'assets/projects/recent/device-provisioning/security-guide.png', label: 'Tailored security guide' }
+    ],
+    repoUrl: 'https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-',
+    releaseUrl: null,
+    accent: '#6b8cff',
+    size: 'standard'
+  }
+];
+
+const PUBLIC_PROJECT_ORDER = ['inspector-recent', 'flowcue-recent', 'cards-recent', 'ghp-webeditor-recent', 'device-provisioning-recent'];
+const PUBLIC_PROJECTS = RECENT_PROJECTS
+  .sort(function (a, b) { return PUBLIC_PROJECT_ORDER.indexOf(a.id) - PUBLIC_PROJECT_ORDER.indexOf(b.id); });
 
 // ============================================================
 // Email — "Get in Touch if Interested" template
@@ -241,6 +319,8 @@ function openOverlay(project) {
   const overlay = document.getElementById('overlay');
   const content = document.getElementById('overlay-content');
   if (!overlay || !content) return;
+  overlay.classList.remove('case-study-mode');
+  overlay.setAttribute('aria-hidden', 'false');
 
   // Set per-project CSS vars on the overlay element
   overlay.style.setProperty('--project-primary', project.theme.primary);
@@ -331,8 +411,15 @@ function openOverlay(project) {
 
 function closeOverlay() {
   var overlay = document.getElementById('overlay');
-  if (overlay) overlay.classList.remove('active');
+  if (overlay) {
+    overlay.classList.remove('active', 'case-study-mode');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
   document.body.style.overflow = '';
+  if (lastRecentTrigger) {
+    lastRecentTrigger.focus();
+    lastRecentTrigger = null;
+  }
 }
 
 // Converts newlines in description to paragraph breaks
@@ -355,6 +442,185 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+// ============================================================
+// Recent project index + case-study experience
+// ============================================================
+let activeRecentFilter = 'All';
+let lastRecentTrigger = null;
+
+function createRecentProjectCard(project) {
+  const card = document.createElement('button');
+  card.type = 'button';
+  card.className = 'recent-project-card recent-project-' + project.size;
+  card.dataset.project = project.id;
+  card.style.setProperty('--project-accent', project.accent);
+  card.setAttribute('aria-label', 'Open ' + project.title + ' case study');
+
+  const tagsHtml = project.tech.slice(0, 4)
+    .map(function (tag) { return '<span>' + escapeHtml(tag) + '</span>'; })
+    .join('');
+
+  card.innerHTML =
+    '<span class="recent-project-media">' +
+      '<img src="' + escapeHtml(project.screenshots[0].src) + '" alt="' + escapeHtml(project.title + ' — ' + project.screenshots[0].label) + '">' +
+    '</span>' +
+    '<span class="recent-project-copy">' +
+      '<span class="recent-project-kicker">' +
+        '<span>' + escapeHtml(project.type) + '</span>' +
+        '<span class="recent-project-status">' + escapeHtml(project.status) + '</span>' +
+      '</span>' +
+      '<strong>' + escapeHtml(project.title) + '</strong>' +
+      '<span class="recent-project-summary">' + escapeHtml(project.summary) + '</span>' +
+      '<span class="recent-project-role">' + escapeHtml(project.role) + '</span>' +
+      '<span class="recent-project-tags">' + tagsHtml + '</span>' +
+      '<span class="recent-project-cta">View project</span>' +
+    '</span>';
+
+  card.addEventListener('click', function () {
+    openCaseStudy(project, card);
+  });
+  return card;
+}
+
+function renderRecentProjects() {
+  const container = document.getElementById('featured-projects');
+  if (!container) return;
+  const visibleProjects = activeRecentFilter === 'All'
+    ? PUBLIC_PROJECTS
+    : PUBLIC_PROJECTS.filter(function (project) { return project.category === activeRecentFilter; });
+
+  container.innerHTML = '';
+  visibleProjects.forEach(function (project) {
+    container.appendChild(createRecentProjectCard(project));
+  });
+  if (visibleProjects.length === 0) {
+    container.innerHTML = '<p class="recent-empty">No selected projects are in this collection yet.</p>';
+  }
+}
+
+function initRecentProjectFilters() {
+  const filterGroup = document.getElementById('recent-project-filters');
+  if (!filterGroup) return;
+  filterGroup.querySelectorAll('.recent-filter').forEach(function (button) {
+    button.addEventListener('click', function () {
+      activeRecentFilter = button.getAttribute('data-filter') || 'All';
+      filterGroup.querySelectorAll('.recent-filter').forEach(function (candidate) {
+        const isActive = candidate === button;
+        candidate.classList.toggle('active', isActive);
+        candidate.setAttribute('aria-pressed', String(isActive));
+      });
+      renderRecentProjects();
+    });
+  });
+}
+
+function projectIndexHtml(activeProject) {
+  return PUBLIC_PROJECTS.map(function (project, index) {
+    const activeClass = project.id === activeProject.id ? ' active' : '';
+    return '<button type="button" class="case-study-index-item' + activeClass + '" data-project-id="' + escapeHtml(project.id) + '">' +
+      '<span class="case-study-number">' + String(index + 1).padStart(2, '0') + '</span>' +
+      '<span><strong>' + escapeHtml(project.title) + '</strong><small>' + escapeHtml(project.type) + '</small><em>' + escapeHtml(project.status) + '</em></span>' +
+    '</button>';
+  }).join('');
+}
+
+function caseStudyActionsHtml(project) {
+  let html = '<a class="case-study-action primary" href="' + escapeHtml(project.repoUrl) + '" target="_blank" rel="noopener noreferrer">View repository</a>';
+  if (project.releaseUrl) {
+    const label = project.id === 'flowcue-recent' ? 'Download v1.2.0' : 'Open live preview';
+    html += '<a class="case-study-action" href="' + escapeHtml(project.releaseUrl) + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
+  }
+  return html;
+}
+
+function openCaseStudy(project, trigger) {
+  const overlay = document.getElementById('overlay');
+  const content = document.getElementById('overlay-content');
+  if (!overlay || !content) return;
+  if (trigger) lastRecentTrigger = trigger;
+
+  overlay.style.setProperty('--project-primary', project.accent);
+  overlay.setAttribute('aria-hidden', 'false');
+  overlay.classList.add('case-study-mode');
+
+  const stackHtml = project.tech.map(function (tag) {
+    return '<span>' + escapeHtml(tag) + '</span>';
+  }).join('');
+  const thumbnailsHtml = project.screenshots.map(function (shot, index) {
+    return '<button type="button" class="case-study-thumb' + (index === 0 ? ' active' : '') + '" data-shot-index="' + index + '">' +
+      '<img src="' + escapeHtml(shot.src) + '" alt="">' +
+      '<span>' + escapeHtml(shot.label) + '</span>' +
+    '</button>';
+  }).join('');
+
+  content.innerHTML =
+    '<div class="case-study-shell">' +
+      '<div class="case-study-topbar">' +
+        '<button type="button" class="case-study-back">Back to all work</button>' +
+        '<span>Portfolio / 2026</span>' +
+        '<button type="button" class="case-study-close" aria-label="Close project details">Close</button>' +
+      '</div>' +
+      '<div class="case-study-layout">' +
+        '<aside class="case-study-index" aria-label="Recent projects">' +
+          '<p>Recent builds</p>' + projectIndexHtml(project) +
+        '</aside>' +
+        '<main class="case-study-main">' +
+          '<div class="case-study-media">' +
+            '<img id="case-study-main-image" src="' + escapeHtml(project.screenshots[0].src) + '" alt="' + escapeHtml(project.title + ' — ' + project.screenshots[0].label) + '">' +
+          '</div>' +
+          '<div class="case-study-thumbs" aria-label="Project screenshots">' + thumbnailsHtml + '</div>' +
+        '</main>' +
+        '<aside class="case-study-details">' +
+          '<div class="case-study-heading">' +
+            '<p>' + escapeHtml(project.type) + '</p>' +
+            '<h3 id="overlay-title">' + escapeHtml(project.title) + '</h3>' +
+            '<span class="case-study-status">' + escapeHtml(project.status) + '</span>' +
+          '</div>' +
+          '<p class="case-study-summary">' + escapeHtml(project.summary) + '</p>' +
+          '<dl class="case-study-meta">' +
+            '<div><dt>Role</dt><dd>' + escapeHtml(project.role) + '</dd></div>' +
+            '<div><dt>Stack</dt><dd class="case-study-stack">' + stackHtml + '</dd></div>' +
+          '</dl>' +
+          '<div class="case-study-facts">' +
+            '<section><h4>Challenge</h4><p>' + escapeHtml(project.challenge) + '</p></section>' +
+            '<section><h4>Built</h4><p>' + escapeHtml(project.built) + '</p></section>' +
+            '<section><h4>Proof</h4><p>' + escapeHtml(project.proof) + '</p></section>' +
+          '</div>' +
+          '<div class="case-study-boundary"><strong>Honest boundary</strong><p>' + escapeHtml(project.boundary) + '</p></div>' +
+          '<div class="case-study-actions">' + caseStudyActionsHtml(project) + '</div>' +
+        '</aside>' +
+      '</div>' +
+    '</div>';
+
+  content.querySelector('.case-study-back').addEventListener('click', closeOverlay);
+  content.querySelector('.case-study-close').addEventListener('click', closeOverlay);
+  content.querySelectorAll('.case-study-index-item').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const selected = PUBLIC_PROJECTS.find(function (candidate) {
+        return candidate.id === button.getAttribute('data-project-id');
+      });
+      if (selected) openCaseStudy(selected, lastRecentTrigger);
+    });
+  });
+  content.querySelectorAll('.case-study-thumb').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const index = Number(button.getAttribute('data-shot-index'));
+      const shot = project.screenshots[index];
+      const image = content.querySelector('#case-study-main-image');
+      if (!shot || !image) return;
+      image.src = shot.src;
+      image.alt = project.title + ' — ' + shot.label;
+      content.querySelectorAll('.case-study-thumb').forEach(function (candidate) {
+        candidate.classList.toggle('active', candidate === button);
+      });
+    });
+  });
+
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  content.querySelector('.case-study-close').focus();
 }
 
 // ============================================================
@@ -620,26 +886,19 @@ async function loadRepos(user) {
 }
 
 async function displayProjects() {
-  // --- Main Projects: static themed cards ---
-  const mainContainer = document.getElementById('main-projects');
-  if (mainContainer) {
-    const carouselTrack = mainContainer.querySelector('.carousel-track');
-    if (carouselTrack) {
-      carouselTrack.innerHTML = '';
-      MAIN_PROJECTS.forEach(function (project) {
-        carouselTrack.appendChild(createMainCard(project));
-      });
-    }
-  }
-  initCarousel();
+  renderRecentProjects();
 
   // --- Side Projects: from GitHub API (filter out main project names) ---
   // Build the exclusion list solely from MAIN_PROJECTS ids plus the portfolio repo itself.
   // Also exclude known alternate repo-name spellings that differ from the id.
-  const mainNamesLower = MAIN_PROJECTS.map(function (p) { return p.id; }).concat([
-    'inspire',
+  const mainNamesLower = MAIN_PROJECTS.map(function (p) { return p.id; })
+    .concat(PUBLIC_PROJECTS.map(function (p) { return p.repoUrl.split('/').pop().toLowerCase(); }))
+    .concat([
+    'blockbash',
     'cyclomaticcomplexitycalc',
     'dynamic-flowchart-for-device-provisioning-',
+    'inspire',
+    'mymark',
     'nathanbrown-bennett'
   ]);
 
@@ -809,6 +1068,7 @@ function initNavbarScroll() {
 // ============================================================
 document.addEventListener('DOMContentLoaded', function () {
   displayProjects();
+  initRecentProjectFilters();
   initScrollAnimations();
   initMobileNav();
   initNavbarScroll();

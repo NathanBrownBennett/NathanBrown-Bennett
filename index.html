@@ -119,8 +119,8 @@
               <div class="highlight-item">
                 <span class="highlight-icon" aria-hidden="true">🔒</span>
                 <div>
-                  <h4><a href="#projects">MyMark</a></h4>
-                  <p>Media fingerprinting &amp; blockchain watermarking</p>
+                  <h4><a href="#projects">FlowCue</a></h4>
+                  <p>Local/LAN show control for live venues</p>
                 </div>
               </div>
               <div class="highlight-item">
@@ -155,19 +155,30 @@
          ============================ -->
     <section id="projects" class="section section-alt">
       <div class="container">
-        <h2 class="section-title fade-in">Projects</h2>
-        <p class="section-subtitle fade-in">Explore my main and side projects, showcasing skills in cybersecurity, software development, and innovative tech solutions.</p>
-
-        <h3 class="subsection-title fade-in">Main Projects</h3>
-        <div class="projects-carousel-wrap fade-in">
-          <button id="prev-btn" class="carousel-arrow prev" aria-label="Previous project">&#8249;</button>
-          <div id="main-projects" class="projects-carousel-track-wrap">
-            <div class="carousel-track"></div>
+        <div class="projects-heading fade-in">
+          <div>
+            <p class="projects-eyebrow">Portfolio / 2026</p>
+            <h2 class="projects-statement">Products built to<br>solve real problems</h2>
+            <p class="projects-intro">Security, creative tooling, and human-centred software designed to make complex work simpler, safer, and more useful.</p>
           </div>
-          <button id="next-btn" class="carousel-arrow next" aria-label="Next project">&#8250;</button>
+          <div id="recent-project-filters" class="recent-project-filters" aria-label="Filter selected work">
+            <button type="button" class="recent-filter active" data-filter="All" aria-pressed="true">All work</button>
+            <button type="button" class="recent-filter" data-filter="Security" aria-pressed="false">Security</button>
+            <button type="button" class="recent-filter" data-filter="Creative tools" aria-pressed="false">Creative tools</button>
+            <button type="button" class="recent-filter" data-filter="Developer tools" aria-pressed="false">Developer tools</button>
+            <button type="button" class="recent-filter" data-filter="Experiments" aria-pressed="false">Experiments</button>
+          </div>
         </div>
 
-        <h3 class="subsection-title fade-in">Side Projects</h3>
+        <div id="featured-projects" class="recent-projects-grid fade-in" aria-live="polite"></div>
+
+        <div class="archive-heading fade-in">
+          <div>
+            <p class="projects-eyebrow">More work</p>
+            <h3>Project archive</h3>
+          </div>
+          <p>Public repositories and earlier experiments, loaded from GitHub.</p>
+        </div>
         <div id="side-project-filters" class="side-project-filters" aria-label="Filter side projects by type"></div>
         <div id="side-projects" class="side-projects-grid"></div>
         <div class="side-projects-nav">
@@ -175,8 +186,8 @@
         </div>
       </div>
 
-      <!-- Project detail overlay — content built dynamically by script.js -->
-      <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+      <!-- Project case-study overlay — content built dynamically by script.js -->
+      <div id="overlay" class="overlay case-study-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title" aria-hidden="true">
         <div class="overlay-content" id="overlay-content"></div>
       </div>
     </section>
