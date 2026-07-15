@@ -1063,6 +1063,15 @@ function initNavbarScroll() {
   }, { passive: true });
 }
 
+function initContactFormStatus() {
+  const success = document.getElementById('contact-success');
+  if (!success) return;
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') === '1') {
+    success.hidden = false;
+  }
+}
+
 // ============================================================
 // DOMContentLoaded — wire everything up
 // ============================================================
@@ -1072,6 +1081,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initScrollAnimations();
   initMobileNav();
   initNavbarScroll();
+  initContactFormStatus();
 
   // Overlay backdrop click & keyboard close
   const overlay = document.getElementById('overlay');

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nathan Brown-Bennett — Portfolio</title>
   <meta name="description" content="Nathan Brown-Bennett – Cybersecurity Researcher &amp; Software Developer. MSc Network &amp; Information Security, Kingston University London.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -76,8 +76,8 @@
           <p class="hero-subtitle">Cybersecurity Researcher &amp; Software Developer</p>
           <p class="hero-location">MSc Network &amp; Information Security &middot; Kingston University London</p>
           <div class="hero-actions">
-            <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="btn btn-primary">
-              <span aria-hidden="true">📄</span> Download CV
+            <a href="output/pdf/Nathan-Brown-Bennett-Portfolio-CV.pdf" download class="btn btn-primary">
+              <span aria-hidden="true">📄</span> Download Portfolio CV
             </a>
             <a href="#projects" class="btn btn-outline">View Projects</a>
           </div>
@@ -93,10 +93,10 @@
         <h2 class="section-title fade-in">About Me</h2>
         <div class="about-grid">
           <div class="about-bio fade-in">
-            <p>I'm Nathan Brown-Bennett, a cybersecurity researcher, software developer, and MSc student in Network and Information Security at Kingston University London. I build secure, user-friendly technology for social impact.</p>
-            <p>With a BSc in Cyber Security &amp; Digital Forensics and ongoing MSc studies, I combine academic rigour with hands-on development. My work focuses on designing solutions that are both technically robust and genuinely user-friendly.</p>
-            <a href="Professional Resume Nathan Brown-Bennett 2025.pdf" download class="btn btn-primary about-cv-btn">
-              <span aria-hidden="true">📄</span> Download CV
+            <p>I'm Nathan Brown-Bennett, a cybersecurity and software professional with an MSc in Network and Information Security from Kingston University London. I build secure, user-friendly technology for social impact and practical business operations.</p>
+            <p>With a BSc in Cyber Security &amp; Digital Forensics and experience across security engineering, technical education and product delivery, I combine academic rigour with hands-on development. My work focuses on solutions that are technically robust and genuinely useful.</p>
+            <a href="output/pdf/Nathan-Brown-Bennett-ATS-CV.pdf" download class="btn btn-primary about-cv-btn">
+              <span aria-hidden="true">📄</span> Download ATS CV
             </a>
           </div>
           <div class="about-highlights fade-in">
@@ -266,36 +266,98 @@
     <section id="contact" class="section section-alt">
       <div class="container">
         <h2 class="section-title fade-in">Get in Touch</h2>
-        <p class="section-subtitle fade-in">I'm always open to discussing new opportunities, collaborations, and research.</p>
-        <div class="contact-grid">
-          <a href="mailto:nathanbrownbennett@gmail.com" class="contact-card fade-in">
-            <span class="contact-icon" aria-hidden="true">📧</span>
-            <div>
-              <h3>Email</h3>
-              <p>nathanbrownbennett@gmail.com</p>
+        <p class="section-subtitle fade-in">Have an opportunity, collaboration, or research question? Send the context below and I'll reply by email.</p>
+
+        <div class="contact-layout">
+          <form class="contact-form fade-in" action="https://formsubmit.co/Nathanbrown-bennett@hotmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New portfolio enquiry">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://nathanbrownbennett.github.io/NathanBrown-Bennett/?sent=1#contact">
+            <input type="hidden" name="_url" value="https://nathanbrownbennett.github.io/NathanBrown-Bennett/#contact">
+            <div class="contact-honeypot" aria-hidden="true">
+              <label for="contact-company-site">Leave this field empty</label>
+              <input id="contact-company-site" type="text" name="_honey" tabindex="-1" autocomplete="off">
             </div>
-          </a>
-          <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" class="contact-card fade-in">
-            <span class="contact-icon" aria-hidden="true">💼</span>
-            <div>
-              <h3>LinkedIn</h3>
-              <p>Connect professionally</p>
+
+            <div class="contact-form-heading">
+              <div>
+                <p class="contact-form-kicker">Direct enquiry</p>
+                <h3>Tell me what you're working on</h3>
+              </div>
+              <span>Usually replies within 2 working days</span>
             </div>
-          </a>
-          <a href="https://github.com/NathanBrownBennett" target="_blank" rel="noopener" class="contact-card fade-in">
-            <span class="contact-icon" aria-hidden="true">💻</span>
-            <div>
-              <h3>GitHub</h3>
-              <p>Check out my projects</p>
+
+            <p id="contact-success" class="contact-form-status" role="status" aria-live="polite" hidden>
+              Thanks — your message has been sent. I'll get back to you shortly.
+            </p>
+
+            <div class="contact-form-grid">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" autocomplete="name" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+              <label>
+                <span>Organisation <em>Optional</em></span>
+                <input type="text" name="organisation" autocomplete="organization">
+              </label>
+              <label>
+                <span>Enquiry type</span>
+                <select name="enquiry_type" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option value="Job opportunity">Job opportunity</option>
+                  <option value="Project collaboration">Project collaboration</option>
+                  <option value="Research">Research</option>
+                  <option value="Speaking or workshop">Speaking or workshop</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+              <label class="contact-form-message">
+                <span>Message</span>
+                <textarea name="message" rows="7" minlength="20" placeholder="A little context, the outcome you're aiming for, and any useful dates." required></textarea>
+              </label>
             </div>
-          </a>
+
+            <div class="contact-form-footer">
+              <p>Your details are used only to respond to this enquiry. Form delivery is handled by FormSubmit.</p>
+              <button type="submit" class="btn btn-primary">Send enquiry</button>
+            </div>
+          </form>
+
+          <aside class="contact-aside fade-in" aria-label="Other ways to connect">
+            <div>
+              <p class="contact-form-kicker">Elsewhere</p>
+              <h3>Prefer another channel?</h3>
+              <p>Use LinkedIn for professional introductions or GitHub for project-specific discussion.</p>
+            </div>
+            <div class="contact-grid">
+              <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" class="contact-card">
+                <div>
+                  <h3>LinkedIn</h3>
+                  <p>Connect professionally</p>
+                </div>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a href="https://github.com/NathanBrownBennett" target="_blank" rel="noopener" class="contact-card">
+                <div>
+                  <h3>GitHub</h3>
+                  <p>Discuss a repository</p>
+                </div>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <p class="contact-privacy-note">Phone number and residential address are available privately on request.</p>
+          </aside>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Nathan Brown-Bennett &mdash; Cybersecurity &amp; Software Development</p>
+    <p>&copy; 2026 Nathan Brown-Bennett &mdash; Cybersecurity &amp; Software Development</p>
   </footer>
 
   <script src="script.js"></script>
