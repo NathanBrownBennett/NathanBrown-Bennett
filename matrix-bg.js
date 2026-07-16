@@ -3,6 +3,11 @@
 (function() {
   const canvas = document.getElementById('matrix-bg');
   if (!canvas) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reducedMotion.matches) {
+    canvas.hidden = true;
+    return;
+  }
   const ctx = canvas.getContext('2d');
 
   let width = window.innerWidth;

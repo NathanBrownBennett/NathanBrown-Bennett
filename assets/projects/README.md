@@ -1,29 +1,24 @@
 # Project Assets
 
-This directory holds media assets for each project showcase card.
+This directory holds project media. The recruiter-facing case studies use real screenshots from `recent/`.
 
 ## Directory structure
 
-Each subdirectory corresponds to a project. Place the following files inside each:
+Each public case study should include at least two screenshots that show meaningfully different product states:
 
 | File | Description |
 |------|-------------|
-| `poster.jpg` | A screenshot or promotional poster for the project (displayed in the project overlay). Recommended: 1280×720px. |
-| `dissertation.pdf` | The MSc / research dissertation for the project (where applicable). |
+| `home.png` or equivalent | A recognisable product overview. |
+| Feature screenshot | Evidence of a distinct workflow, result or interaction. |
 
 ## Projects
 
-| Directory | Project |
-|-----------|---------|
-| `mymark/` | MyMark — add `poster.jpg` **and** `MyMark-MSc-Dissertation.pdf` |
-| `blockbash/` | BlockBash — add `poster.jpg` |
-| `hackergo/` | HackerGo — add `poster.jpg` |
-| `bpo/` | BPO — add `poster.jpg` |
-| `bluetakk/` | bluetakk — add `poster.jpg` |
-| `picchat/` | PicChat — add `poster.jpg` |
-| `multivol/` | MultiVol — add `poster.jpg` |
-| `cyha-mvp/` | CYHA-MVP — add `poster.jpg` |
-| `complexity-calc/` | CyclomaticComplexityCalc — add `poster.jpg` |
-| `device-provisioning/` | Device Provisioning — add `poster.jpg` |
+| Directory | Public case study |
+|-----------|-------------------|
+| `recent/inspector/` | Inspector |
+| `recent/flowcue/` | FlowCue |
+| `recent/cards/` | Cards |
+| `recent/ghp-webeditor/` | GhP WebEditor |
+| `recent/device-provisioning/` | Device Provisioning Toolkit |
 
-> If a poster or dissertation is not present the corresponding UI element will simply be hidden automatically.
+Inspire and MyMark are deliberately excluded from the public project grid. MyMark's academic documents remain linked only from the CVs.

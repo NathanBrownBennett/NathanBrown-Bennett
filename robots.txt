@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nathanbrownbennett.github.io/NathanBrown-Bennett/sitemap.xml

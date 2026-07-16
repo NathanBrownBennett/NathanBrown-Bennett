@@ -46,6 +46,16 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: 3px;
+}
+
+#main-content:focus {
+  outline: none;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -54,6 +64,24 @@ img {
 
 ul {
   list-style: none;
+}
+
+.skip-link {
+  background: var(--accent2);
+  border-radius: 0 0 8px 8px;
+  color: #061224;
+  font-weight: 800;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  top: 0;
+  transform: translateY(-120%);
+  transition: transform var(--transition);
+  z-index: 2000;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 /* ============================================================
@@ -361,14 +389,14 @@ body > *:not(#matrix-bg):not(#background-fader) {
   transform: translateY(-2px);
 }
 
-/* Fade-in animation */
-.fade-in {
+/* Content remains visible without JavaScript; animation is progressive enhancement. */
+.js .fade-in {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: none;
 }
@@ -511,6 +539,74 @@ body > *:not(#matrix-bg):not(#background-fader) {
   font-size: 1.3rem;
   flex-shrink: 0;
   margin-top: 2px;
+}
+
+.highlight-icon-image {
+  background: #071323;
+  border: 1px solid rgba(136, 146, 176, 0.18);
+  border-radius: 8px;
+  flex: 0 0 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: top center;
+  width: 50px;
+}
+
+/* ============================================================
+   Experience
+   ============================================================ */
+.experience-section {
+  background: linear-gradient(180deg, rgba(17, 34, 64, 0.45), rgba(10, 25, 47, 0.35));
+  border-bottom: 1px solid rgba(136, 146, 176, 0.08);
+  border-top: 1px solid rgba(136, 146, 176, 0.08);
+}
+
+.experience-list {
+  border-top: 1px solid rgba(136, 146, 176, 0.18);
+}
+
+.experience-item {
+  border-bottom: 1px solid rgba(136, 146, 176, 0.18);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(145px, 0.35fr) minmax(0, 1fr);
+  padding: 1.55rem 0;
+}
+
+.experience-item time,
+.experience-item > div:first-child span {
+  color: var(--accent2);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.experience-item > div:first-child span {
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  margin-top: 0.3rem;
+}
+
+.experience-item h3 {
+  color: var(--white);
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.experience-company {
+  color: var(--accent2);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin: 0.2rem 0 0.55rem;
+}
+
+.experience-item > div:last-child > p:last-child {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.7;
+  max-width: 760px;
 }
 
 .highlight-item h4 {
@@ -793,11 +889,15 @@ body > *:not(#matrix-bg):not(#background-fader) {
 }
 
 .side-project-card {
+  color: inherit;
+  font: inherit;
   position: relative;
   border-left: 3px solid var(--side-accent, var(--accent));
   max-width: none;
   min-width: 0;
   overflow: hidden;
+  text-align: left;
+  width: 100%;
 }
 
 .side-project-card::after {
@@ -1441,7 +1541,7 @@ body > *:not(#matrix-bg):not(#background-fader) {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin: 0;
-  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 /* ============================================================
@@ -1579,6 +1679,11 @@ footer {
   }
 
   .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-item {
+    gap: 0.75rem;
     grid-template-columns: 1fr;
   }
 
@@ -2411,6 +2516,27 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  #background-fader,
+  #matrix-bg {
+    display: none;
+  }
+
   .recent-project-card,
   .recent-project-card::after,
   .recent-project-media img {

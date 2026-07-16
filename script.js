@@ -117,25 +117,6 @@ const MAIN_PROJECTS = [
     tech: ['Python', 'AES Encryption', 'CLI', 'Cross-platform']
   },
   {
-    id: 'cyha-mvp',
-    title: 'CYHA-MVP',
-    tagline: 'Cyber Housing Application — Minimum Viable Product',
-    description: `CYHA-MVP is the foundational MVP for a cyber-secure housing management application designed to bring modern digital security practices to the social and affordable housing sector.\n\nThe platform allows housing officers to manage tenancy records, maintenance requests, and communications through a secure, GDPR-compliant interface — replacing the insecure, ad-hoc email and spreadsheet workflows common in smaller housing associations. Role-based access control, audit trails, and encrypted data storage ensure that sensitive resident information is protected at every step.\n\nCYHA-MVP demonstrates how thoughtful security engineering can be embedded into public-sector software from day one, rather than bolted on as an afterthought.`,
-    theme: {
-      primary: '#3D5A80',
-      secondary: '#98C1D9',
-      gradient: 'linear-gradient(135deg, #3D5A80 0%, #98C1D9 100%)',
-      cardGradient: 'linear-gradient(160deg, rgba(61,90,128,0.18) 0%, rgba(152,193,217,0.08) 100%)',
-      border: '#3D5A80'
-    },
-    youtubeId: null,
-    poster: 'assets/projects/cyha-mvp/poster.png',
-    dissertation: null,
-    repoUrl: 'https://github.com/NathanBrownBennett/CYHA-MVP',
-    logo: 'assets/projects/cyha-mvp/poster-from-repo.png',
-    tech: ['React', 'Node.js', 'RBAC', 'GDPR', 'PostgreSQL']
-  },
-  {
     id: 'complexity-calc',
     title: 'CyclomaticComplexityCalc',
     tagline: 'Code Quality & Complexity Analysis Tool',
@@ -286,6 +267,13 @@ const RECENT_PROJECTS = [
     ],
     repoUrl: 'https://github.com/NathanBrownBennett/Dynamic-Flowchart-For-Device-Provisioning-',
     releaseUrl: null,
+    resources: [
+      { label: 'Read undergraduate dissertation', url: 'assets/documents/device-provisioning-dissertation.pdf' },
+      { label: 'View updated presentation', url: 'assets/documents/device-provisioning-presentation.pdf' },
+      { label: 'Download presentation source', url: 'assets/documents/device-provisioning-presentation.pptx' },
+      { label: 'Read A-Level EPQ', url: 'assets/documents/a-level-epq-dissertation.pdf' },
+      { label: 'View A-Level EPQ presentation', url: 'assets/documents/a-level-epq-presentation.pdf' }
+    ],
     accent: '#6b8cff',
     size: 'standard'
   }
@@ -306,7 +294,44 @@ function buildMailtoLink(project) {
     '[Tell me a bit about yourself and why you\'re interested]\n\n' +
     'Looking forward to hearing from you!\n\nBest regards,\n[Your Name]'
   );
-  return 'mailto:nathanbrownbennett@gmail.com?subject=' + subject + '&body=' + body;
+  return 'mailto:Nathanbrown-bennett@hotmail.com?subject=' + subject + '&body=' + body;
+}
+
+let lastOverlayTrigger = null;
+
+function setPortfolioBackgroundInert(isInert) {
+  const background = document.querySelectorAll(
+    '#navbar, #mobile-nav, #hero, #about, #experience, #projects > .container, #updates, #contact, body > footer'
+  );
+  background.forEach(function (element) {
+    element.inert = isInert;
+  });
+}
+
+function getOverlayFocusables(overlay) {
+  return Array.from(overlay.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter(function (element) {
+    return element.getClientRects().length > 0;
+  });
+}
+
+function trapOverlayFocus(event, overlay) {
+  if (event.key !== 'Tab') return;
+  const focusables = getOverlayFocusables(overlay);
+  if (focusables.length === 0) {
+    event.preventDefault();
+    return;
+  }
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
 }
 
 // ============================================================
@@ -319,6 +344,9 @@ function openOverlay(project) {
   const overlay = document.getElementById('overlay');
   const content = document.getElementById('overlay-content');
   if (!overlay || !content) return;
+  if (!overlay.classList.contains('active') && document.activeElement instanceof HTMLElement) {
+    lastOverlayTrigger = document.activeElement;
+  }
   overlay.classList.remove('case-study-mode');
   overlay.setAttribute('aria-hidden', 'false');
 
@@ -404,6 +432,7 @@ function openOverlay(project) {
 
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
+  setPortfolioBackgroundInert(true);
 
   // Focus the close button for accessibility
   if (closeBtn) closeBtn.focus();
@@ -416,10 +445,13 @@ function closeOverlay() {
     overlay.setAttribute('aria-hidden', 'true');
   }
   document.body.style.overflow = '';
-  if (lastRecentTrigger) {
-    lastRecentTrigger.focus();
-    lastRecentTrigger = null;
+  setPortfolioBackgroundInert(false);
+  const returnTarget = lastRecentTrigger || lastOverlayTrigger;
+  if (returnTarget && returnTarget.isConnected) {
+    returnTarget.focus();
   }
+  lastRecentTrigger = null;
+  lastOverlayTrigger = null;
 }
 
 // Converts newlines in description to paragraph breaks
@@ -464,7 +496,7 @@ function createRecentProjectCard(project) {
 
   card.innerHTML =
     '<span class="recent-project-media">' +
-      '<img src="' + escapeHtml(project.screenshots[0].src) + '" alt="' + escapeHtml(project.title + ' — ' + project.screenshots[0].label) + '">' +
+      '<img src="' + escapeHtml(project.screenshots[0].src) + '" alt="' + escapeHtml(project.title + ' — ' + project.screenshots[0].label) + '" loading="lazy" decoding="async">' +
     '</span>' +
     '<span class="recent-project-copy">' +
       '<span class="recent-project-kicker">' +
@@ -532,6 +564,9 @@ function caseStudyActionsHtml(project) {
     const label = project.id === 'flowcue-recent' ? 'Download v1.2.0' : 'Open live preview';
     html += '<a class="case-study-action" href="' + escapeHtml(project.releaseUrl) + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
   }
+  (project.resources || []).forEach(function (resource) {
+    html += '<a class="case-study-action" href="' + escapeHtml(resource.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(resource.label) + '</a>';
+  });
   return html;
 }
 
@@ -539,7 +574,10 @@ function openCaseStudy(project, trigger) {
   const overlay = document.getElementById('overlay');
   const content = document.getElementById('overlay-content');
   if (!overlay || !content) return;
-  if (trigger) lastRecentTrigger = trigger;
+  if (trigger && !overlay.classList.contains('active')) {
+    lastRecentTrigger = trigger;
+    lastOverlayTrigger = trigger;
+  }
 
   overlay.style.setProperty('--project-primary', project.accent);
   overlay.setAttribute('aria-hidden', 'false');
@@ -620,6 +658,7 @@ function openCaseStudy(project, trigger) {
 
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
+  setPortfolioBackgroundInert(true);
   content.querySelector('.case-study-close').focus();
 }
 
@@ -666,10 +705,9 @@ function createMainCard(project) {
 
 // Side project card (from GitHub API)
 function createSideCard(project) {
-  const card = document.createElement('div');
+  const card = document.createElement('button');
+  card.type = 'button';
   card.className = 'project-card side-project-card type-' + slugifyType(project.type || 'Other');
-  card.setAttribute('role', 'button');
-  card.setAttribute('tabindex', '0');
   card.setAttribute('aria-label', project.title + ': click to view details');
   card.style.setProperty('--side-accent', project.accent);
 
@@ -684,9 +722,6 @@ function createSideCard(project) {
 
   function openThis() { openSideOverlay(project); }
   card.addEventListener('click', openThis);
-  card.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openThis(); }
-  });
   return card;
 }
 
@@ -729,6 +764,25 @@ const SIDE_PROJECT_TAXONOMY = [
   'AI/Data',
   'Game',
   'Other'
+];
+
+// A deliberate public archive. Repositories not listed here remain available on
+// GitHub but do not appear automatically in the recruiter-facing portfolio.
+const CURATED_ARCHIVE = [
+  { fullName: 'JakkuAzzo/AutoTimeSheet-GHP', description: 'A staff operations portal for timesheets and practical business workflows.' },
+  { fullName: 'JakkuAzzo/codex-mac-ui' },
+  { fullName: 'JakkuAzzo/Myriad' },
+  { fullName: 'JakkuAzzo/MultiVol' },
+  { fullName: 'JakkuAzzo/GetMeHired-LinkedIn' },
+  { fullName: 'JakkuAzzo/GuyRofe' },
+  { fullName: 'JakkuAzzo/SarahMaslinBosher' },
+  { fullName: 'JakkuAzzo/tildesec' },
+  { fullName: 'JakkuAzzo/torNmap' },
+  { fullName: 'JakkuAzzo/onionCHecker' },
+  { fullName: 'NathanBrownBennett/genreq' },
+  { fullName: 'NathanBrownBennett/DisplayPlacerEasyMode' },
+  { fullName: 'NathanBrownBennett/OutlookOrganiser' },
+  { fullName: 'NathanBrownBennett/AutoTimeSheet' }
 ];
 
 function getSideProjectsPerPage() {
@@ -888,46 +942,30 @@ async function loadRepos(user) {
 async function displayProjects() {
   renderRecentProjects();
 
-  // --- Side Projects: from GitHub API (filter out main project names) ---
-  // Build the exclusion list solely from MAIN_PROJECTS ids plus the portfolio repo itself.
-  // Also exclude known alternate repo-name spellings that differ from the id.
-  const mainNamesLower = MAIN_PROJECTS.map(function (p) { return p.id; })
-    .concat(PUBLIC_PROJECTS.map(function (p) { return p.repoUrl.split('/').pop().toLowerCase(); }))
-    .concat([
-    'blockbash',
-    'cyclomaticcomplexitycalc',
-    'dynamic-flowchart-for-device-provisioning-',
-    'inspire',
-    'mymark',
-    'nathanbrown-bennett'
-  ]);
-
   try {
     const users = ['NathanBrownBennett', 'JakkuAzzo'];
-    const reposArrays = await Promise.all(users.map(loadRepos));
-    const repos = reposArrays.flat();
-    repos.sort(function (a, b) {
-      return new Date(b.updated_at) - new Date(a.updated_at);
-    });
+    const repoResults = await Promise.allSettled(users.map(loadRepos));
+    const repos = repoResults
+      .filter(function (result) { return result.status === 'fulfilled'; })
+      .flatMap(function (result) { return result.value; });
+    if (repos.length === 0) throw new Error('No public repositories were available');
+    const repoMap = new Map(repos.map(function (repo) {
+      return [(repo.full_name || '').toLowerCase(), repo];
+    }));
 
-    sideProjects = [];
-    const seen = new Set();
-    repos.forEach(function (repo) {
-      const repoName = (repo.name || '').toLowerCase();
-      const fullName = (repo.full_name || '').toLowerCase();
-      if (!mainNamesLower.includes(repoName) && !seen.has(fullName)) {
-        seen.add(fullName);
-        sideProjects.push({
-          title: repo.name,
-          description: repo.description || '',
-          language: repo.language || 'Unknown',
-          url: repo.html_url || '',
-          image: 'https://opengraph.githubassets.com/1/' + repo.full_name,
-          type: inferProjectType(repo),
-          accent: stringToColor(repo.full_name || repo.name)
-        });
-      }
-    });
+    sideProjects = CURATED_ARCHIVE.map(function (entry) {
+      const repo = repoMap.get(entry.fullName.toLowerCase());
+      if (!repo) return null;
+      return {
+        title: repo.name,
+        description: entry.description || repo.description || 'Public project with source and development history available on GitHub.',
+        language: repo.language || 'Mixed stack',
+        url: repo.html_url || '',
+        image: 'https://opengraph.githubassets.com/1/' + repo.full_name,
+        type: inferProjectType(repo),
+        accent: stringToColor(repo.full_name || repo.name)
+      };
+    }).filter(Boolean);
     sideProjectsPage = 0;
     renderSideProjectFilters();
     renderSideProjects();
@@ -1001,6 +1039,11 @@ function initCarousel() {
 // Scroll Animations (Intersection Observer)
 // ============================================================
 function initScrollAnimations() {
+  const elements = document.querySelectorAll('.fade-in');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    elements.forEach(function (element) { element.classList.add('visible'); });
+    return;
+  }
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -1010,7 +1053,7 @@ function initScrollAnimations() {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(function (el) {
+  elements.forEach(function (el) {
     observer.observe(el);
   });
 }
@@ -1023,11 +1066,12 @@ function initMobileNav() {
   const mobileNav = document.getElementById('mobile-nav');
   if (!hamburger || !mobileNav) return;
 
-  function closeMobileNav() {
+  function closeMobileNav(returnFocus) {
     mobileNav.classList.remove('open');
     hamburger.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
     mobileNav.setAttribute('aria-hidden', 'true');
+    if (returnFocus) hamburger.focus();
   }
 
   hamburger.addEventListener('click', function () {
@@ -1035,6 +1079,10 @@ function initMobileNav() {
     hamburger.classList.toggle('active', isOpen);
     hamburger.setAttribute('aria-expanded', String(isOpen));
     mobileNav.setAttribute('aria-hidden', String(!isOpen));
+    if (isOpen) {
+      const firstLink = mobileNav.querySelector('.mobile-nav-link');
+      if (firstLink) firstLink.focus();
+    }
   });
 
   mobileNav.querySelectorAll('.mobile-nav-link').forEach(function (link) {
@@ -1048,6 +1096,12 @@ function initMobileNav() {
       !hamburger.contains(e.target)
     ) {
       closeMobileNav();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+      closeMobileNav(true);
     }
   });
 }
@@ -1089,10 +1143,13 @@ document.addEventListener('DOMContentLoaded', function () {
     overlay.addEventListener('click', function (e) {
       if (e.target === overlay) closeOverlay();
     });
+    overlay.addEventListener('keydown', function (e) {
+      trapOverlayFocus(e, overlay);
+    });
   }
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeOverlay();
+    if (e.key === 'Escape' && overlay && overlay.classList.contains('active')) closeOverlay();
   });
 
   // Side projects pagination button
