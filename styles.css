@@ -1228,6 +1228,245 @@ body > *:not(#matrix-bg):not(#background-fader) {
 }
 
 /* ============================================================
+   Research Notes Section
+   ============================================================ */
+.research-section {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(100, 255, 218, 0.09), transparent 31rem),
+    linear-gradient(180deg, rgba(7, 19, 35, 0.98), rgba(10, 25, 47, 0.98));
+  overflow: hidden;
+}
+
+.research-heading {
+  align-items: end;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  margin-bottom: 2.5rem;
+}
+
+.research-intro {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 0 0.35rem;
+}
+
+.research-feature {
+  background: linear-gradient(145deg, rgba(20, 42, 70, 0.94), rgba(8, 22, 42, 0.98));
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+  display: grid;
+  gap: 0;
+  grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr);
+  min-height: 610px;
+  overflow: hidden;
+}
+
+.research-visuals {
+  background:
+    linear-gradient(145deg, rgba(100, 255, 218, 0.08), transparent 60%),
+    #061323;
+  min-height: 610px;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  position: relative;
+}
+
+.research-visuals::before {
+  border: 1px solid rgba(100, 255, 218, 0.13);
+  border-radius: 50%;
+  content: '';
+  height: 28rem;
+  left: -10rem;
+  position: absolute;
+  top: -10rem;
+  width: 28rem;
+}
+
+.research-visual {
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.research-visual img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.research-visual-primary {
+  left: clamp(1.5rem, 4vw, 3.5rem);
+  top: clamp(2rem, 5vw, 4.5rem);
+  transform: rotate(-2.5deg);
+  width: min(78%, 600px);
+}
+
+.research-visual-secondary {
+  bottom: clamp(2rem, 4vw, 3.5rem);
+  right: clamp(1.25rem, 3vw, 2.5rem);
+  transform: rotate(2.5deg);
+  width: min(70%, 540px);
+}
+
+.research-copy {
+  align-self: center;
+  padding: clamp(2rem, 4vw, 4rem);
+}
+
+.research-meta {
+  align-items: center;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+  font-weight: 800;
+  gap: 0.65rem;
+  letter-spacing: 0.09em;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.research-meta span:not(:last-child)::after {
+  color: rgba(136, 146, 176, 0.5);
+  content: ' /';
+  margin-left: 0.65rem;
+}
+
+.research-meta .research-status {
+  color: var(--accent2);
+}
+
+.research-copy h3 {
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.4vw, 3.4rem);
+  line-height: 1.04;
+  margin: 0 0 1.4rem;
+}
+
+.research-lede {
+  color: var(--text);
+  font-size: 0.96rem;
+  line-height: 1.75;
+  margin: 0 0 1.5rem;
+}
+
+.research-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.8rem;
+}
+
+.research-topics span {
+  background: rgba(100, 255, 218, 0.07);
+  border: 1px solid rgba(100, 255, 218, 0.16);
+  border-radius: 999px;
+  color: #b7c8df;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.45rem 0.7rem;
+}
+
+.research-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.research-actions .btn {
+  font-size: 0.76rem;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+}
+
+.research-text-link {
+  color: var(--accent2);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.research-text-link:hover,
+.research-text-link:focus-visible,
+.research-archive a:hover,
+.research-archive a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.research-archive {
+  border-top: 1px solid rgba(136, 146, 176, 0.14);
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+.research-archive summary {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.research-archive-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  padding-top: 0.9rem;
+}
+
+.research-archive a {
+  color: #b7c8df;
+  font-size: 0.72rem;
+}
+
+.research-next {
+  align-items: center;
+  border-bottom: 1px solid rgba(136, 146, 176, 0.14);
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 150px minmax(0, 1fr) auto;
+  padding: 2rem 0 0.5rem;
+}
+
+.research-next-label,
+.research-next-status {
+  color: var(--accent2);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.research-next h3 {
+  color: var(--white);
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem;
+}
+
+.research-next p {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.research-next-status {
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  border-radius: 999px;
+  padding: 0.45rem 0.65rem;
+  white-space: nowrap;
+}
+
+/* ============================================================
    Updates / Social Section
    ============================================================ */
 .social-grid {
@@ -2429,6 +2668,14 @@ footer {
 }
 
 @media (max-width: 1100px) {
+  .research-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .research-visuals {
+    min-height: 560px;
+  }
+
   .recent-project-card,
   .recent-project-tall {
     grid-column: span 6;
@@ -2449,6 +2696,50 @@ footer {
 }
 
 @media (max-width: 760px) {
+  .research-heading {
+    gap: 1.2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .research-feature {
+    min-height: 0;
+  }
+
+  .research-visuals {
+    min-height: 390px;
+  }
+
+  .research-copy {
+    padding: 1.5rem;
+  }
+
+  .research-copy h3 {
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
+  }
+
+  .research-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .research-actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .research-text-link {
+    padding: 0.5rem 0;
+  }
+
+  .research-next {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .research-next-status {
+    justify-self: start;
+  }
+
   .projects-heading {
     gap: 1.5rem;
     grid-template-columns: 1fr;

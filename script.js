@@ -271,8 +271,10 @@ const RECENT_PROJECTS = [
       { label: 'Read undergraduate dissertation', url: 'assets/documents/device-provisioning-dissertation.pdf' },
       { label: 'View updated presentation', url: 'assets/documents/device-provisioning-presentation.pdf' },
       { label: 'Download presentation source', url: 'assets/documents/device-provisioning-presentation.pptx' },
-      { label: 'Read A-Level EPQ', url: 'assets/documents/a-level-epq-dissertation.pdf' },
-      { label: 'View A-Level EPQ presentation', url: 'assets/documents/a-level-epq-presentation.pdf' }
+      { label: 'Read 2026 EPQ critical edition', url: 'assets/documents/a-level-epq-dissertation.pdf' },
+      { label: 'View EPQ episode deck', url: 'assets/documents/a-level-epq-presentation.pdf' },
+      { label: 'Read EPQ video script', url: 'assets/documents/a-level-epq-video-transcript.pdf' },
+      { label: 'View original 2020 EPQ', url: 'assets/documents/a-level-epq-original-submission.pdf' }
     ],
     accent: '#6b8cff',
     size: 'standard'
@@ -301,7 +303,7 @@ let lastOverlayTrigger = null;
 
 function setPortfolioBackgroundInert(isInert) {
   const background = document.querySelectorAll(
-    '#navbar, #mobile-nav, #hero, #about, #experience, #projects > .container, #updates, #contact, body > footer'
+    '#navbar, #mobile-nav, #hero, #about, #experience, #projects > .container, #research, #updates, #contact, body > footer'
   );
   background.forEach(function (element) {
     element.inert = isInert;
