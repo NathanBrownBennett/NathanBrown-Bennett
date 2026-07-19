@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the revised EPQ dissertation and its episode-one video script."""
+"""Build the full EPQ dissertation and its episode-one video script."""
 
 from __future__ import annotations
 
@@ -1117,7 +1117,7 @@ def build_transcript() -> Path:
             "Tone: reflective and precise, not embarrassed by the early work. The point is visible intellectual development.",
             "Data graphics: display the denominator, period and source; do not animate unrelated numbers together.",
             "Original document: label every excerpt “2020 A-level submission”.",
-            "Revised document: label every excerpt “2026 critical edition”.",
+            "New dissertation: label every excerpt “2026 standalone dissertation”.",
             "Product footage: use real current screens. Avoid implying that the prototype certifies a device or guarantees procurement outcomes.",
             "Accessibility: add captions, describe charts in speech, avoid fast text transitions, and provide the transcript on the website.",
         ),
@@ -1138,7 +1138,12 @@ def build_transcript() -> Path:
 
 
 if __name__ == "__main__":
-    dissertation = build_dissertation()
+    # The original critical-edition builder above is retained only to preserve
+    # the first production history. Public regeneration must always use the
+    # complete standalone dissertation.
+    from build_full_epq_dissertation import build as build_full_dissertation
+
+    dissertation = build_full_dissertation()
     transcript = build_transcript()
     print(dissertation)
     print(transcript)

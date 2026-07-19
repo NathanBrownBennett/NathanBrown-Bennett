@@ -271,7 +271,7 @@ const RECENT_PROJECTS = [
       { label: 'Read undergraduate dissertation', url: 'assets/documents/device-provisioning-dissertation.pdf' },
       { label: 'View updated presentation', url: 'assets/documents/device-provisioning-presentation.pdf' },
       { label: 'Download presentation source', url: 'assets/documents/device-provisioning-presentation.pptx' },
-      { label: 'Read 2026 EPQ critical edition', url: 'assets/documents/a-level-epq-dissertation.pdf' },
+      { label: 'Read full 2026 EPQ dissertation', url: 'assets/documents/a-level-epq-dissertation.pdf' },
       { label: 'View EPQ episode deck', url: 'assets/documents/a-level-epq-presentation.pdf' },
       { label: 'Read EPQ video script', url: 'assets/documents/a-level-epq-video-transcript.pdf' },
       { label: 'View original 2020 EPQ', url: 'assets/documents/a-level-epq-original-submission.pdf' }
