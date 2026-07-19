@@ -1113,10 +1113,48 @@ function initMobileNav() {
 // ============================================================
 function initNavbarScroll() {
   const navbar = document.getElementById('navbar');
+  const backToTop = document.getElementById('back-to-top');
   if (!navbar) return;
   window.addEventListener('scroll', function () {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
+    if (backToTop) backToTop.classList.toggle('visible', window.scrollY > window.innerHeight);
   }, { passive: true });
+}
+
+function initSectionNavigation() {
+  if (!('IntersectionObserver' in window)) return;
+
+  const links = Array.from(document.querySelectorAll(
+    '.nav-links a[href^="#"], .mobile-nav-link[href^="#"]'
+  ));
+  const sections = links
+    .map(function (link) { return document.querySelector(link.getAttribute('href')); })
+    .filter(function (section, index, all) {
+      return section && all.indexOf(section) === index;
+    });
+
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver(function (entries) {
+    const visible = entries
+      .filter(function (entry) { return entry.isIntersecting; })
+      .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; })[0];
+
+    if (!visible) return;
+    const activeHref = '#' + visible.target.id;
+    links.forEach(function (link) {
+      if (link.getAttribute('href') === activeHref) {
+        link.setAttribute('aria-current', 'location');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }, {
+    rootMargin: '-25% 0px -60% 0px',
+    threshold: [0, 0.1, 0.5]
+  });
+
+  sections.forEach(function (section) { observer.observe(section); });
 }
 
 function initContactFormStatus() {
@@ -1137,6 +1175,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initScrollAnimations();
   initMobileNav();
   initNavbarScroll();
+  initSectionNavigation();
   initContactFormStatus();
 
   // Overlay backdrop click & keyboard close

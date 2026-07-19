@@ -56,8 +56,8 @@
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">My Projects</a></li>
+        <li><a href="#research">My Research</a></li>
         <li><a href="#updates">Updates</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -84,8 +84,8 @@
     <ul role="list">
       <li><a href="#about" class="mobile-nav-link">About</a></li>
       <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
-      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
-      <li><a href="#research" class="mobile-nav-link">Research</a></li>
+      <li><a href="#projects" class="mobile-nav-link">My Projects</a></li>
+      <li><a href="#research" class="mobile-nav-link">My Research</a></li>
       <li><a href="#updates" class="mobile-nav-link">Updates</a></li>
       <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
     </ul>
@@ -117,7 +117,7 @@
             <a href="output/pdf/Nathan-Brown-Bennett-Portfolio-CV.pdf" download class="btn btn-primary">
               <span aria-hidden="true">📄</span> Download Portfolio CV
             </a>
-            <a href="#projects" class="btn btn-outline">View Projects</a>
+            <a href="#work" class="btn btn-outline">Explore My Work</a>
           </div>
         </div>
       </div>
@@ -211,13 +211,44 @@
     </section>
 
     <!-- ============================
+         Work Directory
+         ============================ -->
+    <section id="work" class="section work-directory" aria-labelledby="work-title">
+      <div class="container">
+        <div class="work-directory-heading fade-in">
+          <p class="projects-eyebrow">Explore my work</p>
+          <h2 id="work-title">Two connected bodies of work</h2>
+          <p>Choose the route that best matches what you want to understand: the products I have built, or the research questions that shaped them.</p>
+        </div>
+
+        <div class="work-paths">
+          <a class="work-path work-path-projects fade-in" href="#projects">
+            <span class="work-path-number" aria-hidden="true">01</span>
+            <p class="work-path-meta">Products · Applications · Case studies</p>
+            <h3>My Projects</h3>
+            <p>Explore working products, technical decisions, real screenshots, boundaries, releases and public repositories.</p>
+            <span class="work-path-action">Browse projects <span aria-hidden="true">↓</span></span>
+          </a>
+
+          <a class="work-path work-path-research fade-in" href="#research">
+            <span class="work-path-number" aria-hidden="true">02</span>
+            <p class="work-path-meta">Dissertations · Evidence · Video series</p>
+            <h3>My Research</h3>
+            <p>Follow the questions behind the products through updated dissertations, presentations, evidence and accessible research stories.</p>
+            <span class="work-path-action">Browse research <span aria-hidden="true">↓</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
          Projects Section
          ============================ -->
     <section id="projects" class="section section-alt">
       <div class="container">
         <div class="projects-heading fade-in">
           <div>
-            <p class="projects-eyebrow">Portfolio / 2026</p>
+            <p class="projects-eyebrow">My Projects / Portfolio 2026</p>
             <h2 class="projects-statement">Products built to<br>solve real problems</h2>
             <p class="projects-intro">Security, creative tooling, and human-centred software designed to make complex work simpler, safer, and more useful.</p>
           </div>
@@ -244,6 +275,10 @@
         <div class="side-projects-nav">
           <button id="side-projects-next" class="btn btn-outline">Load More</button>
         </div>
+        <a class="section-next-link fade-in" href="#research">
+          <span>Next collection</span>
+          <strong>Continue to My Research <span aria-hidden="true">↓</span></strong>
+        </a>
       </div>
 
       <!-- Project case-study overlay — content built dynamically by script.js -->
@@ -259,7 +294,7 @@
       <div class="container">
         <div class="research-heading fade-in">
           <div>
-            <p class="projects-eyebrow">Research notes / Video series</p>
+            <p class="projects-eyebrow">My Research / Dissertation &amp; video series</p>
             <h2 class="projects-statement">From first questions<br>to useful products</h2>
           </div>
           <p class="research-intro">A public record of how my research developed: revisiting the evidence, correcting early assumptions, and showing how each question became something people can use.</p>
@@ -353,6 +388,11 @@
             </details>
           </div>
         </article>
+
+        <a class="section-next-link section-next-link-up fade-in" href="#projects">
+          <span>Explore the products</span>
+          <strong>Return to My Projects <span aria-hidden="true">↑</span></strong>
+        </a>
       </div>
     </section>
 
@@ -530,6 +570,10 @@
   <footer>
     <p>&copy; 2026 Nathan Brown-Bennett &mdash; Cybersecurity &amp; Software Development</p>
   </footer>
+
+  <a class="back-to-top" id="back-to-top" href="#hero" aria-label="Back to top">
+    <span aria-hidden="true">↑</span>
+  </a>
 
   <script src="script.js"></script>
   <script src="matrix-bg.js"></script>
