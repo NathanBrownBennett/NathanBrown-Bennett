@@ -66,24 +66,6 @@ ul {
   list-style: none;
 }
 
-.skip-link {
-  background: var(--accent2);
-  border-radius: 0 0 8px 8px;
-  color: #061224;
-  font-weight: 800;
-  left: 1rem;
-  padding: 0.75rem 1rem;
-  position: fixed;
-  top: 0;
-  transform: translateY(-120%);
-  transition: transform var(--transition);
-  z-index: 2000;
-}
-
-.skip-link:focus {
-  transform: translateY(0);
-}
-
 /* ============================================================
    Background layers
    ============================================================ */
