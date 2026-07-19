@@ -103,6 +103,12 @@ body > *:not(#matrix-bg):not(#background-fader) {
   z-index: 1;
 }
 
+.home-page #projects,
+.home-page #research,
+.home-page #updates {
+  display: none !important;
+}
+
 /* ============================================================
    Navigation
    ============================================================ */
@@ -163,7 +169,8 @@ body > *:not(#matrix-bg):not(#background-fader) {
 }
 
 .nav-links a:hover,
-.nav-links a[aria-current="location"] {
+.nav-links a[aria-current="location"],
+.nav-links a[aria-current="page"] {
   color: var(--accent2);
   background: rgba(100, 255, 218, 0.07);
 }
@@ -263,7 +270,8 @@ body > *:not(#matrix-bg):not(#background-fader) {
 }
 
 .mobile-nav-link:hover,
-.mobile-nav-link[aria-current="location"] {
+.mobile-nav-link[aria-current="location"],
+.mobile-nav-link[aria-current="page"] {
   color: var(--accent2);
   background: rgba(100, 255, 218, 0.05);
 }
@@ -489,6 +497,10 @@ body > *:not(#matrix-bg):not(#background-fader) {
   transition: opacity var(--transition), transform var(--transition), background var(--transition);
   width: 44px;
   z-index: 900;
+}
+
+body > .back-to-top {
+  position: fixed !important;
 }
 
 .back-to-top.visible {
@@ -1529,6 +1541,7 @@ body > *:not(#matrix-bg):not(#background-fader) {
   color: var(--accent2);
 }
 
+.research-copy h2,
 .research-copy h3 {
   color: var(--white);
   font-family: 'Playfair Display', serif;
@@ -1972,19 +1985,100 @@ body > *:not(#matrix-bg):not(#background-fader) {
 /* ============================================================
    Footer
    ============================================================ */
-footer {
-  background: var(--bg);
-  padding: 2rem;
-  text-align: center;
+.standalone-main {
+  padding-top: var(--nav-h);
+}
+
+.site-footer {
+  background:
+    radial-gradient(circle at 12% 20%, rgba(100, 255, 218, 0.07), transparent 25rem),
+    #071323;
+  border-top: 1px solid rgba(100, 255, 218, 0.13);
   color: var(--text-muted);
-  font-size: 0.88rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 4rem 0 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(260px, 1.4fr) repeat(3, minmax(140px, 0.7fr));
+}
+
+.footer-intro {
+  max-width: 390px;
+}
+
+.footer-logo {
+  color: var(--accent2);
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+
+.footer-intro h2 {
+  color: var(--white);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.65rem);
+  line-height: 1.05;
+  margin-bottom: 0.9rem;
+}
+
+.footer-intro p {
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.footer-column {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.footer-label {
+  color: var(--accent2);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.footer-column a {
+  color: #b7c8df;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  transition: color var(--transition);
+}
+
+.footer-column a:hover,
+.footer-column a:focus-visible {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(136, 146, 176, 0.14);
+  display: flex;
+  font-size: 0.7rem;
+  justify-content: space-between;
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
 }
 
 /* ============================================================
    Responsive — Tablet (≤1024px)
    ============================================================ */
 @media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero-content {
     gap: 3rem;
   }
@@ -2080,6 +2174,16 @@ footer {
 
   .section {
     padding: 4rem 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
   }
 
   .hero-section {
@@ -2507,6 +2611,7 @@ footer {
   padding-top: 2.25rem;
 }
 
+.archive-heading h2,
 .archive-heading h3 {
   color: var(--white);
   font-size: clamp(1.75rem, 3vw, 2.5rem);
@@ -2921,6 +3026,7 @@ footer {
     padding: 1.5rem;
   }
 
+  .research-copy h2,
   .research-copy h3 {
     font-size: clamp(1.8rem, 9vw, 2.5rem);
   }

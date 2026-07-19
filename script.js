@@ -942,6 +942,12 @@ async function loadRepos(user) {
 }
 
 async function displayProjects() {
+  if (document.body.classList.contains('home-page')) return;
+  if (
+    !document.getElementById('featured-projects') &&
+    !document.getElementById('side-projects')
+  ) return;
+
   renderRecentProjects();
 
   try {
@@ -1166,10 +1172,53 @@ function initContactFormStatus() {
   }
 }
 
+function initBackgroundFader() {
+  const fader = document.getElementById('background-fader');
+  if (!fader) return;
+
+  const images = [
+    'assets/Background_Images/optimized/bg-01.webp',
+    'assets/Background_Images/optimized/bg-02.webp',
+    'assets/Background_Images/optimized/bg-03.webp',
+    'assets/Background_Images/optimized/bg-04.webp',
+    'assets/Background_Images/optimized/bg-05.webp',
+    'assets/Background_Images/optimized/bg-06.webp',
+    'assets/Background_Images/optimized/bg-07.webp',
+    'assets/Background_Images/optimized/bg-08.webp',
+    'assets/Background_Images/optimized/bg-09.webp',
+    'assets/Background_Images/optimized/bg-10.webp'
+  ];
+  let index = 0;
+
+  function setBackground(imageIndex) {
+    fader.style.backgroundImage = "url('" + images[imageIndex] + "')";
+  }
+
+  setBackground(index);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  window.setInterval(function () {
+    index = (index + 1) % images.length;
+    fader.classList.add('fade-out');
+    window.setTimeout(function () {
+      setBackground(index);
+      fader.classList.remove('fade-out');
+    }, 1200);
+  }, 7000);
+}
+
+function pruneHomeCollections() {
+  if (!document.body.classList.contains('home-page')) return;
+  document.querySelectorAll('#projects, #research, #updates').forEach(function (section) {
+    section.remove();
+  });
+}
+
 // ============================================================
 // DOMContentLoaded — wire everything up
 // ============================================================
 document.addEventListener('DOMContentLoaded', function () {
+  pruneHomeCollections();
   displayProjects();
   initRecentProjectFilters();
   initScrollAnimations();
@@ -1177,6 +1226,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initNavbarScroll();
   initSectionNavigation();
   initContactFormStatus();
+  initBackgroundFader();
 
   // Overlay backdrop click & keyboard close
   const overlay = document.getElementById('overlay');

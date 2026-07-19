@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects — Nathan Brown-Bennett</title>
+  <meta name="description" content="Selected products, applications and technical case studies by Nathan Brown-Bennett, with real screenshots, stacks, evidence and project boundaries.">
+  <meta name="theme-color" content="#0a192f">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://nathanbrownbennett.github.io/NathanBrown-Bennett/projects.html">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="My Projects — Nathan Brown-Bennett">
+  <meta property="og:description" content="Products built to solve real problems across security, creative tooling and developer experience.">
+  <meta property="og:url" content="https://nathanbrownbennett.github.io/NathanBrown-Bennett/projects.html">
+  <meta property="og:image" content="https://nathanbrownbennett.github.io/NathanBrown-Bennett/assets/projects/recent/flowcue/controller.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <canvas id="matrix-bg" aria-hidden="true"></canvas>
+  <div id="background-fader" aria-hidden="true"></div>
+
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Nathan Brown-Bennett — Home">NBB</a>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html" aria-current="page">My Projects</a></li>
+        <li><a href="research.html">My Research</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <ul role="list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+      <li><a href="projects.html" class="mobile-nav-link" aria-current="page">My Projects</a></li>
+      <li><a href="research.html" class="mobile-nav-link">My Research</a></li>
+      <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="standalone-main" tabindex="-1">
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <div class="projects-heading fade-in">
+          <div>
+            <p class="projects-eyebrow">My Projects / Portfolio 2026</p>
+            <h1 class="projects-statement">Products built to<br>solve real problems</h1>
+            <p class="projects-intro">Security, creative tooling, and human-centred software designed to make complex work simpler, safer, and more useful.</p>
+          </div>
+          <div id="recent-project-filters" class="recent-project-filters" aria-label="Filter selected work">
+            <button type="button" class="recent-filter active" data-filter="All" aria-pressed="true">All work</button>
+            <button type="button" class="recent-filter" data-filter="Security" aria-pressed="false">Security</button>
+            <button type="button" class="recent-filter" data-filter="Creative tools" aria-pressed="false">Creative tools</button>
+            <button type="button" class="recent-filter" data-filter="Developer tools" aria-pressed="false">Developer tools</button>
+            <button type="button" class="recent-filter" data-filter="Experiments" aria-pressed="false">Experiments</button>
+          </div>
+        </div>
+
+        <div id="featured-projects" class="recent-projects-grid fade-in" aria-live="polite"></div>
+
+        <div class="archive-heading fade-in">
+          <div>
+            <p class="projects-eyebrow">More work</p>
+            <h2>Project archive</h2>
+          </div>
+          <p>A curated selection of useful public repositories and earlier builds.</p>
+        </div>
+        <div id="side-project-filters" class="side-project-filters" aria-label="Filter side projects by type"></div>
+        <div id="side-projects" class="side-projects-grid"></div>
+        <div class="side-projects-nav">
+          <button id="side-projects-next" class="btn btn-outline">Load More</button>
+        </div>
+        <a class="section-next-link fade-in" href="research.html">
+          <span>Continue exploring</span>
+          <strong>Go to My Research <span aria-hidden="true">→</span></strong>
+        </a>
+      </div>
+
+      <div id="overlay" class="overlay case-study-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title" aria-hidden="true">
+        <div class="overlay-content" id="overlay-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-intro">
+          <a class="footer-logo" href="index.html">NBB</a>
+          <h2>Let’s build what should exist.</h2>
+          <p>Available for cybersecurity, software, product and research opportunities.</p>
+        </div>
+        <div class="footer-column">
+          <p class="footer-label">Explore</p>
+          <a href="index.html">Home</a>
+          <a href="projects.html" aria-current="page">My Projects</a>
+          <a href="research.html">My Research</a>
+        </div>
+        <div class="footer-column">
+          <p class="footer-label">Get in touch</p>
+          <a href="index.html#contact">Use the contact form</a>
+          <a href="mailto:Nathanbrown-bennett@hotmail.com">Nathanbrown-bennett@hotmail.com</a>
+        </div>
+        <div class="footer-column footer-socials">
+          <p class="footer-label">Socials</p>
+          <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/NathanBrownBennett" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://www.instagram.com/nxth.b/" target="_blank" rel="noopener">Development Instagram <span aria-hidden="true">↗</span></a>
+          <a href="https://www.instagram.com/n.brown02/" target="_blank" rel="noopener">Creative Instagram <span aria-hidden="true">↗</span></a>
+          <a href="https://youtu.be/2_rwCbVFsDY?si=COd9ZLzcPHIm7auT" target="_blank" rel="noopener">YouTube <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Nathan Brown-Bennett</p>
+        <p>Cybersecurity &amp; Software Development</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="back-to-top" id="back-to-top" href="#top" aria-label="Back to top"><span aria-hidden="true">↑</span></a>
+  <script src="script.js"></script>
+  <script src="matrix-bg.js"></script>
+</body>
+</html>

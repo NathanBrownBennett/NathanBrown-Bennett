@@ -41,7 +41,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top" class="home-page">
   <canvas id="matrix-bg" aria-hidden="true"></canvas>
   <div id="background-fader" aria-hidden="true"></div>
 
@@ -50,13 +50,12 @@
        ============================ -->
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="#hero" class="nav-logo" aria-label="Nathan Brown-Bennett — Home">NBB</a>
+      <a href="#top" class="nav-logo" aria-label="Nathan Brown-Bennett — Home">NBB</a>
 
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="#about">About</a></li>
-        <li><a href="#projects">My Projects</a></li>
-        <li><a href="#research">My Research</a></li>
-        <li><a href="#updates">Updates</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a href="research.html">My Research</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
@@ -81,9 +80,8 @@
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
     <ul role="list">
       <li><a href="#about" class="mobile-nav-link">About</a></li>
-      <li><a href="#projects" class="mobile-nav-link">My Projects</a></li>
-      <li><a href="#research" class="mobile-nav-link">My Research</a></li>
-      <li><a href="#updates" class="mobile-nav-link">Updates</a></li>
+      <li><a href="projects.html" class="mobile-nav-link">My Projects</a></li>
+      <li><a href="research.html" class="mobile-nav-link">My Research</a></li>
       <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
     </ul>
     <div class="mobile-nav-social">
@@ -188,7 +186,7 @@
         </div>
 
         <div class="work-paths">
-          <a class="work-path work-path-projects fade-in" href="#projects">
+          <a class="work-path work-path-projects fade-in" href="projects.html">
             <span class="work-path-number" aria-hidden="true">01</span>
             <p class="work-path-meta">Products · Applications · Case studies</p>
             <h3>My Projects</h3>
@@ -196,7 +194,7 @@
             <span class="work-path-action">Browse projects <span aria-hidden="true">↓</span></span>
           </a>
 
-          <a class="work-path work-path-research fade-in" href="#research">
+          <a class="work-path work-path-research fade-in" href="research.html">
             <span class="work-path-number" aria-hidden="true">02</span>
             <p class="work-path-meta">Dissertations · Evidence · Video series</p>
             <h3>My Research</h3>
@@ -210,7 +208,7 @@
     <!-- ============================
          Projects Section
          ============================ -->
-    <section id="projects" class="section section-alt">
+    <section id="projects" class="section section-alt" hidden>
       <div class="container">
         <div class="projects-heading fade-in">
           <div>
@@ -256,7 +254,7 @@
     <!-- ============================
          Research Notes Section
          ============================ -->
-    <section id="research" class="section research-section">
+    <section id="research" class="section research-section" hidden>
       <div class="container">
         <div class="research-heading fade-in">
           <div>
@@ -365,7 +363,7 @@
     <!-- ============================
          Updates Section
          ============================ -->
-    <section id="updates" class="section">
+    <section id="updates" class="section" hidden>
       <div class="container">
         <h2 class="section-title fade-in">Updates</h2>
         <p class="section-subtitle fade-in">Latest news, projects, and media from across my platforms.</p>
@@ -533,47 +531,46 @@
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Nathan Brown-Bennett &mdash; Cybersecurity &amp; Software Development</p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-intro">
+          <a class="footer-logo" href="#top">NBB</a>
+          <h2>Let’s build what should exist.</h2>
+          <p>Available for cybersecurity, software, product and research opportunities.</p>
+        </div>
+        <div class="footer-column">
+          <p class="footer-label">Explore</p>
+          <a href="projects.html">My Projects</a>
+          <a href="research.html">My Research</a>
+          <a href="#about">About &amp; Experience</a>
+        </div>
+        <div class="footer-column">
+          <p class="footer-label">Get in touch</p>
+          <a href="#contact">Use the contact form</a>
+          <a href="mailto:Nathanbrown-bennett@hotmail.com">Nathanbrown-bennett@hotmail.com</a>
+        </div>
+        <div class="footer-column footer-socials">
+          <p class="footer-label">Socials</p>
+          <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/NathanBrownBennett" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://www.instagram.com/nxth.b/" target="_blank" rel="noopener">Development Instagram <span aria-hidden="true">↗</span></a>
+          <a href="https://www.instagram.com/n.brown02/" target="_blank" rel="noopener">Creative Instagram <span aria-hidden="true">↗</span></a>
+          <a href="https://youtu.be/2_rwCbVFsDY?si=COd9ZLzcPHIm7auT" target="_blank" rel="noopener">YouTube <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Nathan Brown-Bennett</p>
+        <p>Cybersecurity &amp; Software Development</p>
+      </div>
+    </div>
   </footer>
 
-  <a class="back-to-top" id="back-to-top" href="#hero" aria-label="Back to top">
+  <a class="back-to-top" id="back-to-top" href="#top" aria-label="Back to top">
     <span aria-hidden="true">↑</span>
   </a>
 
   <script src="script.js"></script>
   <script src="matrix-bg.js"></script>
-  <script>
-    // Background image fader
-    (function () {
-      const images = [
-        'assets/Background_Images/optimized/bg-01.webp',
-        'assets/Background_Images/optimized/bg-02.webp',
-        'assets/Background_Images/optimized/bg-03.webp',
-        'assets/Background_Images/optimized/bg-04.webp',
-        'assets/Background_Images/optimized/bg-05.webp',
-        'assets/Background_Images/optimized/bg-06.webp',
-        'assets/Background_Images/optimized/bg-07.webp',
-        'assets/Background_Images/optimized/bg-08.webp',
-        'assets/Background_Images/optimized/bg-09.webp',
-        'assets/Background_Images/optimized/bg-10.webp'
-      ];
-      let idx = 0;
-      const fader = document.getElementById('background-fader');
-      function setBg(i) {
-        fader.style.backgroundImage = "url('" + images[i] + "')";
-      }
-      setBg(idx);
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      setInterval(function () {
-        idx = (idx + 1) % images.length;
-        fader.classList.add('fade-out');
-        setTimeout(function () {
-          setBg(idx);
-          fader.classList.remove('fade-out');
-        }, 1200);
-      }, 7000);
-    })();
-  </script>
 </body>
 </html>
