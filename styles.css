@@ -638,10 +638,7 @@ body > *:not(#matrix-bg):not(#background-fader) {
    About Section
    ============================================================ */
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 3.5rem;
-  align-items: start;
+  max-width: 780px;
 }
 
 .about-bio p {
@@ -655,55 +652,6 @@ body > *:not(#matrix-bg):not(#background-fader) {
   margin-top: 0.5rem;
 }
 
-.highlight-heading {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 1rem;
-}
-
-.highlight-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.85rem;
-}
-
-.highlight-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 1rem 1rem;
-  border: 1px solid var(--card-border);
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-
-.highlight-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
-  border-color: rgba(100, 255, 218, 0.2);
-}
-
-.highlight-icon {
-  font-size: 1.3rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.highlight-icon-image {
-  background: #071323;
-  border: 1px solid rgba(136, 146, 176, 0.18);
-  border-radius: 8px;
-  flex: 0 0 50px;
-  height: 50px;
-  object-fit: cover;
-  object-position: top center;
-  width: 50px;
-}
-
 /* ============================================================
    Experience
    ============================================================ */
@@ -713,8 +661,75 @@ body > *:not(#matrix-bg):not(#background-fader) {
   border-top: 1px solid rgba(136, 146, 176, 0.08);
 }
 
+.experience-disclosure {
+  background: rgba(17, 34, 64, 0.55);
+  border: 1px solid rgba(136, 146, 176, 0.18);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.experience-disclosure summary {
+  align-items: center;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 800;
+  justify-content: space-between;
+  min-height: 68px;
+  padding: 1.15rem 1.35rem;
+  transition: background var(--transition), color var(--transition);
+}
+
+.experience-disclosure summary:hover,
+.experience-disclosure summary:focus-visible {
+  background: rgba(100, 255, 218, 0.06);
+  color: var(--accent2);
+}
+
+.experience-disclosure summary::marker {
+  color: var(--accent2);
+}
+
+.experience-disclosure[open] summary {
+  border-bottom: 1px solid rgba(136, 146, 176, 0.18);
+}
+
+.experience-disclosure-count {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.experience-disclosure-meta {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.experience-disclosure-state {
+  color: var(--accent2);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-state-open {
+  display: none;
+}
+
+.experience-disclosure[open] .experience-state-closed {
+  display: none;
+}
+
+.experience-disclosure[open] .experience-state-open {
+  display: inline;
+}
+
 .experience-list {
-  border-top: 1px solid rgba(136, 146, 176, 0.18);
+  padding: 0 1.35rem;
 }
 
 .experience-item {
@@ -759,31 +774,6 @@ body > *:not(#matrix-bg):not(#background-fader) {
   font-size: 0.86rem;
   line-height: 1.7;
   max-width: 760px;
-}
-
-.highlight-item h4 {
-  font-size: 0.88rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  color: var(--white);
-}
-
-.highlight-item h4 a {
-  color: var(--accent2);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-
-.highlight-item h4 a:hover {
-  color: var(--white);
-  text-decoration: underline;
-}
-
-.highlight-item p {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin: 0;
-  line-height: 1.4;
 }
 
 /* ============================================================
@@ -1981,11 +1971,6 @@ footer {
    Responsive — Tablet (≤1024px)
    ============================================================ */
 @media (max-width: 1024px) {
-  .about-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-  }
-
   .hero-content {
     gap: 3rem;
   }
@@ -2000,11 +1985,6 @@ footer {
    Responsive — Tablet (≤900px)
    ============================================================ */
 @media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
   .hero-content {
     flex-direction: column;
     text-align: center;
@@ -2024,10 +2004,6 @@ footer {
 
   .hero-location {
     margin-bottom: 1.75rem;
-  }
-
-  .highlight-grid {
-    grid-template-columns: 1fr 1fr;
   }
 
   .side-projects-grid {
@@ -2114,13 +2090,20 @@ footer {
     min-height: 48px;
   }
 
-  .highlight-grid {
-    grid-template-columns: 1fr;
-  }
-
   .experience-item {
     gap: 0.75rem;
     grid-template-columns: 1fr;
+  }
+
+  .experience-disclosure summary {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .experience-disclosure-meta {
+    justify-content: space-between;
+    width: 100%;
   }
 
   .projects-carousel-wrap {
