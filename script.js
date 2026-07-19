@@ -303,7 +303,7 @@ let lastOverlayTrigger = null;
 
 function setPortfolioBackgroundInert(isInert) {
   const background = document.querySelectorAll(
-    '#navbar, #mobile-nav, #hero, #about, #experience, #projects > .container, #research, #updates, #contact, body > footer'
+    '#navbar, #mobile-nav, #hero, #about, #projects > .container, #research, #updates, #contact, body > footer'
   );
   background.forEach(function (element) {
     element.inert = isInert;

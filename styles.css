@@ -638,7 +638,10 @@ body > *:not(#matrix-bg):not(#background-fader) {
    About Section
    ============================================================ */
 .about-grid {
-  max-width: 780px;
+  align-items: start;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 }
 
 .about-bio p {
@@ -652,15 +655,26 @@ body > *:not(#matrix-bg):not(#background-fader) {
   margin-top: 0.5rem;
 }
 
+.about-experience {
+  min-width: 0;
+}
+
+.about-experience > h3 {
+  color: var(--white);
+  font-size: 1.35rem;
+  margin-bottom: 0.45rem;
+}
+
+.about-experience > p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
 /* ============================================================
    Experience
    ============================================================ */
-.experience-section {
-  background: linear-gradient(180deg, rgba(17, 34, 64, 0.45), rgba(10, 25, 47, 0.35));
-  border-bottom: 1px solid rgba(136, 146, 176, 0.08);
-  border-top: 1px solid rgba(136, 146, 176, 0.08);
-}
-
 .experience-disclosure {
   background: rgba(17, 34, 64, 0.55);
   border: 1px solid rgba(136, 146, 176, 0.18);
@@ -756,7 +770,7 @@ body > *:not(#matrix-bg):not(#background-fader) {
   margin-top: 0.3rem;
 }
 
-.experience-item h3 {
+.experience-item h4 {
   color: var(--white);
   font-size: 1.05rem;
   line-height: 1.35;
@@ -1985,6 +1999,10 @@ footer {
    Responsive — Tablet (≤900px)
    ============================================================ */
 @media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero-content {
     flex-direction: column;
     text-align: center;
