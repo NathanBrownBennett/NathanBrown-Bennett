@@ -1462,6 +1462,35 @@ body > .back-to-top {
   width: min(68%, 520px);
 }
 
+.research-feature-mymark {
+  border-color: rgba(255, 95, 109, 0.4);
+}
+
+.research-feature-mymark .research-visuals {
+  background:
+    radial-gradient(circle at 14% 82%, rgba(255, 95, 109, 0.18), transparent 24rem),
+    radial-gradient(circle at 86% 14%, rgba(135, 103, 255, 0.18), transparent 24rem),
+    linear-gradient(145deg, #171225, #090d1c);
+}
+
+.research-feature-mymark .research-visuals::before {
+  border-color: rgba(255, 95, 109, 0.2);
+}
+
+.research-feature-mymark .research-visual-primary {
+  left: clamp(1.5rem, 3vw, 2.75rem);
+  top: clamp(2rem, 5vw, 4rem);
+  transform: rotate(-1.75deg);
+  width: min(76%, 560px);
+}
+
+.research-feature-mymark .research-visual-secondary {
+  bottom: clamp(2rem, 4vw, 3.25rem);
+  right: clamp(1.25rem, 3vw, 2.5rem);
+  transform: rotate(2deg);
+  width: min(64%, 500px);
+}
+
 .research-visuals {
   background:
     linear-gradient(145deg, rgba(100, 255, 218, 0.08), transparent 60%),
@@ -1625,6 +1654,14 @@ body > .back-to-top {
 .research-archive a {
   color: #b7c8df;
   font-size: 0.72rem;
+}
+
+.research-archive-notes p {
+  color: #b7c8df;
+  font-size: 0.76rem;
+  line-height: 1.65;
+  margin: 0;
+  padding-top: 0.9rem;
 }
 
 .research-next {
