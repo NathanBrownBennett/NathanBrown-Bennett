@@ -71,24 +71,24 @@ def portfolio_cv(path):
     c.setFillColor(NAVY)
     c.rect(0, 0, left_w + margin + 12, PAGE_H, stroke=0, fill=1)
     c.setFillColor(white)
-    c.setFont("Helvetica-Bold", 23)
-    c.drawString(margin, PAGE_H - 50, "Nathan")
-    c.drawString(margin, PAGE_H - 76, "Brown-Bennett")
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(margin, PAGE_H - 48, "PROJECT FOCUS")
     c.setFillColor(ACCENT)
     c.setFont("Helvetica-Bold", 8)
-    c.drawString(margin, PAGE_H - 100, "CYBERSECURITY + BUSINESS SYSTEMS")
+    c.drawString(margin, PAGE_H - 63, "CYBERSECURITY + PRODUCT SYSTEMS")
 
-    y = PAGE_H - 132
-    c.setFillColor(PALE)
-    c.setFont("Helvetica", 8.2)
-    for item in [
-        "Nathanbrown-bennett@hotmail.com",
-        "github.com/NathanBrownBennett",
-        "London, UK",
-        "Phone: available on request",
+    y = PAGE_H - 88
+    for title, detail in [
+        ("Inspector", "Controlled, hands-on cybersecurity learning for institutions."),
+        ("MyMark", "Media-provenance research for abuse and sextortion response."),
+        ("Business systems", "Useful operations, workflow and live-production tooling."),
     ]:
-        c.drawString(margin, y, item)
-        y -= 15
+        c.setFillColor(white)
+        c.setFont("Helvetica-Bold", 8.3)
+        c.drawString(margin, y, title)
+        y -= 11
+        y = draw_text(c, detail, margin, y, left_w, size=7.6, leading=10.3, color=PALE)
+        y -= 6
 
     y -= 10
     y = section_label(c, "Profile", margin, y, left_w, dark=True)
@@ -139,11 +139,11 @@ def portfolio_cv(path):
 
     y = PAGE_H - 48
     c.setFillColor(NAVY)
-    c.setFont("Helvetica-Bold", 15)
-    c.drawString(right_x, y, "I build what should exist")
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(right_x, y, "Nathan Brown-Bennett")
     c.setFillColor(TEXT)
-    c.setFont("Helvetica", 8.7)
-    c.drawString(right_x, y - 16, "Useful systems shaped around real people and real work")
+    c.setFont("Helvetica", 8.2)
+    c.drawString(right_x, y - 15, "Nathanbrown-bennett@hotmail.com | github.com/NathanBrownBennett | London, UK")
     y -= 50
 
     y = section_label(c, "Experience", right_x, y, right_w)
