@@ -1178,6 +1178,46 @@ function initScrollAssist() {
   window.addEventListener('scroll', update, { passive: true });
 }
 
+function initWorkCarousel() {
+  const section = document.getElementById('work');
+  const track = section && section.querySelector('.work-paths');
+  const cards = track ? Array.from(track.querySelectorAll('.work-path')) : [];
+  const dots = section ? Array.from(section.querySelectorAll('.work-carousel-dot')) : [];
+  const count = section && section.querySelector('.work-carousel-count');
+  if (!track || cards.length < 2) return;
+  const update = function (index) {
+    section.classList.remove('work-slide-0', 'work-slide-1', 'work-slide-2');
+    section.classList.add('work-slide-' + index);
+    if (count) count.textContent = (index + 1) + ' / ' + cards.length;
+    dots.forEach(function (dot, dotIndex) { dot.classList.toggle('active', dotIndex === index); dot.setAttribute('aria-selected', String(dotIndex === index)); });
+  };
+  const nearest = function () {
+    const index = Math.max(0, Math.min(cards.length - 1, Math.round(track.scrollLeft / Math.max(1, track.clientWidth))));
+    update(index);
+  };
+  track.addEventListener('scroll', nearest, { passive: true });
+  dots.forEach(function (dot, index) { dot.addEventListener('click', function () { track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' }); update(index); }); });
+  update(0);
+}
+
+function initAboutOverlay() {
+  const overlay = document.getElementById('about-overlay');
+  const trigger = document.getElementById('about-trigger');
+  const close = document.getElementById('about-overlay-close');
+  if (!overlay || !trigger || !close) return;
+  const setOpen = function (open) {
+    overlay.classList.toggle('open', open);
+    overlay.setAttribute('aria-hidden', String(!open));
+    document.body.classList.toggle('overlay-open', open);
+    if (open) close.focus(); else trigger.focus();
+  };
+  trigger.addEventListener('click', function () { setOpen(true); });
+  close.addEventListener('click', function () { setOpen(false); });
+  overlay.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', function () { setOpen(false); }); });
+  overlay.addEventListener('click', function (event) { if (event.target === overlay) setOpen(false); });
+  document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && overlay.classList.contains('open')) setOpen(false); });
+}
+
 function initSectionNavigation() {
   if (!('IntersectionObserver' in window)) return;
 
@@ -1311,6 +1351,8 @@ document.addEventListener('DOMContentLoaded', function () {
   initNavbarScroll();
   initWordAnimations();
   initScrollAssist();
+  initWorkCarousel();
+  initAboutOverlay();
   initSectionNavigation();
   initContactFormStatus();
   initBackgroundFader();
