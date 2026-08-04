@@ -1076,6 +1076,7 @@ function initMobileNav() {
 
   function closeMobileNav(returnFocus) {
     mobileNav.classList.remove('open');
+    document.body.classList.remove('nav-open');
     hamburger.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
     mobileNav.setAttribute('aria-hidden', 'true');
@@ -1084,6 +1085,7 @@ function initMobileNav() {
 
   hamburger.addEventListener('click', function () {
     const isOpen = mobileNav.classList.toggle('open');
+    document.body.classList.toggle('nav-open', isOpen);
     hamburger.classList.toggle('active', isOpen);
     hamburger.setAttribute('aria-expanded', String(isOpen));
     mobileNav.setAttribute('aria-hidden', String(!isOpen));
