@@ -1,11 +1,14 @@
 # Nathan Brown-Bennett Portfolio
 
-Source for Nathan Brown-Bennett's GitHub Pages portfolio: cybersecurity work, software products, professional experience, CVs and selected academic evidence.
+Source for Nathan Brown-Bennett's GitHub Pages portfolio: research, professional experience, creative practice, CVs and selected academic evidence. Company products now live at BstudioB.co.uk.
 
 ## Structure
 
-- `index.html` — portfolio content, professional experience and contact form.
-- `script.js` — selected case studies, curated GitHub archive and interactions.
+- `index.html` — personal landing page, profile, contact form and routes into the portfolio.
+- `research.html` — public dissertation, presentation and research artefact library.
+- `professional-work.html` — recruiter-facing experience and capabilities.
+- `creative-practice.html` — music, spoken word, performances and media.
+- `script.js` — shared navigation, reveal animations and contact interactions.
 - `styles.css` — responsive presentation and accessibility states.
 - `assets/projects/recent/` — real screenshots used by the featured case studies.
 - `assets/documents/` — public dissertations and presentations linked from the relevant work.
