@@ -1124,9 +1124,58 @@ function initNavbarScroll() {
   const backToTop = document.getElementById('back-to-top');
   if (!navbar) return;
   window.addEventListener('scroll', function () {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    navbar.classList.toggle('scrolled', window.scrollY > 24);
     if (backToTop) backToTop.classList.toggle('visible', window.scrollY > window.innerHeight);
   }, { passive: true });
+}
+
+function initWordAnimations() {
+  const targets = document.querySelectorAll('.projects-statement, .section-title, .work-directory-heading h2, .creative-feature-copy h2, .professional-cta h2, .research-copy h2');
+  if (!targets.length) return;
+  targets.forEach(function (target) {
+    if (target.dataset.wordsReady) return;
+    const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    let wordIndex = 0;
+    nodes.forEach(function (node) {
+      if (!node.nodeValue.trim()) return;
+      const fragment = document.createDocumentFragment();
+      node.nodeValue.split(/(\s+)/).forEach(function (part) {
+        if (/^\s+$/.test(part)) fragment.appendChild(document.createTextNode(part));
+        else if (part) {
+          const span = document.createElement('span');
+          span.className = 'word-reveal';
+          span.style.setProperty('--word-index', wordIndex++);
+          span.textContent = part;
+          fragment.appendChild(span);
+        }
+      });
+      node.parentNode.replaceChild(fragment, node);
+    });
+    target.classList.add('words-ready');
+    target.dataset.wordsReady = 'true';
+  });
+  const reveal = function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('words-visible'); observer.unobserve(entry.target); }
+    });
+  };
+  const observer = new IntersectionObserver(reveal, { threshold: 0.2 });
+  document.querySelectorAll('.words-ready').forEach(function (target) { observer.observe(target); });
+}
+
+function initScrollAssist() {
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  const update = function () {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+  };
+  update();
+  window.addEventListener('scroll', update, { passive: true });
 }
 
 function initSectionNavigation() {
@@ -1260,6 +1309,8 @@ document.addEventListener('DOMContentLoaded', function () {
   initScrollAnimations();
   initMobileNav();
   initNavbarScroll();
+  initWordAnimations();
+  initScrollAssist();
   initSectionNavigation();
   initContactFormStatus();
   initBackgroundFader();
