@@ -1234,6 +1234,24 @@ function initAboutOverlay() {
   if (window.location.hash === '#about-overlay') setOpen(true);
 }
 
+function initContactOverlay() {
+  const overlay = document.getElementById('contact-overlay');
+  const close = document.getElementById('contact-overlay-close');
+  if (!overlay || !close) return;
+  const openers = Array.from(document.querySelectorAll('[data-open-contact]'));
+  const setOpen = function (open) {
+    overlay.classList.toggle('open', open);
+    overlay.setAttribute('aria-hidden', String(!open));
+    document.body.classList.toggle('overlay-open', open);
+    if (open) close.focus();
+  };
+  openers.forEach(function (opener) { opener.addEventListener('click', function (event) { event.preventDefault(); setOpen(true); }); });
+  close.addEventListener('click', function () { setOpen(false); });
+  overlay.addEventListener('click', function (event) { if (event.target === overlay) setOpen(false); });
+  document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && overlay.classList.contains('open')) setOpen(false); });
+  if (window.location.hash === '#contact-overlay') setOpen(true);
+}
+
 function initSectionNavigation() {
   if (!('IntersectionObserver' in window)) return;
 
@@ -1371,6 +1389,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initScrollAssist();
   initWorkCarousel();
   initAboutOverlay();
+  initContactOverlay();
   initSectionNavigation();
   initContactFormStatus();
   initBackgroundFader();

@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=carousel-refresh-20260804">
+  <link rel="stylesheet" href="styles.css?v=overlay-refresh-20260804">
 </head>
 <body id="top" class="home-page">
   <canvas id="matrix-bg" aria-hidden="true"></canvas>
@@ -53,11 +53,10 @@
       <a href="#top" class="nav-logo" aria-label="Nathan Brown-Bennett — Home">NBB</a>
 
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="#about-overlay" data-open-about>About</a></li>
+        <li><a href="#top">Home</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="professional-work.html">Professional Work</a></li>
         <li><a href="creative-practice.html">Creative Practice</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
 
       <div class="nav-social">
@@ -80,11 +79,10 @@
   <!-- Mobile Navigation -->
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
     <ul role="list">
-      <li><a href="#about-overlay" class="mobile-nav-link" data-open-about>About</a></li>
+      <li><a href="#top" class="mobile-nav-link">Home</a></li>
       <li><a href="research.html" class="mobile-nav-link">Research</a></li>
       <li><a href="professional-work.html" class="mobile-nav-link">Professional Work</a></li>
       <li><a href="creative-practice.html" class="mobile-nav-link">Creative Practice</a></li>
-      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
     </ul>
     <div class="mobile-nav-social">
       <a href="https://www.linkedin.com/in/nathanbrown-bennett/" target="_blank" rel="noopener" class="nav-icon-link" aria-label="LinkedIn">
@@ -461,17 +459,19 @@
     <!-- ============================
          Contact Section
          ============================ -->
-    <section id="contact" class="section section-alt">
+    <div class="contact-overlay" id="contact-overlay" role="dialog" aria-modal="true" aria-labelledby="contact-overlay-title" aria-hidden="true">
+      <div class="contact-overlay-card">
+        <button class="contact-overlay-close" id="contact-overlay-close" type="button" aria-label="Close contact form">×</button>
       <div class="container">
-        <h2 class="section-title fade-in">Get in Touch</h2>
+        <h2 class="section-title fade-in" id="contact-overlay-title">Get in Touch</h2>
         <p class="section-subtitle fade-in">Have an opportunity, collaboration, or research question? Send the context below and I'll reply by email.</p>
 
         <div class="contact-layout">
           <form class="contact-form fade-in" action="https://formsubmit.co/Nathanbrown-bennett@hotmail.com" method="POST">
             <input type="hidden" name="_subject" value="New portfolio enquiry">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://nathanbrownbennett.github.io/NathanBrown-Bennett/?sent=1#contact">
-            <input type="hidden" name="_url" value="https://nathanbrownbennett.github.io/NathanBrown-Bennett/#contact">
+            <input type="hidden" name="_next" value="https://nathanbrownbennett.github.io/NathanBrown-Bennett/?sent=1#contact-overlay">
+            <input type="hidden" name="_url" value="https://nathanbrownbennett.github.io/NathanBrown-Bennett/#contact-overlay">
             <div class="contact-honeypot" aria-hidden="true">
               <label for="contact-company-site">Leave this field empty</label>
               <input id="contact-company-site" type="text" name="_honey" tabindex="-1" autocomplete="off">
@@ -558,7 +558,8 @@
           </aside>
         </div>
       </div>
-    </section>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -578,7 +579,7 @@
         </div>
         <div class="footer-column">
           <p class="footer-label">Get in touch</p>
-          <a href="#contact">Use the contact form</a>
+          <a href="#contact-overlay" data-open-contact>Use the contact form</a>
           <a href="mailto:Nathanbrown-bennett@hotmail.com">Nathanbrown-bennett@hotmail.com</a>
         </div>
         <div class="footer-column footer-socials">
