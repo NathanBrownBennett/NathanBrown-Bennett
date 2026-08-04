@@ -681,9 +681,9 @@ body > .back-to-top {
 .hero-image-trigger::after { content:''; position:absolute; inset:-.35rem; border:1px solid rgba(244,201,93,.5); border-radius:1.45rem; pointer-events:none; animation:hero-nudge 3.8s ease-in-out infinite; }
 @keyframes hero-nudge { 0%,70%,100% { transform:rotate(0); } 74% { transform:rotate(-1.5deg); } 78% { transform:rotate(1.5deg); } 82% { transform:rotate(-.8deg); } 86% { transform:rotate(0); } }
 .overlay-open { overflow:hidden; }
-.about-overlay { position:fixed; inset:0; z-index:1150; display:grid; place-items:center; padding:1.25rem; background:rgba(12,10,20,.78); backdrop-filter:blur(18px); opacity:0; pointer-events:none; transition:opacity .25s ease; }
+.about-overlay { position:fixed; inset:0; z-index:1150; display:grid; place-items:center; padding:1.25rem; background:linear-gradient(120deg,rgba(23,20,35,.7),rgba(49,30,47,.58)),url('assets/Background_Images/stairs.jpg') center/cover; backdrop-filter:blur(10px); opacity:0; pointer-events:none; transition:opacity .25s ease; }
 .about-overlay.open { opacity:1; pointer-events:auto; }
-.about-overlay-card { position:relative; width:min(680px,100%); max-height:min(80svh,720px); overflow:auto; padding:clamp(1.5rem,5vw,3rem); border:1px solid rgba(244,201,93,.42); border-radius:1.5rem; background:linear-gradient(145deg,rgba(43,30,57,.92),rgba(21,19,34,.94)); box-shadow:0 30px 100px rgba(0,0,0,.45); transform:translateY(1rem) scale(.98); transition:transform .3s ease; }
+.about-overlay-card { position:relative; width:min(680px,100%); max-height:min(80svh,720px); overflow:auto; padding:clamp(1.5rem,5vw,3rem); border:1px solid rgba(244,201,93,.5); border-radius:1.5rem; background:rgba(23,20,35,.6); backdrop-filter:blur(18px) saturate(1.2); -webkit-backdrop-filter:blur(18px) saturate(1.2); box-shadow:0 30px 100px rgba(0,0,0,.45); transform:translateY(1rem) scale(.98); transition:transform .3s ease; }
 .about-overlay.open .about-overlay-card { transform:none; }
 .about-overlay-card h2 { max-width:15ch; margin:.5rem 0 1rem; color:var(--white); font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4vw,3rem); line-height:1.05; }
 .about-overlay-card p:not(.projects-eyebrow) { max-width:58ch; color:var(--text-muted); line-height:1.7; }
