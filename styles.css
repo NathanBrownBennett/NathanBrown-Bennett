@@ -3397,3 +3397,77 @@ body > .back-to-top {
     transform: none;
   }
 }
+
+/* ============================================================
+   Scene-based creative technologist redesign
+   ============================================================ */
+#background-fader { display:none; }
+.home-page #hero,
+.home-page #about,
+.home-page #work,
+.home-page #contact,
+.standalone-main > .section { position:relative; overflow:hidden; isolation:isolate; }
+.home-page #hero::before,
+.home-page #about::before,
+.home-page #work::before,
+.home-page #contact::before,
+.standalone-main > .section::before { content:''; position:absolute; inset:0; z-index:-1; background-position:center; background-size:cover; opacity:1; transform:scale(1.02); }
+.home-page #hero::before { background-image:linear-gradient(120deg,rgba(23,20,35,.55),rgba(23,20,35,.78)),url('assets/Background_Images/standing.webp'); }
+.home-page #about::before { background-image:linear-gradient(120deg,rgba(23,20,35,.72),rgba(49,30,47,.58)),url('assets/Background_Images/stairs.jpg'); }
+.home-page #work::before { background-image:linear-gradient(120deg,rgba(33,27,46,.72),rgba(79,38,54,.58)),url('assets/Background_Images/gradwall.jpg'); }
+.home-page #contact::before { background-image:linear-gradient(120deg,rgba(23,20,35,.78),rgba(33,27,46,.62)),url('assets/Background_Images/bw.JPG'); }
+.creative-hero-section::before { background-image:linear-gradient(120deg,rgba(23,20,35,.34),rgba(23,20,35,.8)),url('assets/Background_Images/performance.JPG'); }
+.professional-hero::before { background-image:linear-gradient(120deg,rgba(23,20,35,.62),rgba(72,39,52,.5)),url('assets/Background_Images/standing.webp'); }
+.research-section::before { background-image:linear-gradient(120deg,rgba(23,20,35,.72),rgba(33,27,46,.64)),url('assets/research/undergraduate-product-evidence.webp'); }
+.home-page #hero { min-height:100svh; display:grid; align-items:center; padding-top:calc(var(--nav-h) + 2rem); }
+.home-page #about,.home-page #work { min-height:82svh; display:grid; align-items:center; }
+.home-page #contact { min-height:68svh; }
+.home-page .graduation-section { display:none; }
+.home-page .work-paths { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.home-page .work-path { min-height:260px; }
+.hero-text h1 { text-wrap:balance; }
+.hero-actions { flex-wrap:wrap; }
+.btn-primary { background:var(--accent); }
+.btn-primary:hover { background:var(--accent-dark); }
+.btn-outline { color:var(--accent2); border-color:var(--accent2); }
+.btn-outline:hover { background:rgba(244,201,93,.12); }
+.section-title::after { background:var(--accent); }
+.creative-photo-strip { position:relative; z-index:1; }
+.research-carousel,.professional-carousel { position:relative; overflow:hidden; }
+.research-carousel-track,.professional-timeline { display:flex; transition:transform .5s cubic-bezier(.22,.61,.36,1); will-change:transform; }
+.research-carousel .research-feature { flex:0 0 100%; }
+.professional-carousel .professional-timeline { margin-top:0; }
+.professional-carousel .professional-role { flex:0 0 100%; min-height:17rem; align-items:start; }
+.research-carousel-controls,.professional-carousel-controls { display:flex; align-items:center; justify-content:center; gap:1.25rem; margin-top:1rem; }
+.carousel-control { width:2.6rem; height:2.6rem; border:1px solid var(--accent2); border-radius:50%; background:rgba(244,201,93,.08); color:var(--accent2); cursor:pointer; font:inherit; font-size:1.15rem; transition:background .2s ease,transform .2s ease; }
+.carousel-control:hover { background:rgba(244,201,93,.2); transform:translateY(-2px); }
+.carousel-position,.professional-position { color:var(--text-muted); font-size:.8rem; font-weight:700; letter-spacing:.08em; }
+
+@media (max-width:700px) {
+  .home-page #hero { min-height:calc(100svh - 1rem); padding:calc(var(--nav-h) + 1.5rem) 0 2rem; }
+  .home-page #about,.home-page #work { min-height:76svh; padding:3.25rem 0; }
+  .home-page #contact { min-height:62svh; padding:3rem 0; }
+  .home-page .hero-content { gap:1.1rem; }
+  .home-page .hero-profile-pic { width:132px; height:132px; }
+  .home-page .hero-text h1 { font-size:clamp(2rem,10vw,3rem); }
+  .home-page .hero-subtitle { font-size:1rem; }
+  .home-page .hero-location { font-size:.84rem; }
+  .home-page .work-paths { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:.8rem; padding:.25rem .15rem 1rem; scrollbar-width:none; }
+  .home-page .work-paths::-webkit-scrollbar { display:none; }
+  .home-page .work-path { flex:0 0 86vw; min-height:230px; scroll-snap-align:start; }
+  .home-page .work-directory-heading h2 { font-size:clamp(2rem,9vw,3rem); }
+  .home-page .contact-layout { gap:1.2rem; }
+  .home-page .contact-form { padding:1.1rem; }
+  .home-page .contact-form-message textarea { min-height:90px; }
+  .home-page .contact-aside { display:none; }
+  .standalone-main > .section { min-height:auto; }
+  .creative-hero-section { min-height:calc(100svh - var(--nav-h)); display:grid; align-items:center; }
+  .creative-feature { gap:1rem; }
+  .creative-portrait { max-height:36vh; }
+  .creative-feature-copy h2 { font-size:clamp(1.8rem,8vw,2.6rem); }
+  .creative-photo-strip { grid-template-columns:1fr 1fr; }
+  .creative-photo-strip > img,.creative-video-tile { height:8.5rem; }
+  .creative-video-tile { grid-column:1 / -1; }
+  .research-carousel .research-feature { display:grid; }
+  .professional-carousel .professional-role { min-height:15rem; }
+}
