@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=footer-minimal-20260804">
+  <link rel="stylesheet" href="styles.css?v=carousel-refresh-20260804">
 </head>
 <body id="top" class="home-page">
   <canvas id="matrix-bg" aria-hidden="true"></canvas>
@@ -53,7 +53,7 @@
       <a href="#top" class="nav-logo" aria-label="Nathan Brown-Bennett — Home">NBB</a>
 
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="#about">About</a></li>
+        <li><a href="#about-overlay" data-open-about>About</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="professional-work.html">Professional Work</a></li>
         <li><a href="creative-practice.html">Creative Practice</a></li>
@@ -80,7 +80,7 @@
   <!-- Mobile Navigation -->
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
     <ul role="list">
-      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#about-overlay" class="mobile-nav-link" data-open-about>About</a></li>
       <li><a href="research.html" class="mobile-nav-link">Research</a></li>
       <li><a href="professional-work.html" class="mobile-nav-link">Professional Work</a></li>
       <li><a href="creative-practice.html" class="mobile-nav-link">Creative Practice</a></li>
@@ -172,62 +172,6 @@
       </div>
     </div>
 
-    <!-- ============================
-         About Section
-         ============================ -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title fade-in">About Me</h2>
-        <div class="about-grid">
-          <div class="about-bio fade-in">
-            <p>I'm Nathan Brown-Bennett, a creative technologist with a Postgraduate Diploma in Network and Information Security, awarded with Distinction by Kingston University London. I research how people and organisations make safer technology decisions, then communicate those findings through useful systems, clear writing and creative work.</p>
-            <p>My practice sits between cybersecurity, software, education and performance. I am currently preparing to progress from the PGDip into the MSc while developing BstudioB as the company home for products and client-facing work.</p>
-            <a href="output/pdf/Nathan-Brown-Bennett-ATS-CV.pdf" download class="btn btn-primary about-cv-btn">
-              <span aria-hidden="true">📄</span> Download ATS CV
-            </a>
-          </div>
-          <div class="about-experience fade-in">
-            <h3>Experience</h3>
-            <p>Security, software and operational work across organisations, education and practical business systems.</p>
-            <details class="experience-disclosure">
-              <summary>
-                <span>Work experience</span>
-                <span class="experience-disclosure-meta">
-                  <span class="experience-disclosure-count">5 roles · 2022–Present</span>
-                  <span class="experience-disclosure-state">
-                    <span class="experience-state-closed">Expand</span>
-                    <span class="experience-state-open">Collapse</span>
-                  </span>
-                </span>
-              </summary>
-              <div class="experience-list">
-                <article class="experience-item fade-in">
-                  <div><time datetime="2025-07">Jul 2025–Present</time><span>Intermittent</span></div>
-                  <div><h4>IT &amp; Administration Support</h4><p class="experience-company">GMT Electrical Services Ltd</p><p>Developed the company website and a working staff portal for timesheets, audit checks and job-card workflows, alongside email, invoicing, calls and operational coordination.</p></div>
-                </article>
-                <article class="experience-item fade-in">
-                  <div><time datetime="2025-05">May–Jun 2025</time></div>
-                  <div><h4>Project &amp; Creative Director, Trustee</h4><p class="experience-company">CERRF</p><p>Directed cybersecurity learning tools including Inspector and HackerGo, with responsibility across workshops, product storytelling, interface design and cross-platform delivery.</p></div>
-                </article>
-                <article class="experience-item fade-in">
-                  <div><time datetime="2025-01">Jan–Mar 2025</time></div>
-                  <div><h4>Student Mentor &amp; Teaching Assistant</h4><p class="experience-company">Kingston University London</p><p>Supported undergraduate labs in Splunk, Datadog, AI automation, cloud data systems and Linux-based technical work.</p></div>
-                </article>
-                <article class="experience-item fade-in">
-                  <div><time>2023–2025</time></div>
-                  <div><h4>Systems Engineer &amp; Data Analyst</h4><p class="experience-company">Lunarversal</p><p>Worked across monitoring, Salesforce automation, GitHub access and testing, API configuration, OAuth and token-based integrations.</p></div>
-                </article>
-                <article class="experience-item fade-in">
-                  <div><time>2022–2023</time></div>
-                  <div><h4>Security Engineer</h4><p class="experience-company">Xeyus Ltd</p><p>Delivered penetration-testing support, security consultancy and GDPR-focused technical work.</p></div>
-                </article>
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section graduation-section" aria-labelledby="graduation-title">
       <div class="container">
         <article class="graduation-card fade-in">
@@ -281,7 +225,13 @@
             <span class="work-path-action">View creative practice <span aria-hidden="true">↓</span></span>
           </a>
         </div>
-        <div class="work-carousel-assist" aria-label="Work carousel position"><span class="work-carousel-label">Swipe to explore</span><div class="work-carousel-dots" role="tablist" aria-label="Choose work category"><button type="button" class="work-carousel-dot active" data-work-slide="0" role="tab" aria-label="Research" aria-selected="true"></button><button type="button" class="work-carousel-dot" data-work-slide="1" role="tab" aria-label="Professional Work" aria-selected="false"></button><button type="button" class="work-carousel-dot" data-work-slide="2" role="tab" aria-label="Creative Practice" aria-selected="false"></button></div><span class="work-carousel-count">1 / 3</span></div>
+        <div class="work-carousel-assist" aria-label="Work carousel position">
+          <button type="button" class="work-carousel-control" data-work-direction="prev" aria-label="Previous work category">←</button>
+          <span class="work-carousel-label">Browse categories</span>
+          <div class="work-carousel-dots" role="tablist" aria-label="Choose work category"><button type="button" class="work-carousel-dot active" data-work-slide="0" role="tab" aria-label="Research" aria-selected="true"></button><button type="button" class="work-carousel-dot" data-work-slide="1" role="tab" aria-label="Professional Work" aria-selected="false"></button><button type="button" class="work-carousel-dot" data-work-slide="2" role="tab" aria-label="Creative Practice" aria-selected="false"></button></div>
+          <span class="work-carousel-count">1 / 3</span>
+          <button type="button" class="work-carousel-control" data-work-direction="next" aria-label="Next work category">→</button>
+        </div>
       </div>
     </section>
 
