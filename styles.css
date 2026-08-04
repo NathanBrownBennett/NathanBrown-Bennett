@@ -40,9 +40,13 @@
 .creative-hero-section .research-intro,.professional-hero .research-intro { max-width:34rem; }
 .creative-portrait { margin:0; border-radius:1.5rem; overflow:hidden; max-height:34rem; }
 .creative-portrait img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.creative-portrait img { object-position:center 18%; }
+.creative-feature-copy .btn { display:block; width:max-content; margin:1.25rem auto 0; }
 .creative-photo-strip { display:grid; grid-template-columns:1fr 1fr 1.4fr; gap:.8rem; margin-top:1.5rem; }
 .creative-photo-strip > img,.creative-video-tile { width:100%; height:11rem; object-fit:cover; border-radius:1rem; }
 .creative-photo-strip > img { filter:saturate(1.08) contrast(1.03); }
+.creative-photo-standing { object-position:center 18%; }
+.creative-photo-bw { object-position:22% 18%; }
 .creative-video-tile { position:relative; display:flex; align-items:flex-end; overflow:hidden; color:#fff8ef; background:#2b223b; }
 .creative-video-tile img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.72; transition:transform .3s ease,opacity .3s ease; }
 .creative-video-tile::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 25%,rgba(23,20,35,.88)); }
@@ -171,7 +175,9 @@ body > *:not(#matrix-bg):not(#background-fader) {
 }
 
 #navbar.scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(23, 20, 35, 0.98);
+  border-bottom-color: rgba(244, 201, 93, 0.18);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.34);
 }
 
 .nav-container {
@@ -3433,6 +3439,12 @@ body > .back-to-top {
 .btn-outline:hover { background:rgba(244,201,93,.12); }
 .section-title::after { background:var(--accent); }
 .creative-photo-strip { position:relative; z-index:1; }
+.scroll-progress { position:fixed; top:0; left:0; z-index:1200; width:100%; height:3px; transform:scaleX(0); transform-origin:left center; background:linear-gradient(90deg,var(--accent),var(--accent2),#c084fc); pointer-events:none; }
+.words-ready { overflow:visible; }
+.js .word-reveal { display:inline-block; opacity:0; transform:translateY(.7em); transition:opacity .55s ease,transform .55s cubic-bezier(.22,.61,.36,1); transition-delay:calc(var(--word-index) * 45ms); }
+.js .words-visible .word-reveal { opacity:1; transform:none; }
+.home-page main,.standalone-main { scroll-snap-type:y proximity; }
+.home-page main > section,.standalone-main > section { scroll-snap-align:start; }
 .research-carousel,.professional-carousel { position:relative; overflow:hidden; }
 .research-carousel-track,.professional-timeline { display:flex; transition:transform .5s cubic-bezier(.22,.61,.36,1); will-change:transform; }
 .research-carousel .research-feature { flex:0 0 100%; }
@@ -3447,6 +3459,11 @@ body > .back-to-top {
   .home-page #hero { min-height:calc(100svh - 1rem); padding:calc(var(--nav-h) + 1.5rem) 0 2rem; }
   .home-page #about,.home-page #work { min-height:76svh; padding:3.25rem 0; }
   .home-page #contact { min-height:62svh; padding:3rem 0; }
+  .home-page #about,.home-page #work { min-height:70svh; }
+  .home-page .section-title { font-size:clamp(1.8rem,8vw,2.5rem); }
+  .home-page .about-grid { gap:1.2rem; }
+  .home-page .about-bio p { font-size:.92rem; line-height:1.5; }
+  .home-page .experience-disclosure { margin-top:.8rem; }
   .home-page .hero-content { gap:1.1rem; }
   .home-page .hero-profile-pic { width:132px; height:132px; }
   .home-page .hero-text h1 { font-size:clamp(2rem,10vw,3rem); }
@@ -3464,10 +3481,16 @@ body > .back-to-top {
   .creative-hero-section { min-height:calc(100svh - var(--nav-h)); display:grid; align-items:center; }
   .creative-feature { gap:1rem; }
   .creative-portrait { max-height:36vh; }
+  .creative-portrait img { object-position:center 15%; }
   .creative-feature-copy h2 { font-size:clamp(1.8rem,8vw,2.6rem); }
   .creative-photo-strip { grid-template-columns:1fr 1fr; }
   .creative-photo-strip > img,.creative-video-tile { height:8.5rem; }
   .creative-video-tile { grid-column:1 / -1; }
   .research-carousel .research-feature { display:grid; }
   .professional-carousel .professional-role { min-height:15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { transition:none; }
+  .js .word-reveal { opacity:1; transform:none; transition:none; }
 }
