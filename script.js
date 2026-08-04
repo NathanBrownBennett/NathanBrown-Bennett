@@ -1216,6 +1216,40 @@ function pruneHomeCollections() {
   });
 }
 
+function initCompactCarousels() {
+  const research = document.querySelector('.research-carousel');
+  if (research) {
+    const track = research.querySelector('.research-carousel-track');
+    const items = Array.from(research.querySelectorAll('.research-feature'));
+    const position = research.querySelector('.carousel-position');
+    let index = 0;
+    const render = function () {
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      if (position) position.textContent = (index + 1) + ' / ' + items.length;
+      items.forEach(function (item, itemIndex) { item.setAttribute('aria-hidden', String(itemIndex !== index)); });
+    };
+    research.querySelector('[data-carousel-prev]').addEventListener('click', function () { index = (index - 1 + items.length) % items.length; render(); });
+    research.querySelector('[data-carousel-next]').addEventListener('click', function () { index = (index + 1) % items.length; render(); });
+    render();
+  }
+
+  const professional = document.querySelector('.professional-carousel');
+  if (professional) {
+    const track = professional.querySelector('.professional-timeline');
+    const items = Array.from(professional.querySelectorAll('.professional-role'));
+    const position = professional.querySelector('.professional-position');
+    let index = 0;
+    const render = function () {
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      if (position) position.textContent = (index + 1) + ' / ' + items.length;
+      items.forEach(function (item, itemIndex) { item.setAttribute('aria-hidden', String(itemIndex !== index)); });
+    };
+    professional.querySelector('[data-prof-prev]').addEventListener('click', function () { index = (index - 1 + items.length) % items.length; render(); });
+    professional.querySelector('[data-prof-next]').addEventListener('click', function () { index = (index + 1) % items.length; render(); });
+    render();
+  }
+}
+
 // ============================================================
 // DOMContentLoaded — wire everything up
 // ============================================================
@@ -1229,6 +1263,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initSectionNavigation();
   initContactFormStatus();
   initBackgroundFader();
+  initCompactCarousels();
 
   // Overlay backdrop click & keyboard close
   const overlay = document.getElementById('overlay');
