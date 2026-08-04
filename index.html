@@ -103,7 +103,10 @@
     <section id="hero" class="hero-section">
       <div class="hero-content">
         <div class="hero-image-wrap fade-in">
-          <img src="assets/graduation/pgdip-distinction-portrait.webp" alt="Nathan Brown-Bennett at his Kingston University London graduation" class="hero-profile-pic" width="1200" height="1600" fetchpriority="high" decoding="async" />
+          <button class="hero-image-trigger" id="about-trigger" type="button" aria-label="Read about Nathan Brown-Bennett">
+            <img src="assets/graduation/pgdip-distinction-portrait.webp" alt="Nathan Brown-Bennett at his Kingston University London graduation" class="hero-profile-pic" width="1200" height="1600" fetchpriority="high" decoding="async" />
+          </button>
+          <span class="hero-image-note">click me to read me <span aria-hidden="true">↗</span></span>
         </div>
         <div class="hero-text fade-in">
           <p class="hero-greeting">Hi, I'm</p>
@@ -119,6 +122,17 @@
         </div>
       </div>
     </section>
+
+    <div class="about-overlay" id="about-overlay" role="dialog" aria-modal="true" aria-labelledby="about-overlay-title" aria-hidden="true">
+      <div class="about-overlay-card">
+        <button class="about-overlay-close" id="about-overlay-close" type="button" aria-label="Close About Me">×</button>
+        <p class="projects-eyebrow">About me</p>
+        <h2 id="about-overlay-title">Researcher, builder and creative technologist.</h2>
+        <p>I'm Nathan Brown-Bennett, a creative technologist with a Postgraduate Diploma in Network and Information Security, awarded with Distinction by Kingston University London. I research how people and organisations make safer technology decisions, then communicate those findings through useful systems, clear writing and creative work.</p>
+        <p>My practice sits between cybersecurity, software, education and performance. I am preparing to progress from the PGDip into the MSc while developing BstudioB as the company home for products and client-facing work.</p>
+        <a class="btn btn-primary" href="#about">View experience</a>
+      </div>
+    </div>
 
     <!-- ============================
          About Section
@@ -229,6 +243,7 @@
             <span class="work-path-action">View creative practice <span aria-hidden="true">↓</span></span>
           </a>
         </div>
+        <div class="work-carousel-assist" aria-label="Work carousel position"><span class="work-carousel-label">Swipe to explore</span><div class="work-carousel-dots" role="tablist" aria-label="Choose work category"><button type="button" class="work-carousel-dot active" data-work-slide="0" role="tab" aria-label="Research" aria-selected="true"></button><button type="button" class="work-carousel-dot" data-work-slide="1" role="tab" aria-label="Professional Work" aria-selected="false"></button><button type="button" class="work-carousel-dot" data-work-slide="2" role="tab" aria-label="Creative Practice" aria-selected="false"></button></div><span class="work-carousel-count">1 / 3</span></div>
       </div>
     </section>
 
