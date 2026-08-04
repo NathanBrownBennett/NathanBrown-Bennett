@@ -3502,8 +3502,8 @@ body > .back-to-top {
   .site-footer .footer-intro,.site-footer .footer-column:not(.footer-socials) { display:none; }
   .site-footer .footer-socials { display:flex; justify-content:center; align-items:center; gap:.65rem; margin:0; }
   .site-footer .footer-socials .footer-label { display:none; }
-  .site-footer .footer-socials a { display:grid; place-items:center; width:2.15rem; height:2.15rem; padding:0; border:1px solid rgba(244,201,93,.45); border-radius:50%; background:rgba(244,201,93,.08); color:var(--accent2); font-size:0; line-height:1; }
-  .site-footer .footer-socials a::before { font-size:.78rem; font-weight:800; }
+  .site-footer .footer-socials a { display:grid; place-items:center; width:2.15rem; height:2.15rem; padding:0; border:1px solid rgba(244,201,93,.45); border-radius:50%; background:rgba(244,201,93,.08); color:var(--accent2); font-size:0 !important; line-height:1; letter-spacing:0; }
+  .site-footer .footer-socials a::before { font-size:.78rem !important; font-weight:800; }
   .site-footer .footer-socials a:nth-of-type(1)::before { content:'in'; }
   .site-footer .footer-socials a:nth-of-type(2)::before { content:'⌘'; }
   .site-footer .footer-socials a:nth-of-type(3)::before { content:'⌁'; }
