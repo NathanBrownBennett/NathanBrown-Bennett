@@ -2273,6 +2273,17 @@ body > .back-to-top {
   padding-top: 1.25rem;
 }
 
+@media (min-width:1025px) {
+  .site-footer { padding:2rem 0 .75rem; }
+  .footer-grid { gap:2rem; }
+  .footer-logo { margin-bottom:.65rem; }
+  .footer-intro h2 { font-size:clamp(1.55rem,2.2vw,2.05rem); line-height:1.05; margin-bottom:.45rem; }
+  .footer-intro p { font-size:.76rem; line-height:1.45; }
+  .footer-column { gap:.42rem; }
+  .footer-label { margin-bottom:.15rem; }
+  .footer-bottom { margin-top:1.5rem; padding-top:.75rem; }
+}
+
 /* ============================================================
    Responsive — Tablet (≤1024px)
    ============================================================ */
