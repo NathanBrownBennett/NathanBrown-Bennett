@@ -34,3 +34,5 @@ Do not describe the route as a confirmed top-up. The current UCL position is a f
 2. Finalise the CV and personal statement using the evidence above.
 3. Confirm the current UCL deadline, fee and funding position in the application portal before paying. UCL’s [published fee page](https://www.ucl.ac.uk/study/prospective-students/graduate/funding-your-masters/tuition-fees?year=fees-and-costs) says the UK postgraduate-taught deposit is 2.5% of the first-year fee for successful offer holders; it forms part of the tuition fee and is normally due by the deadline in the offer.
 4. Submit only after reviewing the completed application and attachments together.
+
+For the funding route and the effect of the existing PGDip, use [student-finance-plan.md](student-finance-plan.md) alongside the official Student Finance England forms.
