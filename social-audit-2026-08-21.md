@@ -55,9 +55,9 @@ This profile has the stronger existing audience and a credible creative archive.
 
 ## LinkedIn
 
-The signed-in account identifies itself as Nathan Brown-Bennett with the headline `Founder | IT Consultant | Cyber Security Researcher & Software Developer`. The profile URL used by the website is the account's own URL, although LinkedIn's public route currently returns a “page doesn't exist” surface when opened directly. Verify the profile visibility/URL in LinkedIn before promoting it further.
+The signed-in account now uses the headline `Cybersecurity & Software Builder | PgDip Network & Information Security (Distinction) | Founder, BstudioB`. The About section has also been replaced with the concise researcher/builder/creative-practice summary in [linkedin-profile-refresh.md](linkedin-profile-refresh.md). The profile URL used by the website is the account's own URL, although LinkedIn's public route currently returns a “page doesn't exist” surface when opened directly. Verify the profile visibility/URL in LinkedIn before promoting it further.
 
-The prepared headline, About copy and Featured-item order are in [linkedin-profile-refresh.md](linkedin-profile-refresh.md). Applying those changes requires editing the live profile; that has not been done in this audit.
+The prepared headline and About copy are now live. Featured-item expansion remains optional because LinkedIn currently exposes the portfolio link but does not show a Featured-section control in the account's Add-section dialog.
 
 ## Website and repository state
 
