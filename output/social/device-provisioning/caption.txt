@@ -1,0 +1,11 @@
+Choosing a device is a security decision — not just a price comparison.
+
+The Device Provisioning Toolkit brings device discovery, security assessment and procurement context into one workflow. It helps people compare personal, business and government-use devices, then gives them practical guidance for setup, hardening and recovery.
+
+I built it from the question: what should we provide, and how do we decide safely?
+
+This is one example of how my research becomes something people can use.
+
+Built through BstudioB.
+
+#cybersecurity #softwaredevelopment #devicemanagement #informationsecurity #securitybydesign #bstudiob
