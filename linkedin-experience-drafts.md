@@ -1,6 +1,6 @@
 # LinkedIn experience drafts
 
-These entries are ready to apply during the next signed-in LinkedIn session. Dates should be checked against the user's records before publishing; the GMT start date is based on the supplied July 2025 context, while the BstudioB start month still needs confirmation.
+These entries are ready to apply during the next signed-in LinkedIn session. Dates should be checked against the user's records before publishing.
 
 ## GMT Electrical Services Ltd
 
@@ -20,7 +20,7 @@ These entries are ready to apply during the next signed-in LinkedIn session. Dat
 
 **Title:** Founder & Software Builder
 **Employment type:** Self-employed
-**Dates:** 2026 – Present (confirm month before publishing)
+**Dates:** May 2026 – Present
 **Location:** United Kingdom
 
 **Description:**
